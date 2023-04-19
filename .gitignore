@@ -1,9 +1,5 @@
 _site
 .sass-cache
-<<<<<<< Updated upstream
-.jekyll-metadata
-=======
 .jekyll-cache
 .jekyll-metadata
 vendor
->>>>>>> Stashed changes

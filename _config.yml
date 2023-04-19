@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Kyle Keene-Welch - My Portfolio
+title: Portfolio - Kyle Keene-Welch
 email: kylekeene.welch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Github pages portfolio website to display and showcase completed projects and developed skills to potential employers.
@@ -28,7 +28,8 @@ url: "https://kylekeenewelch.github.io" # the base hostname & protocol for your 
 github_username:  KyleKeeneWelch
 
 # Build settings
-theme: minima
+# Removed minima theme as it is now a regular theme.
+#theme: minima
 plugins:
   - jekyll-feed
 
