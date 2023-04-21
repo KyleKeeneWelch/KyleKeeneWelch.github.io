@@ -1,10 +1,19 @@
 /**
  * Site header
  */
+
+#logo {
+  width: 30vw;
+  height: 7.5vw;
+  min-width: 300px;
+  min-height: 75px;
+}
+
 .site-header {
   border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
+  background-color: #106793;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -17,16 +26,13 @@
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
-
-  &,
-  &:visited {
-    color: $grey-color-dark;
-  }
+  color: $text-color !important;
 }
 
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
+  margin-top: 4vw;
 
   .nav-trigger {
       display: none;
@@ -108,6 +114,15 @@
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
+  background-color: #106793;
+}
+
+.site-footer a {
+  color: darken($text-color, 25%);
+}
+
+.site-footer a:hover {
+  color: $text-color;
 }
 
 .footer-heading {
@@ -123,7 +138,7 @@
 
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
-  color: $grey-color;
+  color: $text-color;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
