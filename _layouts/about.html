@@ -1,22 +1,28 @@
 ---
 layout: default
 ---
+
 <div class="about">
-  <header>
-    {%- if page.title -%}
-      <h1 class="page-heading">{{ page.title }}</h1>
-    {%- endif -%}
-  </header>
+  
 
   <div id="profile">
-    <div id="profile_picture_container">
-      <img src="" width="" height="">
+    <div>
+      <img id="profile-picture" src="">
     </div>
 
-    <div id="profile_details_container">
-      <h2>Kyle Keene-Welch</h2>
-      <p>Web Developer / Software Engineer</p>
-      <p>University Of Bedfordshire</p>
+    <div id="profile-details-container">
+      <h1>Kyle Keene-Welch</h1>
+      <p>- Web Developer / Software Engineer</p>
+      <p>- University Of Bedfordshire</p>
+      <br>
+      <a id="resume-link" href="{{site.baseurl}}/assets/docs/resume.txt" download>
+        Download Resume
+        <svg width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier"> <title/> <g id="Complete"> <g id="download"> <g> <path d="M3,12.3v7a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2v-7" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> <g> <polyline data-name="Right" fill="none" id="Right-2" points="7.9 12.3 12 16.3 16.1 12.3" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> <line fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="2.7" y2="14.2"/> </g> </g> </g> </g> </g>
+        </svg>
+      </a>
     </div>
   </div>
 
