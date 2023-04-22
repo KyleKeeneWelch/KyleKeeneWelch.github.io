@@ -10,7 +10,6 @@
 }
 
 .site-header {
-  border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
   background-color: #106793;
@@ -191,12 +190,16 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  // padding: $spacing-unit 0;
   flex: 1;
 }
 
 .page-heading {
-  @include relative-font-size(2);
+  @include relative-font-size(2.5);
+  text-align: center;
+  border-bottom: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+  margin-top: 10px;
 }
 
 .post-list-heading {
@@ -276,7 +279,7 @@
 #banner {
   display: block;
   background-size: cover;
-  height: 500px;
+  height: 90vh;
   background-image: url("images/banner.jpg");
   background-attachment: fixed;
 }
@@ -284,31 +287,52 @@
 #welcome-message {
   font-size: 50px;
   display: block;
-  padding-top: 15vh;
+  padding-top: 25vh;
   padding-left: 20vw;
 }
 
 #welcome-message span {
   color: $brand-color;
-  font-size: 55px;
+  font-size: 60px;
   font-weight: 600;
 }
 
 #banner a {
   display: inline-block;
   opacity: 0.2;
-  padding-top: 25vh;
+  // padding-top: 28vh;
 }
 
 @media only screen and (max-width: 650px) {
   #welcome-message {
     font-size: 30px;
+    padding-left: 15vw;
   }
 
   #welcome-message span {
     font-size: 35px;
   }
 
+}
+
+#home-description {
+  padding: 25px;
+  border: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+}
+
+#home-description img {
+  display: block;
+  margin: auto;
+}
+
+#home-description-link {
+  text-align: center;
+}
+
+.home-header {
+  text-align: center;
+  font-size: 30px;
 }
 
 /**
@@ -319,11 +343,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
   padding: 25px;
 }
 
-#profile-picture {
+.profile-picture {
   border: 2px solid #FFF;
   height: 400px;
   width:300px;
@@ -345,9 +370,9 @@
   line-height: 25%;
 }
 
-#resume-link {
+.resume-link {
   align-items: center;
-  background-color: #0A66C2;
+  background-color: $brand-color;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
@@ -379,7 +404,7 @@
 }
 
 @media only screen and (max-width: 650px) {
-  #profile, #profile-picture, #profile-details-container {
+  #profile, .profile-picture, #profile-details-container {
     display: block;
     margin: auto;
   }
