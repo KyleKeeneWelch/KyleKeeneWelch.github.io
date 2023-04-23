@@ -331,10 +331,6 @@
   margin: auto;
 }
 
-#home-description-link {
-  text-align: center;
-}
-
 .home-header {
   text-align: center;
   font-size: 30px;
@@ -367,6 +363,8 @@
 
 .gallery-card {
   width: 50%;
+  max-width: 370px;
+  min-width: 330px;
   height: 270px;
   border: 1px solid $brand-color;
   box-shadow: 0px 5px 10px -5px $brand-color;
@@ -397,11 +395,43 @@
     display: block;
     margin: auto;
     width: 90%;
+    margin-top: 20px;
   }
 
+}
+
+@media only screen and (max-width: 440px) {
   .overlay {
-    width: 94%
+    width: 94%;
   }
+}
+
+#portfolio-link {
+  align-items: center;
+  background-color: $brand-color;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
+  line-height: 20px;
+  width: 100%;
+  // max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
 }
 
 /**
@@ -419,8 +449,8 @@
 
 .profile-picture {
   border: 2px solid #FFF;
-  height: 400px;
-  width:300px;
+  width: 250px;
+  height: 300px;
   min-width: fit-content;
 }
 
