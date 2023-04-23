@@ -276,6 +276,17 @@
  * Home
  */
 
+.home-container {
+  padding: 25px;
+  border: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+}
+
+.home-container img {
+  display: block;
+  margin: auto;
+}
+
 #banner {
   display: block;
   background-size: cover;
@@ -315,12 +326,6 @@
 
 }
 
-#home-description {
-  padding: 25px;
-  border: 1px solid $brand-color;
-  box-shadow: 0px 5px 10px -5px $brand-color;
-}
-
 #home-description img {
   display: block;
   margin: auto;
@@ -333,6 +338,70 @@
 .home-header {
   text-align: center;
   font-size: 30px;
+}
+
+.gallery-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gallery-image {
+  width: fit-content;
+  height: fit-content;
+}
+
+.overlay {
+  position: relative;
+  margin-top: 205px;
+  background: rgb(42, 122, 226);
+  background: rgba(42, 122, 226, 0.5);
+  color: #f1f1f1;
+  width: 95%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+.gallery-card {
+  width: 50%;
+  height: 270px;
+  border: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+}
+
+@media (hover: hover) {
+  .gallery-card:hover {
+    transition: 1s;
+    transform: scale(1.1);
+  }
+  
+  .gallery-card:hover .overlay {
+    opacity: 0.75;
+  }
+}
+
+@media (hover: none) {
+  .gallery-card .overlay {
+    opacity: 0.75;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .gallery-row {
+    display: block;
+  }
+  .gallery-card {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+
+  .overlay {
+    width: 94%
+  }
 }
 
 /**
@@ -397,8 +466,8 @@
   vertical-align: middle;
 }
 
-#resume-link:hover,
-#resume-link:focus { 
+.resume-link:hover,
+.resume-link:focus { 
   background-color: #16437E;
   color: #ffffff;
 }
