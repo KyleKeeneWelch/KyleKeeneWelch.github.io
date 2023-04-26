@@ -51,6 +51,16 @@
     }
   }
 
+  .active-link {
+    font-weight: 700;
+    color: darken($color: $brand-color, $amount: 30%);
+    text-decoration: underline;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
   @include media-query($on-palm) {
     position: absolute;
     top: 9px;
@@ -69,6 +79,12 @@
       cursor: pointer;
     }
 
+    label[for="nav-trigger"]:hover {
+      .menu-icon > svg {
+        fill: $brand-color;
+      }
+    }
+
     .menu-icon {
       display: block;
       float: right;
@@ -79,7 +95,7 @@
       text-align: center;
 
       > svg {
-        fill: $grey-color-dark;
+        fill: #FFF;
       }
     }
 
@@ -90,17 +106,24 @@
 
     input:checked ~ .trigger {
       display: block;
-      padding-bottom: 5px;
+      // padding-bottom: 5px;
+      width: 180px;
     }
 
     .page-link {
       display: block;
-      padding: 5px 10px;
-
+      border: solid 1px #FFF;
+      padding: 5px;
+      text-align: center;
       &:not(:last-child) {
         margin-right: 0;
       }
-      margin-left: 20px;
+
+      &:hover {
+        background-color: $brand-color;
+        transition: 0.5s;
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -276,17 +299,6 @@
  * Home
  */
 
-.home-container {
-  padding: 25px;
-  border: 1px solid $brand-color;
-  box-shadow: 0px 5px 10px -5px $brand-color;
-}
-
-.home-container img {
-  display: block;
-  margin: auto;
-}
-
 #banner {
   display: block;
   background-size: cover;
@@ -329,11 +341,6 @@
 #home-description img {
   display: block;
   margin: auto;
-}
-
-.home-header {
-  text-align: center;
-  font-size: 30px;
 }
 
 .gallery-row {
@@ -406,13 +413,13 @@
   }
 }
 
-#portfolio-link {
+.button-link {
   align-items: center;
   background-color: $brand-color;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #ffffff !important;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -434,17 +441,32 @@
   vertical-align: middle;
 }
 
+.button-link:hover,
+.button-link:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
 /**
  * About
  */
 
 #profile {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border: 1px solid $brand-color;
-  box-shadow: 0px 5px 10px -5px $brand-color;
-  padding: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 100%;
+  background-size: cover;
+  background-image: url("images/profile-background.jpg");
+}
+
+#profile a:first-child {
+  position: absolute;
+  opacity: 0.5;
+  left: 0;
+  top: 110px;
 }
 
 .profile-picture {
@@ -456,6 +478,7 @@
 
 #profile-details-container {
   width: 25vw;
+  margin-left: 10vw;
   min-width: fit-content;
   text-align: center;
 }
@@ -502,6 +525,12 @@
   color: #ffffff;
 }
 
+@media only screen and (max-width: 950px) {
+  #profile a:first-child {
+    top: 90px;
+  }
+}
+
 @media only screen and (max-width: 650px) {
   #profile, .profile-picture, #profile-details-container {
     display: block;
@@ -510,6 +539,10 @@
 
   #profile-details-container {
     width: fit-content;
+  }
+
+  #profile a:first-child {
+    top: 75px;
   }
 
 }
