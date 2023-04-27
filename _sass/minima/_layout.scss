@@ -544,5 +544,57 @@
   #profile a:first-child {
     top: 75px;
   }
+}
 
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  & img {
+    border-radius: 5%;
+    width: 230px;
+    height: 100px;
+  }
+}
+
+.education-header:last-of-type img {
+  border-radius: 5%;
+  width: 180px;
+  height: 155px;
+}
+
+.education-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+  padding: 5px;
+
+  & small {
+    padding: 10px;
+  }
+}
+
+.education-list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.education-list {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+@media only screen and (max-width: 650px) {
+  .education-header {
+    display: block;
+    text-align: center;
+
+    & img {
+      display: block;
+      margin: auto;
+    }
+  }
 }
