@@ -147,6 +147,23 @@ input, textarea {
   font-family: $base-font-family;
 }
 
+#contact-social-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 500px) {
+  #contact-social-links {
+    display: block;
+
+    & img {
+      display: block;
+      margin: auto;
+      margin-top: 20px;
+    }
+  }
+}
+
 /**
  * Site footer
  */
