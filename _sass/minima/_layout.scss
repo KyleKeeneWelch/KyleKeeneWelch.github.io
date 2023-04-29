@@ -128,7 +128,24 @@
   }
 }
 
+/**
+ * Contact
+ */
 
+form {
+  padding: 20px;
+}
+
+input, textarea {
+  width: 95%;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+  background-color: $background-color;
+  padding: 10px;
+  color: $brand-color;
+  border: 1px solid $brand-color;
+  border-radius: 5px;
+  font-family: $base-font-family;
+}
 
 /**
  * Site footer
@@ -303,7 +320,7 @@
   display: block;
   background-size: cover;
   height: 90vh;
-  background-image: url("images/banner.jpg");
+  background-image: url("images/banner.png");
   background-attachment: fixed;
 }
 
@@ -459,7 +476,7 @@
   padding-bottom: 25px;
   width: 100%;
   background-size: cover;
-  background-image: url("images/profile-background.jpg");
+  background-image: url("images/profile-background.png");
 }
 
 #profile a:first-child {
