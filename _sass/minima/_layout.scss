@@ -259,6 +259,29 @@ input, textarea {
   margin-top: 10px;
 }
 
+#post-container {
+  width: 100%;
+  height: 500px;
+  overflow-y: auto;
+
+  > li {
+    margin-bottom: $spacing-unit;
+  }
+}
+
+#post-container::-webkit-scrollbar {
+  width: 0.5em;
+}
+ 
+#post-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+#post-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 .post-list-heading {
   @include relative-font-size(1.75);
 }
@@ -266,10 +289,6 @@ input, textarea {
 .post-list {
   margin-left: 0;
   list-style: none;
-
-  > li {
-    margin-bottom: $spacing-unit;
-  }
 }
 
 .post-meta {
@@ -280,6 +299,23 @@ input, textarea {
 .post-link {
   display: block;
   @include relative-font-size(1.5);
+}
+
+.post-tag {
+  background-color: $brand-color;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.post-tags {
+  margin-left: 0px;
+
+  & :not(:first-child) {
+    margin-left: 10px;
+  }
 }
 
 
