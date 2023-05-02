@@ -308,6 +308,8 @@ input, textarea {
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .post-tags {
@@ -362,6 +364,22 @@ input, textarea {
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
+  }
+}
+
+.repo-container {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: $brand-color;
+  border-radius: 20px;
+  padding: 10px;
+  width: 75%;
+
+  & a {
+    margin-left: 20px;
+    color: #FFF;
   }
 }
 
