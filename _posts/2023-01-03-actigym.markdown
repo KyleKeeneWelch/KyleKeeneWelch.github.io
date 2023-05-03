@@ -1,0 +1,248 @@
+---
+layout: post
+title:  "ActiGym"
+date:   2023-01-03 13:40:16 +0100
+categories: ['Dart', 'Flutter', 'Android', 'MSAccess', 'iOS', 'Mobile', 'Hybrid']
+description: "Flutter Mobile Application written with Dart that serves as a workout planner and log to further fitness goals and abstract the fitness process."
+repo: "https://github.com/KyleKeeneWelch/ActiGym"
+---
+
+<style>
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & :last-child {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .center-container {
+        display: block;
+
+        & img {
+            display: block;
+            margin: auto;
+        }
+
+        & :last-child {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+    }
+}
+</style>
+
+
+## Summary
+This project uses the popular framework by Google `Flutter` to implement a Mobile Application Solution to assist many fitness related problems. ActiGym is a workout planner and log that will help you to create or select pre-built workouts to do all while monitoring your sessions and measuring your progress.
+
+`Dart` as the official langauge, is used to build several components known as `widgets` which can be used to structure and present key areas. Each `widget` is designed to serve a particular function and the derived order and properties of such `widgets` make up the look and feel of the application to the user. Flutter is used to generate natively-compiled applications for multiple platforms including both `Android` and `iOS`.
+
+ActiGym maintains a connection to a `MSAccess` database of which is used to store and access user data including accounts, sessions and workouts. A user is able to create a free account that they can use to specify days they plan to go to the gym, create new workouts, edit workouts, start workouts or view their performance. The interface allows for easy and convenient access to immediately start a workout as well as create and edit workouts to meet individual needs. Users that do not wish for the full process and prefer an abstracted experience can start with the pre-built workouts or select to perform an unplanned workout which provides only the basic workout components such as the timer.
+
+## Features
+- **MSAccess Database Connectivity** - Application instantiates and populates an MSAccess database with the relevant user information such as user accounts, sessions and workouts. 
+
+- **Create and Edit Workouts** - ActiGym provides an easy interface for creating new and editing existing workouts. Exercises contained within a workout are clearly displayed in a list and the appropriate buttons to modify the workout and included exercises are provided. When suitable, a user can easily start the selected workout.
+
+- **Intuitive Workout Execution** - Users are granted with an easy to follow workout execution where they can clearly see the workout they are performing, the current exercise they are on as well as other information such as the number of sets, the set number they are on, previous achieved reps, previous weight and workout notes.
+
+- **Performance Tracking** - Provides a session log to see what workouts you have done and when and for how long they lasted. Also provides performance graphs which graphically show your progress on various areas.
+
+- **Unplanned and Pre-built Workouts** - Users that don't want to worry about creating their own workouts or want to get straight into a workout can start an unplanned or pre-built workout. Unplanned workouts provide basic functionality to perform and log the workout without indication of exercises and sets. Pre-built workouts are as the name suggests pre-made so that you can stimulate an area or muscle group without worrying about adjusting your own workout.
+
+- **Profile Picture Modification** - A user with a newly registered account will have their profile picture set as the default anonymous image. Users are able to update this by taking a new photo or accessing one taken from their gallery.
+
+### Login and Register
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/login_actigym.png" alt="Login Screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/register_actigym.png" alt="Register Screen" width="237px" height="396px">
+</div>
+<br>
+
+Here we can see the graphical user interface showing the register screen. Upon app startup, the user is met with a splash screen with the logo and a loading indicator before reaching the log in page. From here, the user can enter their previously registered details to access their account with ActiGym or can press the "register" button to access a similar page to register. Upon valid data entry, the application will register the user with the database and will reach the home screen.
+
+### Creating and Modifying a Workout
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/create_workout_actigym.png" alt="My workouts screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/modify_workout_actigym.png" alt="Modify workout screen" width="237px" height="396px">
+</div>
+<br>
+
+When we reach the My Workouts screen, we are able to create a new workout. We need to specify the name and number of exercises of this workout and then promptly press edit so we can add some new exercises to the created workout. Pressing edit will redirect the user to the Modify Workout screen which displays the current exercises of a selected workout and in this case, there is none. We can add new exercises by filling in the required fields and pressing create exercise. Refreshing the list will show the new workout. We are also able to delete or clear exercises if necessary. To start the exercise, we can either press the start button on the Modify Workout screen or back on the My Workouts screen.
+
+### Perform Workout and Unplanned Workout 
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/perform_workout_actigym.png" alt="Perform Workout screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/unplanned_workout_actigym.png" alt="Unplanned Workout on Perform Workout screen" width="237px" height="396px">
+</div>
+<br>
+
+A created workout or a pre-built workout can be selected and started through the My Workouts or Modify Workout screen. Additionally, an unplanned workout can be started by pressing the button at the bottom of the My Workouts screen. The perform workout screen contains details on the current exercise, the number of sets, highest achived reps and highest achieved reps for that exercise. Any notes written previously are shown when the workout has started and this can be edited. The timer shows the complete time of the workout from the moment the start button is pressed. Each set the user will record by entering the achieved reps and the weight for that set. Once a set has been recorded a rest period is initiated and the user can end this before the end of the countdown by pressing to start next set. Once all sets and exercises have been completed, the user will no longer be able to record a set and will end the workout. For an unplanned workout, a user can do up to 99 sets and still have the workout recorded as a session in My Performance.
+
+### My Performance and Graphs
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/my_performance_actigym.png" alt="My Performance screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/graph_actigym.png" alt="Weight per Exercise Graph" width="223px" height="168px">
+</div>
+<br>
+
+The My Performance screen will display the log for the sessions the user has completed including the name of the completed workout, the date and duration. The user can easily delete unwanted sessions from the log. The user is also able to see customized graphs for each of the workouts they have completed. The implemented graph includes details on weight per exercise which shows the differences in highest achieved weight between each of the exercises of a particular workout. 
+
+### Implementation
+
+#### Moving The Elevator
+
+{% highlight ruby %}
+private void moveElevator(int destination)
+{
+    if (checkFloor(destination) == true)
+    {
+        return;
+    }
+
+    addTrip(destination);
+    isIdle = false;
+    isOpening = true;
+    elevatorDestination = destination;
+
+    switch (destination)
+    {
+        case 0:
+            btnRequest0.Enabled = false;
+            btnRequest1.Enabled = true;
+            break;
+        case 1:
+            btnRequest1.Enabled = false;
+            btnRequest0.Enabled = true;
+            break;
+    }
+    updateList();
+}
+{% endhighlight %}
+
+One of the main functions of the implementation was the `moveElevator` function. This would check whether we were already on the destination floor otherwise would add the trip to the events, set the condition of the doors and the destination and would enable or disable the appropriate buttons depending on what floor the elevator is going to. `Updatelist` would refresh the list box that is shown to the user containing the local dataset.
+
+#### Loading and Saving
+
+{% highlight ruby %}
+private void loadData()
+{
+    try
+    {
+        adapter.Fill(ds);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK);
+    }
+}
+
+private void saveToDb()
+    {
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            try
+            {
+                DataSet dataSetChanges = ds.GetChanges();
+                adapter.Update(dataSetChanges);
+                ds.Tables[0].AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+    }
+{% endhighlight %}
+
+Another important area of the application was the loading and saving to and from the database. Here we have the `loadData` and `saveToDb` functions which make use of the `OleDbDataAdapter`'s methods `Fill` and `Update`. The application will use `Fill` to try to load the data from the table in the database into the local dataset. Using `GetChanges` on the local dataset, the application will try to use `Update` to build the needed commands to reflect the changes to the data on the database (this is the `disconnected model`). Upon success, the application will commit these changes.
+
+#### Timer and Refresh
+
+{% highlight ruby %}
+private void tmr_Tick(Object sender, EventArgs e)
+{
+    if (!isIdle)
+    {
+        if (elevatorStatus == 0)
+        {
+            pan0.Refresh();
+        }
+        else
+        {
+            pan1.Refresh();
+        }
+    }
+}
+
+private void pan0_paint(object sender, PaintEventArgs e)
+{
+    if (isIdle)
+    {
+        elevatorDoors(pan0);
+    }
+    else if (isOpening)
+    {
+        openDoors(pan0);
+    }
+    else if (isClosing)
+    {
+        closeDoors(pan0);
+    }
+}
+{% endhighlight %}
+
+Within the "animation" aspect of the application, we have used a `timer` and the `refresh event` of a panel to emulate this effect. The `timer` will run its `tick event` periodically after a predetermined amount of time. Once this runs, it will check the current condition of the elevator. If idle, the elevator is not redrawn. If the status is 0 or on ground floor then refresh the ground floor panel, otherwise refresh the first floor panel. Note that additional floors can easily be added through the slight modification of conditions like these. 
+
+The refresh event will run the `paint event handler` for the appropriate floor panel. If the elevator is idle, the floor panel is redrawn to draw the doors once. If the doors are opening, the floor panel is redrawn to animate doors opening. If the doors are closing, the floor panel is redrawn to animate the doors closing.
+
+#### Background Worker
+
+{% highlight ruby %}
+private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+{
+    BackgroundWorker helperBW = sender as BackgroundWorker;
+    int arg = (int)e.Argument;
+    int percentage;
+        
+    bool anyChanges = ds.GetChanges() != null;
+
+    if (anyChanges)
+    {
+        DialogResult result = MessageBox.Show("Saving. Please do not close or remove power from your system.", "Saving", MessageBoxButtons.OKCancel);
+
+        if (result == DialogResult.Cancel)
+        {
+            backgroundWorker1.CancelAsync();
+        }
+
+        saveToDb();
+
+        for (int i = 0; i < arg; i++)
+        {
+            Thread.Sleep(100);
+            percentage = (i + 1) * 100 / arg;
+            helperBW.ReportProgress(percentage);
+
+            if (helperBW.CancellationPending)
+            {
+                e.Cancel = true;
+                e.Result = i;
+                break;
+            }
+        }
+        e.Result = arg;
+    }
+    else
+    {
+        MessageBox.Show("There have been no changes to save", "Error", MessageBoxButtons.OK);
+    }
+}
+{% endhighlight %}
+
+A final important feature in implementation is the use of the background worker service which allows the application to perform asynchronous operations on a seperate thread. The `backgroundworker_DoWork` event handler will run when the background worker is set. The event handler will assign a variable `arg` with the value of the asynchronous operation. If there are any changes to the dataset, alert the user that the application is saving and run `saveToDb`. Convert the value of `arg` to percentage and update the progress bar through the `ReportProgress` event and `ProgressChanged` event handler. Set the result as `arg` as operation succeeded which runs the `RunWorkerCompleted` event handler. If at any point the user cancels, set as cancelled and show save cancelled message.
