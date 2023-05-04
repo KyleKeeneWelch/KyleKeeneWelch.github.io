@@ -4,7 +4,7 @@ title:  "Control An Elevator"
 date:   2022-10-16 13:40:16 +0100
 categories: ['C#', '.NET', 'GUI', 'MSAccess', 'Disconnected Model', 'Event Driven', 'Entity Framework']
 description: "C# application using the popular .NET framework by Microsoft to simulate the actions and animation of an elevator."
-repo: "https://github.com/KyleKeeneWelch/ControlAnElevator"
+repo: "https://github.com/KyleKeeneWelch/control-an-elevator"
 ---
 ## Summary
 This project uses `C#` and the popular `.NET framework` by Microsoft to simulate the actions and animation of an elevator. 

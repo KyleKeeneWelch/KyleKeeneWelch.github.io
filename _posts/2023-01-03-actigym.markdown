@@ -2,9 +2,9 @@
 layout: post
 title:  "ActiGym"
 date:   2023-01-03 13:40:16 +0100
-categories: ['Dart', 'Flutter', 'Android', 'MSAccess', 'iOS', 'Mobile', 'Hybrid']
+categories: ['Dart', 'Flutter', 'Android', 'MSAccess', 'iOS', 'Mobile', 'Hybrid', 'Object Oriented']
 description: "Flutter Mobile Application written with Dart that serves as a workout planner and log to further fitness goals and abstract the fitness process."
-repo: "https://github.com/KyleKeeneWelch/ActiGym"
+repo: "https://github.com/KyleKeeneWelch/actigym"
 ---
 
 <style>
@@ -95,154 +95,209 @@ The My Performance screen will display the log for the sessions the user has com
 
 ### Implementation
 
-#### Moving The Elevator
+#### Creating Tables and Connecting to the Database
 
 {% highlight ruby %}
-private void moveElevator(int destination)
-{
-    if (checkFloor(destination) == true)
-    {
-        return;
-    }
+class SQLHelper {
+    static Future<void> createTables(sql.Database database) async {
+    await database.execute("""CREATE TABLE IF NOT EXISTS accounts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT,
+    password TEXT,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    """);
+    
+    ...
 
-    addTrip(destination);
-    isIdle = false;
-    isOpening = true;
-    elevatorDestination = destination;
-
-    switch (destination)
-    {
-        case 0:
-            btnRequest0.Enabled = false;
-            btnRequest1.Enabled = true;
-            break;
-        case 1:
-            btnRequest1.Enabled = false;
-            btnRequest0.Enabled = true;
-            break;
-    }
-    updateList();
-}
-{% endhighlight %}
-
-One of the main functions of the implementation was the `moveElevator` function. This would check whether we were already on the destination floor otherwise would add the trip to the events, set the condition of the doors and the destination and would enable or disable the appropriate buttons depending on what floor the elevator is going to. `Updatelist` would refresh the list box that is shown to the user containing the local dataset.
-
-#### Loading and Saving
-
-{% highlight ruby %}
-private void loadData()
-{
-    try
-    {
-        adapter.Fill(ds);
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK);
-    }
-}
-
-private void saveToDb()
-    {
-        if (ds.Tables[0].Rows.Count != 0)
-        {
-            try
-            {
-                DataSet dataSetChanges = ds.GetChanges();
-                adapter.Update(dataSetChanges);
-                ds.Tables[0].AcceptChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
-            }
-        }
-    }
-{% endhighlight %}
-
-Another important area of the application was the loading and saving to and from the database. Here we have the `loadData` and `saveToDb` functions which make use of the `OleDbDataAdapter`'s methods `Fill` and `Update`. The application will use `Fill` to try to load the data from the table in the database into the local dataset. Using `GetChanges` on the local dataset, the application will try to use `Update` to build the needed commands to reflect the changes to the data on the database (this is the `disconnected model`). Upon success, the application will commit these changes.
-
-#### Timer and Refresh
-
-{% highlight ruby %}
-private void tmr_Tick(Object sender, EventArgs e)
-{
-    if (!isIdle)
-    {
-        if (elevatorStatus == 0)
-        {
-            pan0.Refresh();
-        }
-        else
-        {
-            pan1.Refresh();
-        }
-    }
-}
-
-private void pan0_paint(object sender, PaintEventArgs e)
-{
-    if (isIdle)
-    {
-        elevatorDoors(pan0);
-    }
-    else if (isOpening)
-    {
-        openDoors(pan0);
-    }
-    else if (isClosing)
-    {
-        closeDoors(pan0);
+    static Future<sql.Database> db() async {
+        return sql.openDatabase('../database actigym_data.accdb', version: 1,
+        onCreate: (sql.Database database, int version) async {
+            await createTables(database);
+        });
     }
 }
 {% endhighlight %}
 
-Within the "animation" aspect of the application, we have used a `timer` and the `refresh event` of a panel to emulate this effect. The `timer` will run its `tick event` periodically after a predetermined amount of time. Once this runs, it will check the current condition of the elevator. If idle, the elevator is not redrawn. If the status is 0 or on ground floor then refresh the ground floor panel, otherwise refresh the first floor panel. Note that additional floors can easily be added through the slight modification of conditions like these. 
+Upon initialization, the application will create each of the tables within the database if they have not already been created. These will be created within the `SQLHelper` class found in a component file named `sqlhelper.dart`. The file will also contain all the other related database functions that will manipulate the `CRUD operations` on workouts and exercises as well as queries to get them. This file is imported and each of the database methods avaliable to each of the screens that use them so that they can connect to the database and make insertions and modifcations corresponding to user input. 
 
-The refresh event will run the `paint event handler` for the appropriate floor panel. If the elevator is idle, the floor panel is redrawn to draw the doors once. If the doors are opening, the floor panel is redrawn to animate doors opening. If the doors are closing, the floor panel is redrawn to animate the doors closing.
-
-#### Background Worker
+#### Sending and Receiving Data Between Screens
 
 {% highlight ruby %}
-private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-{
-    BackgroundWorker helperBW = sender as BackgroundWorker;
-    int arg = (int)e.Argument;
-    int percentage;
-        
-    bool anyChanges = ds.GetChanges() != null;
+ListTile(
+    title: Text('My Workouts',
+        style: Theme.of(context).textTheme.headline2),
+    trailing: Icon(Icons.assignment),
+    subtitle: Text(
+        'View your created workouts, create a new one or have a look at some pre-built.'),
+    contentPadding:
+        EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+    tileColor: Theme.of(context).scaffoldBackgroundColor,
+    onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    MyWorkouts(currentId: widget.currentId)));
+}),
 
-    if (anyChanges)
-    {
-        DialogResult result = MessageBox.Show("Saving. Please do not close or remove power from your system.", "Saving", MessageBoxButtons.OKCancel);
+class MyWorkouts extends StatefulWidget {
+    final currentId;
 
-        if (result == DialogResult.Cancel)
-        {
-            backgroundWorker1.CancelAsync();
-        }
+    const MyWorkouts({Key? key, this.currentId} : super(key: key);
 
-        saveToDb();
+    @override
+    State<MyWorkouts> createState() => _MyWorkoutsState();
+}
+)
+{% endhighlight %}
 
-        for (int i = 0; i < arg; i++)
-        {
-            Thread.Sleep(100);
-            percentage = (i + 1) * 100 / arg;
-            helperBW.ReportProgress(percentage);
+Within the implementation, it was often required to send data between screens so that this can be accessed and the right content was displayed to the user. In this case, the current user's ID that is logged into the application is the important piece of data that we need to send across to each screen. The application only knows which workouts to show and what session belongs to what user when it is able to distinguish which user is currently logged in.
 
-            if (helperBW.CancellationPending)
-            {
-                e.Cancel = true;
-                e.Result = i;
-                break;
-            }
-        }
-        e.Result = arg;
+To do this, we use the `Navigator` to push a route to the desired screen along with the parameters with arguments we provide to send the data across. The receiving screen will obtain this and will save this in a variable, in this case `currentId`, which can be accessed and referenced in code. We can use this for example, to query the workouts belonging to the logged in user by calling the relevant imported database function and passing in the value.
+
+#### Defining a Theme
+
+{% highlight ruby %}
+theme: ThemeData(
+    primaryColor: Color(0xFF76FF03),
+    scaffoldBackgroundColor: Color(0xFF0A0E21),
+    fontFamily: 'Helvetica',
+    brightness: Brightness.dark,
+    textTheme: const TextTheme(
+        headline1: TextStyle(
+            fontSize: 40.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline2: TextStyle(
+            fontSize: 25.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline3: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline4: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.black),
+        bodyText2: TextStyle(
+            fontSize: 15.0, fontFamily: 'Helvetica', color: Colors.white),
+        bodyText1: TextStyle(
+        fontSize: 15.0,
+        fontFamily: 'Helvetica',
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+        ),
+    ),
+    // Defines splash, highlight and divider theme.
+    splashColor: Colors.white,
+    highlightColor: Color(0xFFC6FF00),
+    dividerTheme: DividerThemeData(
+        color: Colors.white,
+        thickness: 2,
+        space: 2,
+    ),
+),
+{% endhighlight %}
+
+Often, it is required to reuse certain colours and design aspects in order to produce a consistent and appealing user interface. Because of this, it became useful to define a theme with clear set out colours, fonts, headlines and other theme data that can be referenced and reused constantly to offer quick access. It is beneficial to use a relative value such as referencing a value stored as part of a theme as if it came required to adjust this, you would only have to make a change in the theme instead of every instance that that value is used in the application. 
+
+#### Accessing Database Methods
+
+{% highlight ruby %}
+onPressed: () {
+    try {
+    SQLHelper.createExercise(
+        widget.workoutId.toString(),
+        exerciseNameCtrl.text,
+        int.parse(
+            exerciseWeightCtrl.text),
+        int.parse(
+            exerciseSetsCtrl.text),
+        0,
+        '');
+    _getExercises();
+    exerciseWeightCtrl.text = '';
+    exerciseSetsCtrl.text = '';
+    exerciseNameCtrl.text = '';
+    //Inform user.
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(
+            ...
+{% endhighlight %}
+
+Much of the functionality provided as part of a workout planner and log is found in making queries and updating the database that houses this information. As this is the case, there are many instances where we will utilize the imported database methods from the `SQLHelper` class to make the required insertion or change. 
+
+In the displayed code example above and much like the other instances, we are accessing the method as part of the onPressed event of an elevated button that the user has pressed. The event will trigger an anonymous function which will try to call a database method and pass in the relevant arguments in their correct format as part of the input provided by the user. Upon success, we will update our current data within the screen by getting any workouts or exercises that belong to the logged in user much like we did when we visited the screen. Any input fields are reset to an empty string and the user is informed of the outcome through a displayed snackbar. If there was an error they are also infomed. The changes are reflected when the user presses refresh to update any lists with the collected information.
+
+#### Displaying Dynamic Content and Using Ternary Operator
+
+{% highlight ruby %}
+Text(
+    widget.workoutId.toString() == '10000'
+        ? 'Exercise: Unspecified'
+        : 'Exercise ' +
+            exerciseCounter.toString() +
+            ': ' +
+            workoutExercises[exerciseCounter - 1]
+                    ['exerciseName']
+                .toString(),
+    style: Theme.of(context).textTheme.headline3),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Sets: Up to 99'
+    : 'Sets: ' +
+        workoutExercises[exerciseCounter - 1]['sets']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Reps: Unspecified'
+    : 'Achived Reps: ' +
+        workoutExercises[exerciseCounter - 1]['reps']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Weight (kg): Unspecified'
+    : 'Weight (kg): ' +
+        workoutExercises[exerciseCounter - 1]['weight']
+            .toString())
+{% endhighlight %}
+
+Much of the application relies on content that belongs to a particular user and therefore requires users to have a registered account. This is the case as many screens display dynamic content that depend on the workouts users create and the exercises contained. 
+
+In the provided example, we obtain the exercise that we are going to display to the user as part of the perform workout page. This depends on the workout the user has selected to start and from this, the value passed to the screen that is used to query for the exercises to display. Selecting an unplanned workout would default the value to 10000 and the application will apply the `ternary operator` to see if this value has been passed, otherwise display the user's started workout information as normal. The information displayed will depend on the name of the exercise the user entered, the number of sets, reps and the achieved weight. Finishing the exercise, taking the rest period, and continuing will update this information to the next exercise in the list of maps returning from the asynchronous database method call.
+
+#### Workout Graphing
+
+{% highlight ruby %}
+void _updateData() async {
+    data.clear();
+    workoutExercises =
+        await _getExercises(accountWorkouts[selectedIndex]['id']);
+    for (int i = 0; i < workoutExercises.length; i++) {
+      data.add(_ChartData(workoutExercises[i]['exerciseName'].toString(),
+          double.parse(workoutExercises[i]['weight'].toString())));
     }
-    else
-    {
-        MessageBox.Show("There have been no changes to save", "Error", MessageBoxButtons.OK);
-    }
+  }
+
+ SfCartesianChart(
+    title: ChartTitle(text: 'Weight per Exercise (kg)'),
+    primaryXAxis: CategoryAxis(),
+    primaryYAxis:
+        NumericAxis(minimum: 0, maximum: 100, interval: 20),
+    tooltipBehavior: _tooltip,
+    series: <ChartSeries<_ChartData, String>>[
+        ColumnSeries<_ChartData, String>(
+            // Data source for graph is list named data. Maps the x and y values of the graph to x and y in chart data.
+            dataSource: data,
+            xValueMapper: (_ChartData data, _) => data.x,
+            yValueMapper: (_ChartData data, _) => data.y,
+            name: 'Weight per Exercise',
+            color: Color.fromRGBO(8, 142, 255, 1))
+])
+
+// Class that upon call to its constructor, sets the x and y values for the graph.
+class _ChartData {
+  _ChartData(this.x, this.y);
+
+  final String x;
+  final double y;
 }
 {% endhighlight %}
 
-A final important feature in implementation is the use of the background worker service which allows the application to perform asynchronous operations on a seperate thread. The `backgroundworker_DoWork` event handler will run when the background worker is set. The event handler will assign a variable `arg` with the value of the asynchronous operation. If there are any changes to the dataset, alert the user that the application is saving and run `saveToDb`. Convert the value of `arg` to percentage and update the progress bar through the `ReportProgress` event and `ProgressChanged` event handler. Set the result as `arg` as operation succeeded which runs the `RunWorkerCompleted` event handler. If at any point the user cancels, set as cancelled and show save cancelled message.
+Implementation also included using third party packages such as the syncfusion flutter charts package in order to display our workout data in a responsive, detailed and graphical format. Syncfusion flutter charts allows us to generate a graph using custom data that is mapped to the axis. We can customize and alter certain areas of the graph such as the title, colours used and the axis names to target our users and provide a better performance metric for them to follow. 
+
+Our data to be displayed in the graph is sourced through the `_updateData` method which will obtain the relevant workout exercises to be displayed in the weight per exercise graph when a workout is selected in the list.  The graph itself is generated once the data is populated by the database. The class `_ChartData` will map the provided data to the x and y axis.
