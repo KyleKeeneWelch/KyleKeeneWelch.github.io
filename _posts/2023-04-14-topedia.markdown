@@ -1,0 +1,303 @@
+---
+layout: post
+title:  "Topedia"
+date:   2023-04-14 13:40:16 +0100
+categories: ['Python', 'HTML', 'CSS', 'JS', 'Web', 'SQLite', 'API', 'MVT', 'Django']
+description: "Web application using the Django framework that will accommodate a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals."
+repo: "https://github.com/KyleKeeneWelch/topedia"
+---
+
+<!-- <style>
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & :last-child {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .center-container {
+        display: block;
+
+        & img {
+            display: block;
+            margin: auto;
+        }
+
+        & :last-child {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+    }
+}
+</style> -->
+
+
+## Summary
+This is a project that involves a web application created with the popular `Django` framework. It accomodates a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals. Using the `MVT` (Model, View, Template) pattern as well as `Python` for the back-end logic, the web application will incorporate user interactivity and database connectivity to deliver an effective user and learning experience. 
+
+The app will be named `Topedia` and encapsulates the idea of several topics to have self-contained topic rooms discussing various subjects and providing learning material about the parent concept. It will involve several pages of which will enable a user to login to add their own topics or learning material, leave comments and collaborate with other users or view without a login with restricted access. There will also be a filter by which a user can use to search or filter out the resources that appear to them, to target what the user wants to learn, and to display resources which will be beneficial to learning a particular subject. The ecosystem of resources will allow multimedia such as image and video as well as text for the user to customize how they want to teach their material to users. 
+
+The `Django templating engine` will be used to form templates of static files that are dynamically displayed by `views`. `Views` are reached through the assigned URL that the user enters into their address bar or automatically through links in other pages. `Models` provide the data structure for entities and interactivity to the database that can be used alongside views to generate application logic. These will represent the attributes to objects such as a `User`, `Message` or `Room`.
+
+## Features
+- **MVT and Database Connectivity** - The MVT pattern allows the developer to separate the different components of the application so that it is easy to insert, modfiy and understand the code. Templates are generally what the user sees through the rendering of HTML pages with CSS and JS included. Views house the application logic and processing of HTTP POST and GET requests. Models represent entities and define the data structure and attributes of objects in the application. The database connects to the models to create the necessary tables and commands to reflect the structure and attributes provided. These are done in the form of migrations and need to be updated as changes are made.
+
+- **Login and Register Capabilities** - Users are able to create their own account and login free with Topedia to create their own topics and learning material. They are also able to collaborate with other users by following, favouriting topic rooms and commenting. If a user does not want to benefit from these features, they can access topic rooms without having an account with limited functionality with how they can interact.
+
+- **Filter of topics and produced results** - Found at the top of every page, the user can enter input into the search bar to receive topic room results related to the provided input. This means a user can target the content they receive by applying a filter through a search result or by browsing and selecting a topic to limit results to.
+
+- **CRUD operations on created learning material and topics** - Created objects such as learning material and topics have the ability to be created, read, updated and deleted. These allow the user to control the content they create and to make appropriate modifications to suit their goals. Other objects like messages, user following and favourties can be created and deleted / removed. 
+
+- **Cascade deletion of comments, learning material, topics and multimedia** - To ensure application storage and structure is maintained, many model objects and user uploaded content is removed upon the deletion of linked objects. This is known as cascade deletion and is a popular method used within the database to ensure and the content included is linked and no anomalies are hidden clogging space and structure. 
+
+- **Profile Picture Modification** - A user with a newly registered account will have their profile picture set as the default anonymous image. Users are able to update this by selecting an image from their files.
+
+### Login and Register
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/login_actigym.png" alt="Login Screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/register_actigym.png" alt="Register Screen" width="237px" height="396px">
+</div>
+<br>
+
+Here we can see the graphical user interface showing the register screen. Upon app startup, the user is met with a splash screen with the logo and a loading indicator before reaching the log in page. From here, the user can enter their previously registered details to access their account with ActiGym or can press the "register" button to access a similar page to register. Upon valid data entry, the application will register the user with the database and will reach the home screen.
+
+### Creating and Modifying a Workout
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/create_workout_actigym.png" alt="My workouts screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/modify_workout_actigym.png" alt="Modify workout screen" width="237px" height="396px">
+</div>
+<br>
+
+When we reach the My Workouts screen, we are able to create a new workout. We need to specify the name and number of exercises of this workout and then promptly press edit so we can add some new exercises to the created workout. Pressing edit will redirect the user to the Modify Workout screen which displays the current exercises of a selected workout and in this case, there is none. We can add new exercises by filling in the required fields and pressing create exercise. Refreshing the list will show the new workout. We are also able to delete or clear exercises if necessary. To start the exercise, we can either press the start button on the Modify Workout screen or back on the My Workouts screen.
+
+### Perform Workout and Unplanned Workout 
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/perform_workout_actigym.png" alt="Perform Workout screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/unplanned_workout_actigym.png" alt="Unplanned Workout on Perform Workout screen" width="237px" height="396px">
+</div>
+<br>
+
+A created workout or a pre-built workout can be selected and started through the My Workouts or Modify Workout screen. Additionally, an unplanned workout can be started by pressing the button at the bottom of the My Workouts screen. The perform workout screen contains details on the current exercise, the number of sets, highest achived reps and highest achieved reps for that exercise. Any notes written previously are shown when the workout has started and this can be edited. The timer shows the complete time of the workout from the moment the start button is pressed. Each set the user will record by entering the achieved reps and the weight for that set. Once a set has been recorded a rest period is initiated and the user can end this before the end of the countdown by pressing to start next set. Once all sets and exercises have been completed, the user will no longer be able to record a set and will end the workout. For an unplanned workout, a user can do up to 99 sets and still have the workout recorded as a session in My Performance.
+
+### My Performance and Graphs
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/my_performance_actigym.png" alt="My Performance screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/graph_actigym.png" alt="Weight per Exercise Graph" width="223px" height="168px">
+</div>
+<br>
+
+The My Performance screen will display the log for the sessions the user has completed including the name of the completed workout, the date and duration. The user can easily delete unwanted sessions from the log. The user is also able to see customized graphs for each of the workouts they have completed. The implemented graph includes details on weight per exercise which shows the differences in highest achieved weight between each of the exercises of a particular workout. 
+
+### Implementation
+
+#### Creating Tables and Connecting to the Database
+
+{% highlight ruby %}
+class SQLHelper {
+    static Future<void> createTables(sql.Database database) async {
+    await database.execute("""CREATE TABLE IF NOT EXISTS accounts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT,
+    password TEXT,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    """);
+    
+    ...
+
+    static Future<sql.Database> db() async {
+        return sql.openDatabase('../database actigym_data.accdb', version: 1,
+        onCreate: (sql.Database database, int version) async {
+            await createTables(database);
+        });
+    }
+}
+{% endhighlight %}
+
+Upon initialization, the application will create each of the tables within the database if they have not already been created. These will be created within the `SQLHelper` class found in a component file named `sqlhelper.dart`. The file will also contain all the other related database functions that will manipulate the `CRUD operations` on workouts and exercises as well as queries to get them. This file is imported and each of the database methods avaliable to each of the screens that use them so that they can connect to the database and make insertions and modifcations corresponding to user input. 
+
+#### Sending and Receiving Data Between Screens
+
+{% highlight ruby %}
+ListTile(
+    title: Text('My Workouts',
+        style: Theme.of(context).textTheme.headline2),
+    trailing: Icon(Icons.assignment),
+    subtitle: Text(
+        'View your created workouts, create a new one or have a look at some pre-built.'),
+    contentPadding:
+        EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+    tileColor: Theme.of(context).scaffoldBackgroundColor,
+    onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    MyWorkouts(currentId: widget.currentId)));
+}),
+
+class MyWorkouts extends StatefulWidget {
+    final currentId;
+
+    const MyWorkouts({Key? key, this.currentId} : super(key: key);
+
+    @override
+    State<MyWorkouts> createState() => _MyWorkoutsState();
+}
+)
+{% endhighlight %}
+
+Within the implementation, it was often required to send data between screens so that this can be accessed and the right content was displayed to the user. In this case, the current user's ID that is logged into the application is the important piece of data that we need to send across to each screen. The application only knows which workouts to show and what session belongs to what user when it is able to distinguish which user is currently logged in.
+
+To do this, we use the `Navigator` to push a route to the desired screen along with the parameters with arguments we provide to send the data across. The receiving screen will obtain this and will save this in a variable, in this case `currentId`, which can be accessed and referenced in code. We can use this for example, to query the workouts belonging to the logged in user by calling the relevant imported database function and passing in the value.
+
+#### Defining a Theme
+
+{% highlight ruby %}
+theme: ThemeData(
+    primaryColor: Color(0xFF76FF03),
+    scaffoldBackgroundColor: Color(0xFF0A0E21),
+    fontFamily: 'Helvetica',
+    brightness: Brightness.dark,
+    textTheme: const TextTheme(
+        headline1: TextStyle(
+            fontSize: 40.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline2: TextStyle(
+            fontSize: 25.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline3: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline4: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.black),
+        bodyText2: TextStyle(
+            fontSize: 15.0, fontFamily: 'Helvetica', color: Colors.white),
+        bodyText1: TextStyle(
+        fontSize: 15.0,
+        fontFamily: 'Helvetica',
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+        ),
+    ),
+    // Defines splash, highlight and divider theme.
+    splashColor: Colors.white,
+    highlightColor: Color(0xFFC6FF00),
+    dividerTheme: DividerThemeData(
+        color: Colors.white,
+        thickness: 2,
+        space: 2,
+    ),
+),
+{% endhighlight %}
+
+Often, it is required to reuse certain colours and design aspects in order to produce a consistent and appealing user interface. Because of this, it became useful to define a theme with clear set out colours, fonts, headlines and other theme data that can be referenced and reused constantly to offer quick access. It is beneficial to use a relative value such as referencing a value stored as part of a theme as if it came required to adjust this, you would only have to make a change in the theme instead of every instance that that value is used in the application. 
+
+#### Accessing Database Methods
+
+{% highlight ruby %}
+onPressed: () {
+    try {
+    SQLHelper.createExercise(
+        widget.workoutId.toString(),
+        exerciseNameCtrl.text,
+        int.parse(
+            exerciseWeightCtrl.text),
+        int.parse(
+            exerciseSetsCtrl.text),
+        0,
+        '');
+    _getExercises();
+    exerciseWeightCtrl.text = '';
+    exerciseSetsCtrl.text = '';
+    exerciseNameCtrl.text = '';
+    //Inform user.
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(
+            ...
+{% endhighlight %}
+
+Much of the functionality provided as part of a workout planner and log is found in making queries and updating the database that houses this information. As this is the case, there are many instances where we will utilize the imported database methods from the `SQLHelper` class to make the required insertion or change. 
+
+In the displayed code example above and much like the other instances, we are accessing the method as part of the onPressed event of an elevated button that the user has pressed. The event will trigger an anonymous function which will try to call a database method and pass in the relevant arguments in their correct format as part of the input provided by the user. Upon success, we will update our current data within the screen by getting any workouts or exercises that belong to the logged in user much like we did when we visited the screen. Any input fields are reset to an empty string and the user is informed of the outcome through a displayed snackbar. If there was an error they are also infomed. The changes are reflected when the user presses refresh to update any lists with the collected information.
+
+#### Displaying Dynamic Content and Using Ternary Operator
+
+{% highlight ruby %}
+Text(
+    widget.workoutId.toString() == '10000'
+        ? 'Exercise: Unspecified'
+        : 'Exercise ' +
+            exerciseCounter.toString() +
+            ': ' +
+            workoutExercises[exerciseCounter - 1]
+                    ['exerciseName']
+                .toString(),
+    style: Theme.of(context).textTheme.headline3),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Sets: Up to 99'
+    : 'Sets: ' +
+        workoutExercises[exerciseCounter - 1]['sets']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Reps: Unspecified'
+    : 'Achived Reps: ' +
+        workoutExercises[exerciseCounter - 1]['reps']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Weight (kg): Unspecified'
+    : 'Weight (kg): ' +
+        workoutExercises[exerciseCounter - 1]['weight']
+            .toString())
+{% endhighlight %}
+
+Much of the application relies on content that belongs to a particular user and therefore requires users to have a registered account. This is the case as many screens display dynamic content that depend on the workouts users create and the exercises contained. 
+
+In the provided example, we obtain the exercise that we are going to display to the user as part of the perform workout page. This depends on the workout the user has selected to start and from this, the value passed to the screen that is used to query for the exercises to display. Selecting an unplanned workout would default the value to 10000 and the application will apply the `ternary operator` to see if this value has been passed, otherwise display the user's started workout information as normal. The information displayed will depend on the name of the exercise the user entered, the number of sets, reps and the achieved weight. Finishing the exercise, taking the rest period, and continuing will update this information to the next exercise in the list of maps returning from the asynchronous database method call.
+
+#### Workout Graphing
+
+{% highlight ruby %}
+void _updateData() async {
+    data.clear();
+    workoutExercises =
+        await _getExercises(accountWorkouts[selectedIndex]['id']);
+    for (int i = 0; i < workoutExercises.length; i++) {
+      data.add(_ChartData(workoutExercises[i]['exerciseName'].toString(),
+          double.parse(workoutExercises[i]['weight'].toString())));
+    }
+  }
+
+ SfCartesianChart(
+    title: ChartTitle(text: 'Weight per Exercise (kg)'),
+    primaryXAxis: CategoryAxis(),
+    primaryYAxis:
+        NumericAxis(minimum: 0, maximum: 100, interval: 20),
+    tooltipBehavior: _tooltip,
+    series: <ChartSeries<_ChartData, String>>[
+        ColumnSeries<_ChartData, String>(
+            // Data source for graph is list named data. Maps the x and y values of the graph to x and y in chart data.
+            dataSource: data,
+            xValueMapper: (_ChartData data, _) => data.x,
+            yValueMapper: (_ChartData data, _) => data.y,
+            name: 'Weight per Exercise',
+            color: Color.fromRGBO(8, 142, 255, 1))
+])
+
+// Class that upon call to its constructor, sets the x and y values for the graph.
+class _ChartData {
+  _ChartData(this.x, this.y);
+
+  final String x;
+  final double y;
+}
+{% endhighlight %}
+
+Implementation also included using third party packages such as the syncfusion flutter charts package in order to display our workout data in a responsive, detailed and graphical format. Syncfusion flutter charts allows us to generate a graph using custom data that is mapped to the axis. We can customize and alter certain areas of the graph such as the title, colours used and the axis names to target our users and provide a better performance metric for them to follow. 
+
+Our data to be displayed in the graph is sourced through the `_updateData` method which will obtain the relevant workout exercises to be displayed in the weight per exercise graph when a workout is selected in the list.  The graph itself is generated once the data is populated by the database. The class `_ChartData` will map the provided data to the x and y axis.
