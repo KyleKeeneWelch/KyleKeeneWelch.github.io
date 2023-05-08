@@ -7,36 +7,6 @@ description: "Web application using the Django framework that will accommodate a
 repo: "https://github.com/KyleKeeneWelch/topedia"
 ---
 
-<!-- <style>
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & :last-child {
-        margin-left: 10px;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .center-container {
-        display: block;
-
-        & img {
-            display: block;
-            margin: auto;
-        }
-
-        & :last-child {
-            display: block;
-            margin: auto;
-            margin-top: 20px;
-        }
-    }
-}
-</style> -->
-
-
 ## Summary
 This is a project that involves a web application created with the popular `Django` framework. It accomodates a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals. Using the `MVT` (Model, View, Template) pattern as well as `Python` for the back-end logic, the web application will incorporate user interactivity and database connectivity to deliver an effective user and learning experience. 
 
@@ -58,246 +28,264 @@ The `Django templating engine` will be used to form templates of static files th
 - **Profile Picture Modification** - A user with a newly registered account will have their profile picture set as the default anonymous image. Users are able to update this by selecting an image from their files.
 
 ### Login and Register
-<div class="center-container">
-    <img src="{{site.baseurl}}/assets/images/login_actigym.png" alt="Login Screen" width="237px" height="396px">
-    <img src="{{site.baseurl}}/assets/images/register_actigym.png" alt="Register Screen" width="237px" height="396px">
-</div>
-<br>
+<img src="{{site.baseurl}}/assets/images/login_topedia.png" alt="Login Screen">
 
-Here we can see the graphical user interface showing the register screen. Upon app startup, the user is met with a splash screen with the logo and a loading indicator before reaching the log in page. From here, the user can enter their previously registered details to access their account with ActiGym or can press the "register" button to access a similar page to register. Upon valid data entry, the application will register the user with the database and will reach the home screen.
+<img src="{{site.baseurl}}/assets/images/register_topedia.png" alt="Register Screen">
 
-### Creating and Modifying a Workout
-<div class="center-container">
-    <img src="{{site.baseurl}}/assets/images/create_workout_actigym.png" alt="My workouts screen" width="237px" height="396px">
-    <img src="{{site.baseurl}}/assets/images/modify_workout_actigym.png" alt="Modify workout screen" width="237px" height="396px">
-</div>
-<br>
+Topedia has login and registration capabilities as well as the ability for unregistered users to view site content with restricted interaction. The `login` page can be easily accessed with the login link found in the navbar when there is no user detected as logged in. From here a user can enter their registered credentials or can press the sign up link to reach the register page. 
 
-When we reach the My Workouts screen, we are able to create a new workout. We need to specify the name and number of exercises of this workout and then promptly press edit so we can add some new exercises to the created workout. Pressing edit will redirect the user to the Modify Workout screen which displays the current exercises of a selected workout and in this case, there is none. We can add new exercises by filling in the required fields and pressing create exercise. Refreshing the list will show the new workout. We are also able to delete or clear exercises if necessary. To start the exercise, we can either press the start button on the Modify Workout screen or back on the My Workouts screen.
+The `register` page contains all the optional and required fields for a user to create a new account with Topedia. Upon account creation, a session key will be generated and the logged in user authenticated and managed by Django. A `user following` and `favourites` object is also created and assigned to the new user.
 
-### Perform Workout and Unplanned Workout 
-<div class="center-container">
-    <img src="{{site.baseurl}}/assets/images/perform_workout_actigym.png" alt="Perform Workout screen" width="237px" height="396px">
-    <img src="{{site.baseurl}}/assets/images/unplanned_workout_actigym.png" alt="Unplanned Workout on Perform Workout screen" width="237px" height="396px">
-</div>
-<br>
+Users can reach the settings page in the dropdown on the navbar and can make changes to their account such as updating their password.
 
-A created workout or a pre-built workout can be selected and started through the My Workouts or Modify Workout screen. Additionally, an unplanned workout can be started by pressing the button at the bottom of the My Workouts screen. The perform workout screen contains details on the current exercise, the number of sets, highest achived reps and highest achieved reps for that exercise. Any notes written previously are shown when the workout has started and this can be edited. The timer shows the complete time of the workout from the moment the start button is pressed. Each set the user will record by entering the achieved reps and the weight for that set. Once a set has been recorded a rest period is initiated and the user can end this before the end of the countdown by pressing to start next set. Once all sets and exercises have been completed, the user will no longer be able to record a set and will end the workout. For an unplanned workout, a user can do up to 99 sets and still have the workout recorded as a session in My Performance.
+### Creating and Updating a Topic Room
+<img src="{{site.baseurl}}/assets/images/creating_room_topedia.png" alt="Create Room Page">
 
-### My Performance and Graphs
-<div class="center-container">
-    <img src="{{site.baseurl}}/assets/images/my_performance_actigym.png" alt="My Performance screen" width="237px" height="396px">
-    <img src="{{site.baseurl}}/assets/images/graph_actigym.png" alt="Weight per Exercise Graph" width="223px" height="168px">
-</div>
-<br>
+<img src="{{site.baseurl}}/assets/images/updating_room_topedia.png" alt="Update Room Page">
 
-The My Performance screen will display the log for the sessions the user has completed including the name of the completed workout, the date and duration. The user can easily delete unwanted sessions from the log. The user is also able to see customized graphs for each of the workouts they have completed. The implemented graph includes details on weight per exercise which shows the differences in highest achieved weight between each of the exercises of a particular workout. 
+Once authenticated and logged in, a user is able to create a new `topic room` or update a previously created room. The `create topic room` page will ask for the topic, name and description of the new topic room. The topic can be chosen through the dropdown on the right side of the field or alternatively, a new topic can be created by providing input into the field. The name and description are displayed within the topic room page. 
+
+The `update topic room` page will display the previous values for the fields and allows the creator to make quick changes.
+
+### Topics and Recent Activity 
+<img src="{{site.baseurl}}/assets/images/topic_activity_desktop_topedia.png" alt="Home page">
+
+<img class="center-img" src="{{site.baseurl}}/assets/images/topic_activity_mobile_topedia.png" alt="Home page mobile" width="237px" height="396px">
+
+The `topics` and `recent activity` components are reused throughout different parts of the web application. On the `home` page, you can select the first few topics and by selecting a topic, you update the page to include filtered results. By pressing on more, you can reach the standalone topics page which displays more topics and a search feature. 
+
+The `recent activity` displays the most recent comments made on topic rooms within the web application. You are able to view a `user's profile` and the `topic room` the conversation is in. Both of these components can be viewed as part of their own page on the mobile version of the home page, which provides links to these instead of displaying them.
+
+### Following and Favourites
+<img src="{{site.baseurl}}/assets/images/creating_room_topedia.png" alt="Create Room Page">
+
+<img src="{{site.baseurl}}/assets/images/updating_room_topedia.png" alt="Update Room Page">
+
+The `following` and `favourites` pages are special pages that provide the output for the following and favourites functionality. A user has an assigned object that stores the users and rooms that the user follows and favourites. This object is then read and the appropriate content is displayed in the `following` and `favourites page`. A user is able to follow another user through the button displayed on their profile. This button is omitted on their own profile to prevent following the logged in user. However, functionality allows a user to favourite their own rooms if they so wish. The following functionality allows a user to collaborate with other users who they have a certain fondness with and to assess and use this list how they see fit. The favourites functionality allows the user to bookmark and compile of list of their favourite topic rooms so that they can visit in the future.
+
+### Creating and Updating Learning Material
+<img src="{{site.baseurl}}/assets/images/creating_learning_material_topedia.png" alt="Create Learning Material Page">
+
+<img src="{{site.baseurl}}/assets/images/updating_learning_material_topedia.png" alt="Update Learning Material Page">
+
+A user is able to create and update learning material that is displayed onto a `topic room` they created. While on the `topic room` page, the owner will be able to see the create learning material button and the edit link within any existing learning material on the page. The create learning material button will direct to the `create learning material` page where a form is displayed with the appropriate required and optional fields for creating a new learning material object. By using the edit link, the user is directed to the `update learning material` page which is a clone of the create learning material page but with the fields pre-filled so that chosen fields can be edited. 
+
+### User Profiles and Commenting
+<img src="{{site.baseurl}}/assets/images/user_profile_topedia.png" alt="User profile Page">
+
+<img src="{{site.baseurl}}/assets/images/comments_topedia.png" alt="Topic Room Page">
+
+Each user has their own profile with their biography, topic rooms they host and any recent activity they have. The profile can be reach from various pages through links in the `recent activity` component, home page topic room results and comments made on rooms. Comments are displayed from most recent to oldest and contain links to the user that posted the comment, their profile picture and if the owner is currently viewing, a cross is displayed for them to press if they wish to delete their comment. Edit functionality is currently not supported as part of the comment system in Topedia.
 
 ### Implementation
 
-#### Creating Tables and Connecting to the Database
+#### Main Template and Include
+
+<img class="center-img" src="{{site.baseurl}}/assets/images/main_topedia.png" alt="Main template" width="300" height="230">
+
+The implementation of Topedia included the series of dynamically displayed templates to the user. These templates have their own hierachy by which the main template is included as part of many other templates for redundant, core content. Within the `main` template, we include the `navbar`, `flash messages`, `block tags` and links to the javascript file for site interactivity.
+
+The `navbar`, as the name suggests, is a HTML document which describes the structure of the navigation links, logo and search field. This document is defined and placed at the beginning of the main template so that each page that includes the main template will also include the same navigation bar. 
+
+`Flash messages` are messages that are displayed as a result of an action performed by the user. They are defined within views and are triggered to display a message valid until the user refreshes the site. An example could include "Successfully logged in".
+
+`Block tags` define where we want the rest of our content to go in relation to the content already defined in the template. This means when we include the `main` template in other templates, any newly defined content is placed after the `navbar` and `flash messages`. 
+
+#### URLs and linked Views
 
 {% highlight ruby %}
-class SQLHelper {
-    static Future<void> createTables(sql.Database database) async {
-    await database.execute("""CREATE TABLE IF NOT EXISTS accounts(
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    username TEXT,
-    password TEXT,
-    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-    );
-    """);
-    
-    ...
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('base.urls')),
+    path('api/', include('base.api.urls'))
+]
 
-    static Future<sql.Database> db() async {
-        return sql.openDatabase('../database actigym_data.accdb', version: 1,
-        onCreate: (sql.Database database, int version) async {
-            await createTables(database);
-        });
-    }
-}
+urlpatterns = [
+    path('login/', views.loginPage, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerPage, name='register'),
+    path('', views.home, name="home"),
+    path('room/<str:pk>/', views.room, name="room"),
+    path('profile/<str:pk>', views.userProfile, name="user-profile"),
+    path('following/', views.showFollowers, name="show-following"),
+    path('favourites/<str:pk>', views.showFavourites, name="show-favourites"),
+    path('create-room/', views.createRoom, name="create-room"),
+    path('create-material/<str:pk>', views.createMaterial, name="create-material"),
+    path('update-room/<str:pk>', views.updateRoom, name="update-room"),
+    path('update-material/<str:pk>', views.updateMaterial, name="update-material"),
+    path('update-user', views.updateUser, name="update-user"),
+    path('topics/', views.topicsPage, name="topics"),
+    path('activity/', views.activityPage, name="activities"),
+    path('delete-room/<str:pk>', views.deleteRoom, name="delete-room"),
+    path('delete-message/<str:pk>', views.deleteMessage, name="delete-message"),
+    path('delete-material/<str:pk>', views.deleteMaterial, name="delete-material"),
+    path('set-favourite/<str:pk>', views.setFavourite, name="set-favourite"),
+    path('remove-favourite/<str:pk>', views.removeFavourite, name="remove-favourite"),
+    path('unfollow/<str:pk>', views.unfollow, name='unfollow'),
+]
 {% endhighlight %}
 
-Upon initialization, the application will create each of the tables within the database if they have not already been created. These will be created within the `SQLHelper` class found in a component file named `sqlhelper.dart`. The file will also contain all the other related database functions that will manipulate the `CRUD operations` on workouts and exercises as well as queries to get them. This file is imported and each of the database methods avaliable to each of the screens that use them so that they can connect to the database and make insertions and modifcations corresponding to user input. 
+The routes users could take where defined through the `url.py` files in the application. The `main url` file contains the main type of routes that a user will take to reach completely different areas. These include the `admin panel` for site administrators, an empty path to include app specific routes and the routes to the created API. 
 
-#### Sending and Receiving Data Between Screens
+The app routes are stored within the "base" app `url.py` file. These are included and are looked upon when the user provides a route not prepending admin or API and normally provide access to the vast majority of app related routes. When the user has provided a URL that matches a path defined in the `url file`, the linked `view` is run and if additional arguments are provided, these are passed to the parameters of the `view`. The "name" attribute is used as a relative reference in development so that if changes need to be made, only the absolute URL needs to be updated to reflect the changes instead of all instances that use the route. 
 
-{% highlight ruby %}
-ListTile(
-    title: Text('My Workouts',
-        style: Theme.of(context).textTheme.headline2),
-    trailing: Icon(Icons.assignment),
-    subtitle: Text(
-        'View your created workouts, create a new one or have a look at some pre-built.'),
-    contentPadding:
-        EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
-    tileColor: Theme.of(context).scaffoldBackgroundColor,
-    onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    MyWorkouts(currentId: widget.currentId)));
-}),
-
-class MyWorkouts extends StatefulWidget {
-    final currentId;
-
-    const MyWorkouts({Key? key, this.currentId} : super(key: key);
-
-    @override
-    State<MyWorkouts> createState() => _MyWorkoutsState();
-}
-)
-{% endhighlight %}
-
-Within the implementation, it was often required to send data between screens so that this can be accessed and the right content was displayed to the user. In this case, the current user's ID that is logged into the application is the important piece of data that we need to send across to each screen. The application only knows which workouts to show and what session belongs to what user when it is able to distinguish which user is currently logged in.
-
-To do this, we use the `Navigator` to push a route to the desired screen along with the parameters with arguments we provide to send the data across. The receiving screen will obtain this and will save this in a variable, in this case `currentId`, which can be accessed and referenced in code. We can use this for example, to query the workouts belonging to the logged in user by calling the relevant imported database function and passing in the value.
+API routes provide access to views that display grouped content or singular content through a provided parameter. 
 
 #### Defining a Theme
 
 {% highlight ruby %}
-theme: ThemeData(
-    primaryColor: Color(0xFF76FF03),
-    scaffoldBackgroundColor: Color(0xFF0A0E21),
-    fontFamily: 'Helvetica',
-    brightness: Brightness.dark,
-    textTheme: const TextTheme(
-        headline1: TextStyle(
-            fontSize: 40.0, fontFamily: 'Helvetica', color: Colors.white),
-        headline2: TextStyle(
-            fontSize: 25.0, fontFamily: 'Helvetica', color: Colors.white),
-        headline3: TextStyle(
-            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.white),
-        headline4: TextStyle(
-            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.black),
-        bodyText2: TextStyle(
-            fontSize: 15.0, fontFamily: 'Helvetica', color: Colors.white),
-        bodyText1: TextStyle(
-        fontSize: 15.0,
-        fontFamily: 'Helvetica',
-        color: Colors.black,
-        fontWeight: FontWeight.w500,
-        ),
-    ),
-    // Defines splash, highlight and divider theme.
-    splashColor: Colors.white,
-    highlightColor: Color(0xFFC6FF00),
-    dividerTheme: DividerThemeData(
-        color: Colors.white,
-        thickness: 2,
-        space: 2,
-    ),
-),
-{% endhighlight %}
+/* Colour Variables */
+:root {
+  --color-main: #FFA733;
+  --color-main-light: #FFB85C;
+  --color-dark: #3D4B52;
+  --color-dark-medium: #45565E;
+  --color-dark-light: #C4CFD4;
+  --color-light: #EEF5DB;
+  --color-gray: #8b8b8b;
+  --color-light-gray: #b2bdbd;
+  --color-bg: #1A2023;
+  --color-success: #5dd693;
+  --color-error: #E63737;
+}
 
-Often, it is required to reuse certain colours and design aspects in order to produce a consistent and appealing user interface. Because of this, it became useful to define a theme with clear set out colours, fonts, headlines and other theme data that can be referenced and reused constantly to offer quick access. It is beneficial to use a relative value such as referencing a value stored as part of a theme as if it came required to adjust this, you would only have to make a change in the theme instead of every instance that that value is used in the application. 
-
-#### Accessing Database Methods
-
-{% highlight ruby %}
-onPressed: () {
-    try {
-    SQLHelper.createExercise(
-        widget.workoutId.toString(),
-        exerciseNameCtrl.text,
-        int.parse(
-            exerciseWeightCtrl.text),
-        int.parse(
-            exerciseSetsCtrl.text),
-        0,
-        '');
-    _getExercises();
-    exerciseWeightCtrl.text = '';
-    exerciseSetsCtrl.text = '';
-    exerciseNameCtrl.text = '';
-    //Inform user.
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(
-            ...
-{% endhighlight %}
-
-Much of the functionality provided as part of a workout planner and log is found in making queries and updating the database that houses this information. As this is the case, there are many instances where we will utilize the imported database methods from the `SQLHelper` class to make the required insertion or change. 
-
-In the displayed code example above and much like the other instances, we are accessing the method as part of the onPressed event of an elevated button that the user has pressed. The event will trigger an anonymous function which will try to call a database method and pass in the relevant arguments in their correct format as part of the input provided by the user. Upon success, we will update our current data within the screen by getting any workouts or exercises that belong to the logged in user much like we did when we visited the screen. Any input fields are reset to an empty string and the user is informed of the outcome through a displayed snackbar. If there was an error they are also infomed. The changes are reflected when the user presses refresh to update any lists with the collected information.
-
-#### Displaying Dynamic Content and Using Ternary Operator
-
-{% highlight ruby %}
-Text(
-    widget.workoutId.toString() == '10000'
-        ? 'Exercise: Unspecified'
-        : 'Exercise ' +
-            exerciseCounter.toString() +
-            ': ' +
-            workoutExercises[exerciseCounter - 1]
-                    ['exerciseName']
-                .toString(),
-    style: Theme.of(context).textTheme.headline3),
-    SizedBox(height: 20),
-    Text(widget.workoutId.toString() == '10000'
-    ? 'Sets: Up to 99'
-    : 'Sets: ' +
-        workoutExercises[exerciseCounter - 1]['sets']
-            .toString()),
-    SizedBox(height: 20),
-    Text(widget.workoutId.toString() == '10000'
-    ? 'Reps: Unspecified'
-    : 'Achived Reps: ' +
-        workoutExercises[exerciseCounter - 1]['reps']
-            .toString()),
-    SizedBox(height: 20),
-    Text(widget.workoutId.toString() == '10000'
-    ? 'Weight (kg): Unspecified'
-    : 'Weight (kg): ' +
-        workoutExercises[exerciseCounter - 1]['weight']
-            .toString())
-{% endhighlight %}
-
-Much of the application relies on content that belongs to a particular user and therefore requires users to have a registered account. This is the case as many screens display dynamic content that depend on the workouts users create and the exercises contained. 
-
-In the provided example, we obtain the exercise that we are going to display to the user as part of the perform workout page. This depends on the workout the user has selected to start and from this, the value passed to the screen that is used to query for the exercises to display. Selecting an unplanned workout would default the value to 10000 and the application will apply the `ternary operator` to see if this value has been passed, otherwise display the user's started workout information as normal. The information displayed will depend on the name of the exercise the user entered, the number of sets, reps and the achieved weight. Finishing the exercise, taking the rest period, and continuing will update this information to the next exercise in the list of maps returning from the asynchronous database method call.
-
-#### Workout Graphing
-
-{% highlight ruby %}
-void _updateData() async {
-    data.clear();
-    workoutExercises =
-        await _getExercises(accountWorkouts[selectedIndex]['id']);
-    for (int i = 0; i < workoutExercises.length; i++) {
-      data.add(_ChartData(workoutExercises[i]['exerciseName'].toString(),
-          double.parse(workoutExercises[i]['weight'].toString())));
-    }
-  }
-
- SfCartesianChart(
-    title: ChartTitle(text: 'Weight per Exercise (kg)'),
-    primaryXAxis: CategoryAxis(),
-    primaryYAxis:
-        NumericAxis(minimum: 0, maximum: 100, interval: 20),
-    tooltipBehavior: _tooltip,
-    series: <ChartSeries<_ChartData, String>>[
-        ColumnSeries<_ChartData, String>(
-            // Data source for graph is list named data. Maps the x and y values of the graph to x and y in chart data.
-            dataSource: data,
-            xValueMapper: (_ChartData data, _) => data.x,
-            yValueMapper: (_ChartData data, _) => data.y,
-            name: 'Weight per Exercise',
-            color: Color.fromRGBO(8, 142, 255, 1))
-])
-
-// Class that upon call to its constructor, sets the x and y values for the graph.
-class _ChartData {
-  _ChartData(this.x, this.y);
-
-  final String x;
-  final double y;
+/*========== base styles ==========*/
+* {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  font-size: inherit;
 }
 {% endhighlight %}
 
-Implementation also included using third party packages such as the syncfusion flutter charts package in order to display our workout data in a responsive, detailed and graphical format. Syncfusion flutter charts allows us to generate a graph using custom data that is mapped to the axis. We can customize and alter certain areas of the graph such as the title, colours used and the axis names to target our users and provide a better performance metric for them to follow. 
+The implementation process also included the use of a defined theme with `colour variables`, `font assignment` and other details to structure and present areas of the application consistently and effectively. The `colour variables` provide a set of colours that we reference throughout our application for a series of assigned reasoning. Such as `color-main` as the main colour of the theme, `color-gray` for placeholder text and areas with less importance and variables such as `color-success` and `color-error` for successful and failure actions. Assigning the font and backup fonts makes it easy when styling elements where the font is the same and reduces redundant styles. This is also a similar case for other areas of the theme. 
 
-Our data to be displayed in the graph is sourced through the `_updateData` method which will obtain the relevant workout exercises to be displayed in the weight per exercise graph when a workout is selected in the list.  The graph itself is generated once the data is populated by the database. The class `_ChartData` will map the provided data to the x and y axis.
+#### Displaying Data through the use of API
+
+{% highlight ruby %}
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'GET /api',
+        'GET /api/rooms',
+        'GET /api/rooms/:id'
+    ]
+    return Response(routes)
+
+@api_view(['GET'])
+def getRooms(request):
+    rooms = Room.objects.all()
+    serializer = RoomSerializer(rooms, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    serializer = RoomSerializer(room, many=False)
+    return Response(serializer.data)
+{% endhighlight %}
+
+Topedia also has an API generated as part of the web application. This can be used from external origins that wish to access the rooms or a single room available on the app. To access the API, we use the "/api/" level after the `base URL` and then append the required value. Appending nothing onto the URL will return a response with a list of the available routes the API provides. Appending "rooms" will return a response with the serialized rooms that exists within the web application. Appending "rooms/{value}" will return a response with the serialized room if it exists.
+
+#### User Content and Media Root
+
+{% highlight ruby %}
+# Media path for user uploaded content
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+{% endhighlight %}
+
+As an E-Learning collaborative solution, Topedia allows the use of user content to teach users. It expresses the value of user generated content and enforces this throughout the site for users to access and consume. To handle user content, we have the object that stores the reference to the uploaded content and the actual uploaded content. 
+
+The object is the `model` attribute field that stores the reference value of the content. Such as the `image` attribute as part of the `LearningMaterial` model.
+
+The actual uploaded content is stored within the media folder in the application directory. The process in storing and accessing content in this folder involves the use of the `MEDIA_URL` and `MEDIA_ROOT`. These are used to specify the default path the application should take when multimedia content is uploaded through model fields. 
+
+#### ModelForms and Fields
+
+{% highlight ruby %}
+# Model form for creating and editing a topic room
+class RoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = '__all__'
+        exclude = ['topic', 'host', 'participants', 'learningMaterial']
+
+# Model form for logging in
+class LoginForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = User
+        fields = ['email', 'password']
+
+...
+
+{% endhighlight %}
+
+There are several instances in which Topedia uses `ModelForms` to generate much of the application form fields from the selected `model`. This works by assigning an imported `model` from your `models.py` file to the `ModelForm`, selecting the fields you want to include from the attributes in the `model` and if necessary, any you wish to exclude. 
+
+When displaying a `ModelForm` in a template, we would have already passed in the `ModelForm` as part of a context dictionary into the template and we can access this using a for loop. By looping through each field in the `ModelForm`, we can display each label and field content without the need to define each field, therefore abstracting the process.
+
+#### Custom User Model and UserAdmin
+
+{% highlight ruby %}
+# Custom User Model
+class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(null=True, unique=True)
+    bio = models.TextField(null=True)
+    avatar = models.ImageField(null=True, default="avatar.svg")
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+# Inherits User admin panel and edits this
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    pass
+
+UserAdmin.list_display += ('avatar',)
+UserAdmin.list_filter += ('avatar',)
+UserAdmin.fieldsets += (('Extra Fields', {'fields': ('avatar', )}),)
+{% endhighlight %}
+
+Django as a backend framework handles much of the authentication and administration for us. This is useful however limits some of the customization and additional features when the developer does not have the control. Topedia required certain attributes and preference on login that the Django User Model did not satisfy. As this was the case, a `Custom User Model` was created which uses similar functions as the `Django User Model` but with changes. The `Custom User Model` now includes `bio` and `avatar` attributes and the `USERNAME_FIELD` is assigned to the `email` attribute, therefore allowing users to login through email rather than username.
+
+Using a `Custom User Model` creates some complications in the admin panel when performing site administration. In order to register and see the fields in your `Custom User Model`, it was required to use a `Custom User Admin`. This provided similar functions to the `User Admin` provided with the `Django User Model` but allows you to edit and apply your own fieldsets. 
+
+#### Django TestCase
+
+{% highlight ruby %}
+class LoginPageViewTest(TestCase):
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/login/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'base/login_register.html')
+
+    def test_page_is_login(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('page' in response.context)
+        self.assertTrue(response.context['page'] == 'login')
+    
+    def test_form_is_loginForm(self):
+        form = str(LoginForm())
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('form' in response.context)
+        self.assertIn(form, str(response.context['form']))
+{% endhighlight %}
+
+When designing the web application, it was important alongside other important tasks to define some `test cases` we can use after implementation to test and effectively define criteria that can be used to evaluate the performance of our implementation. These `test cases` did not cover all areas but had the goal to cover much of the testing for the application's `forms`, `models` and `views`. A `test case` can be defined, required input emulated to recreate the same scenario and a summary can be produced to identify where results differed from the expected and the changes that need to be made in the debugging stage. 
