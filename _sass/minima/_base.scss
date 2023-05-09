@@ -28,7 +28,38 @@ body {
   flex-direction: column;
 }
 
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 
+.center {
+  text-align: center;
+}
+
+.center-img {
+  display: block;
+  margin: auto;
+}
+
+.container {
+  padding: 25px;
+  border: 1px solid $brand-color;
+  box-shadow: 0px 5px 10px -5px $brand-color;
+}
+
+.header {
+  text-align: center;
+  font-size: 30px;
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
@@ -149,9 +180,9 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
+  border: 1px solid $text-color;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: #000;
 }
 
 code {
@@ -212,7 +243,7 @@ pre {
     width: 16px;
     height: 16px;
     display: inline-block;
-    fill: #{$grey-color};
+    fill: #{$background-color};
     padding-right: 5px;
     vertical-align: text-top;
 }

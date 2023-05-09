@@ -1,0 +1,291 @@
+---
+layout: post
+title:  "Topedia"
+date:   2023-04-14 13:40:16 +0100
+categories: ['Python', 'HTML', 'CSS', 'JS', 'Web', 'SQLite', 'API', 'MVT', 'Django']
+description: "Web application using the Django framework that will accommodate a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals."
+repo: "https://github.com/KyleKeeneWelch/topedia"
+---
+
+## Summary
+This is a project that involves a web application created with the popular `Django` framework. It accomodates a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals. Using the `MVT` (Model, View, Template) pattern as well as `Python` for the back-end logic, the web application will incorporate user interactivity and database connectivity to deliver an effective user and learning experience. 
+
+The app will be named `Topedia` and encapsulates the idea of several topics to have self-contained topic rooms discussing various subjects and providing learning material about the parent concept. It will involve several pages of which will enable a user to login to add their own topics or learning material, leave comments and collaborate with other users or view without a login with restricted access. There will also be a filter by which a user can use to search or filter out the resources that appear to them, to target what the user wants to learn, and to display resources which will be beneficial to learning a particular subject. The ecosystem of resources will allow multimedia such as image and video as well as text for the user to customize how they want to teach their material to users. 
+
+The `Django templating engine` will be used to form templates of static files that are dynamically displayed by `views`. `Views` are reached through the assigned URL that the user enters into their address bar or automatically through links in other pages. `Models` provide the data structure for entities and interactivity to the database that can be used alongside views to generate application logic. These will represent the attributes to objects such as a `User`, `Message` or `Room`.
+
+## Features
+- **MVT and Database Connectivity** - The MVT pattern allows the developer to separate the different components of the application so that it is easy to insert, modfiy and understand the code. Templates are generally what the user sees through the rendering of HTML pages with CSS and JS included. Views house the application logic and processing of HTTP POST and GET requests. Models represent entities and define the data structure and attributes of objects in the application. The database connects to the models to create the necessary tables and commands to reflect the structure and attributes provided. These are done in the form of migrations and need to be updated as changes are made.
+
+- **Login and Register Capabilities** - Users are able to create their own account and login free with Topedia to create their own topics and learning material. They are also able to collaborate with other users by following, favouriting topic rooms and commenting. If a user does not want to benefit from these features, they can access topic rooms without having an account with limited functionality with how they can interact.
+
+- **Filter of topics and produced results** - Found at the top of every page, the user can enter input into the search bar to receive topic room results related to the provided input. This means a user can target the content they receive by applying a filter through a search result or by browsing and selecting a topic to limit results to.
+
+- **CRUD operations on created learning material and topics** - Created objects such as learning material and topics have the ability to be created, read, updated and deleted. These allow the user to control the content they create and to make appropriate modifications to suit their goals. Other objects like messages, user following and favourties can be created and deleted / removed. 
+
+- **Cascade deletion of comments, learning material, topics and multimedia** - To ensure application storage and structure is maintained, many model objects and user uploaded content is removed upon the deletion of linked objects. This is known as cascade deletion and is a popular method used within the database to ensure and the content included is linked and no anomalies are hidden clogging space and structure. 
+
+- **Profile Picture Modification** - A user with a newly registered account will have their profile picture set as the default anonymous image. Users are able to update this by selecting an image from their files.
+
+### Login and Register
+<img src="{{site.baseurl}}/assets/images/login_topedia.png" alt="Login Screen">
+
+<img src="{{site.baseurl}}/assets/images/register_topedia.png" alt="Register Screen">
+
+Topedia has login and registration capabilities as well as the ability for unregistered users to view site content with restricted interaction. The `login` page can be easily accessed with the login link found in the navbar when there is no user detected as logged in. From here a user can enter their registered credentials or can press the sign up link to reach the register page. 
+
+The `register` page contains all the optional and required fields for a user to create a new account with Topedia. Upon account creation, a session key will be generated and the logged in user authenticated and managed by Django. A `user following` and `favourites` object is also created and assigned to the new user.
+
+Users can reach the settings page in the dropdown on the navbar and can make changes to their account such as updating their password.
+
+### Creating and Updating a Topic Room
+<img src="{{site.baseurl}}/assets/images/creating_room_topedia.png" alt="Create Room Page">
+
+<img src="{{site.baseurl}}/assets/images/updating_room_topedia.png" alt="Update Room Page">
+
+Once authenticated and logged in, a user is able to create a new `topic room` or update a previously created room. The `create topic room` page will ask for the topic, name and description of the new topic room. The topic can be chosen through the dropdown on the right side of the field or alternatively, a new topic can be created by providing input into the field. The name and description are displayed within the topic room page. 
+
+The `update topic room` page will display the previous values for the fields and allows the creator to make quick changes.
+
+### Topics and Recent Activity 
+<img src="{{site.baseurl}}/assets/images/topic_activity_desktop_topedia.png" alt="Home page">
+
+<img class="center-img" src="{{site.baseurl}}/assets/images/topic_activity_mobile_topedia.png" alt="Home page mobile" width="237px" height="396px">
+
+The `topics` and `recent activity` components are reused throughout different parts of the web application. On the `home` page, you can select the first few topics and by selecting a topic, you update the page to include filtered results. By pressing on more, you can reach the standalone topics page which displays more topics and a search feature. 
+
+The `recent activity` displays the most recent comments made on topic rooms within the web application. You are able to view a `user's profile` and the `topic room` the conversation is in. Both of these components can be viewed as part of their own page on the mobile version of the home page, which provides links to these instead of displaying them.
+
+### Following and Favourites
+<img src="{{site.baseurl}}/assets/images/creating_room_topedia.png" alt="Create Room Page">
+
+<img src="{{site.baseurl}}/assets/images/updating_room_topedia.png" alt="Update Room Page">
+
+The `following` and `favourites` pages are special pages that provide the output for the following and favourites functionality. A user has an assigned object that stores the users and rooms that the user follows and favourites. This object is then read and the appropriate content is displayed in the `following` and `favourites page`. A user is able to follow another user through the button displayed on their profile. This button is omitted on their own profile to prevent following the logged in user. However, functionality allows a user to favourite their own rooms if they so wish. The following functionality allows a user to collaborate with other users who they have a certain fondness with and to assess and use this list how they see fit. The favourites functionality allows the user to bookmark and compile of list of their favourite topic rooms so that they can visit in the future.
+
+### Creating and Updating Learning Material
+<img src="{{site.baseurl}}/assets/images/creating_learning_material_topedia.png" alt="Create Learning Material Page">
+
+<img src="{{site.baseurl}}/assets/images/updating_learning_material_topedia.png" alt="Update Learning Material Page">
+
+A user is able to create and update learning material that is displayed onto a `topic room` they created. While on the `topic room` page, the owner will be able to see the create learning material button and the edit link within any existing learning material on the page. The create learning material button will direct to the `create learning material` page where a form is displayed with the appropriate required and optional fields for creating a new learning material object. By using the edit link, the user is directed to the `update learning material` page which is a clone of the create learning material page but with the fields pre-filled so that chosen fields can be edited. 
+
+### User Profiles and Commenting
+<img src="{{site.baseurl}}/assets/images/user_profile_topedia.png" alt="User profile Page">
+
+<img src="{{site.baseurl}}/assets/images/comments_topedia.png" alt="Topic Room Page">
+
+Each user has their own profile with their biography, topic rooms they host and any recent activity they have. The profile can be reach from various pages through links in the `recent activity` component, home page topic room results and comments made on rooms. Comments are displayed from most recent to oldest and contain links to the user that posted the comment, their profile picture and if the owner is currently viewing, a cross is displayed for them to press if they wish to delete their comment. Edit functionality is currently not supported as part of the comment system in Topedia.
+
+### Implementation
+
+#### Main Template and Include
+
+<img class="center-img" src="{{site.baseurl}}/assets/images/main_topedia.png" alt="Main template" width="300" height="230">
+
+The implementation of Topedia included the series of dynamically displayed templates to the user. These templates have their own hierachy by which the main template is included as part of many other templates for redundant, core content. Within the `main` template, we include the `navbar`, `flash messages`, `block tags` and links to the javascript file for site interactivity.
+
+The `navbar`, as the name suggests, is a HTML document which describes the structure of the navigation links, logo and search field. This document is defined and placed at the beginning of the main template so that each page that includes the main template will also include the same navigation bar. 
+
+`Flash messages` are messages that are displayed as a result of an action performed by the user. They are defined within views and are triggered to display a message valid until the user refreshes the site. An example could include "Successfully logged in".
+
+`Block tags` define where we want the rest of our content to go in relation to the content already defined in the template. This means when we include the `main` template in other templates, any newly defined content is placed after the `navbar` and `flash messages`. 
+
+#### URLs and linked Views
+
+{% highlight ruby %}
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('base.urls')),
+    path('api/', include('base.api.urls'))
+]
+
+urlpatterns = [
+    path('login/', views.loginPage, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerPage, name='register'),
+    path('', views.home, name="home"),
+    path('room/<str:pk>/', views.room, name="room"),
+    path('profile/<str:pk>', views.userProfile, name="user-profile"),
+    path('following/', views.showFollowers, name="show-following"),
+    path('favourites/<str:pk>', views.showFavourites, name="show-favourites"),
+    path('create-room/', views.createRoom, name="create-room"),
+    path('create-material/<str:pk>', views.createMaterial, name="create-material"),
+    path('update-room/<str:pk>', views.updateRoom, name="update-room"),
+    path('update-material/<str:pk>', views.updateMaterial, name="update-material"),
+    path('update-user', views.updateUser, name="update-user"),
+    path('topics/', views.topicsPage, name="topics"),
+    path('activity/', views.activityPage, name="activities"),
+    path('delete-room/<str:pk>', views.deleteRoom, name="delete-room"),
+    path('delete-message/<str:pk>', views.deleteMessage, name="delete-message"),
+    path('delete-material/<str:pk>', views.deleteMaterial, name="delete-material"),
+    path('set-favourite/<str:pk>', views.setFavourite, name="set-favourite"),
+    path('remove-favourite/<str:pk>', views.removeFavourite, name="remove-favourite"),
+    path('unfollow/<str:pk>', views.unfollow, name='unfollow'),
+]
+{% endhighlight %}
+
+The routes users could take where defined through the `url.py` files in the application. The `main url` file contains the main type of routes that a user will take to reach completely different areas. These include the `admin panel` for site administrators, an empty path to include app specific routes and the routes to the created API. 
+
+The app routes are stored within the "base" app `url.py` file. These are included and are looked upon when the user provides a route not prepending admin or API and normally provide access to the vast majority of app related routes. When the user has provided a URL that matches a path defined in the `url file`, the linked `view` is run and if additional arguments are provided, these are passed to the parameters of the `view`. The "name" attribute is used as a relative reference in development so that if changes need to be made, only the absolute URL needs to be updated to reflect the changes instead of all instances that use the route. 
+
+API routes provide access to views that display grouped content or singular content through a provided parameter. 
+
+#### Defining a Theme
+
+{% highlight ruby %}
+/* Colour Variables */
+:root {
+  --color-main: #FFA733;
+  --color-main-light: #FFB85C;
+  --color-dark: #3D4B52;
+  --color-dark-medium: #45565E;
+  --color-dark-light: #C4CFD4;
+  --color-light: #EEF5DB;
+  --color-gray: #8b8b8b;
+  --color-light-gray: #b2bdbd;
+  --color-bg: #1A2023;
+  --color-success: #5dd693;
+  --color-error: #E63737;
+}
+
+/*========== base styles ==========*/
+* {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  font-size: inherit;
+}
+{% endhighlight %}
+
+The implementation process also included the use of a defined theme with `colour variables`, `font assignment` and other details to structure and present areas of the application consistently and effectively. The `colour variables` provide a set of colours that we reference throughout our application for a series of assigned reasoning. Such as `color-main` as the main colour of the theme, `color-gray` for placeholder text and areas with less importance and variables such as `color-success` and `color-error` for successful and failure actions. Assigning the font and backup fonts makes it easy when styling elements where the font is the same and reduces redundant styles. This is also a similar case for other areas of the theme. 
+
+#### Displaying Data through the use of API
+
+{% highlight ruby %}
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'GET /api',
+        'GET /api/rooms',
+        'GET /api/rooms/:id'
+    ]
+    return Response(routes)
+
+@api_view(['GET'])
+def getRooms(request):
+    rooms = Room.objects.all()
+    serializer = RoomSerializer(rooms, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    serializer = RoomSerializer(room, many=False)
+    return Response(serializer.data)
+{% endhighlight %}
+
+Topedia also has an API generated as part of the web application. This can be used from external origins that wish to access the rooms or a single room available on the app. To access the API, we use the "/api/" level after the `base URL` and then append the required value. Appending nothing onto the URL will return a response with a list of the available routes the API provides. Appending "rooms" will return a response with the serialized rooms that exists within the web application. Appending "rooms/{value}" will return a response with the serialized room if it exists.
+
+#### User Content and Media Root
+
+{% highlight ruby %}
+# Media path for user uploaded content
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+{% endhighlight %}
+
+As an E-Learning collaborative solution, Topedia allows the use of user content to teach users. It expresses the value of user generated content and enforces this throughout the site for users to access and consume. To handle user content, we have the object that stores the reference to the uploaded content and the actual uploaded content. 
+
+The object is the `model` attribute field that stores the reference value of the content. Such as the `image` attribute as part of the `LearningMaterial` model.
+
+The actual uploaded content is stored within the media folder in the application directory. The process in storing and accessing content in this folder involves the use of the `MEDIA_URL` and `MEDIA_ROOT`. These are used to specify the default path the application should take when multimedia content is uploaded through model fields. 
+
+#### ModelForms and Fields
+
+{% highlight ruby %}
+# Model form for creating and editing a topic room
+class RoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = '__all__'
+        exclude = ['topic', 'host', 'participants', 'learningMaterial']
+
+# Model form for logging in
+class LoginForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = User
+        fields = ['email', 'password']
+
+...
+
+{% endhighlight %}
+
+There are several instances in which Topedia uses `ModelForms` to generate much of the application form fields from the selected `model`. This works by assigning an imported `model` from your `models.py` file to the `ModelForm`, selecting the fields you want to include from the attributes in the `model` and if necessary, any you wish to exclude. 
+
+When displaying a `ModelForm` in a template, we would have already passed in the `ModelForm` as part of a context dictionary into the template and we can access this using a for loop. By looping through each field in the `ModelForm`, we can display each label and field content without the need to define each field, therefore abstracting the process.
+
+#### Custom User Model and UserAdmin
+
+{% highlight ruby %}
+# Custom User Model
+class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(null=True, unique=True)
+    bio = models.TextField(null=True)
+    avatar = models.ImageField(null=True, default="avatar.svg")
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+# Inherits User admin panel and edits this
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    pass
+
+UserAdmin.list_display += ('avatar',)
+UserAdmin.list_filter += ('avatar',)
+UserAdmin.fieldsets += (('Extra Fields', {'fields': ('avatar', )}),)
+{% endhighlight %}
+
+Django as a backend framework handles much of the authentication and administration for us. This is useful however limits some of the customization and additional features when the developer does not have the control. Topedia required certain attributes and preference on login that the Django User Model did not satisfy. As this was the case, a `Custom User Model` was created which uses similar functions as the `Django User Model` but with changes. The `Custom User Model` now includes `bio` and `avatar` attributes and the `USERNAME_FIELD` is assigned to the `email` attribute, therefore allowing users to login through email rather than username.
+
+Using a `Custom User Model` creates some complications in the admin panel when performing site administration. In order to register and see the fields in your `Custom User Model`, it was required to use a `Custom User Admin`. This provided similar functions to the `User Admin` provided with the `Django User Model` but allows you to edit and apply your own fieldsets. 
+
+#### Django TestCase
+
+{% highlight ruby %}
+class LoginPageViewTest(TestCase):
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/login/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'base/login_register.html')
+
+    def test_page_is_login(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('page' in response.context)
+        self.assertTrue(response.context['page'] == 'login')
+    
+    def test_form_is_loginForm(self):
+        form = str(LoginForm())
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('form' in response.context)
+        self.assertIn(form, str(response.context['form']))
+{% endhighlight %}
+
+When designing the web application, it was important alongside other important tasks to define some `test cases` we can use after implementation to test and effectively define criteria that can be used to evaluate the performance of our implementation. These `test cases` did not cover all areas but had the goal to cover much of the testing for the application's `forms`, `models` and `views`. A `test case` can be defined, required input emulated to recreate the same scenario and a summary can be produced to identify where results differed from the expected and the changes that need to be made in the debugging stage. 

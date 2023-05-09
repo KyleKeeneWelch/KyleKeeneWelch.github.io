@@ -1,0 +1,303 @@
+---
+layout: post
+title:  "ActiGym"
+date:   2023-01-03 13:40:16 +0100
+categories: ['Dart', 'Flutter', 'Android', 'MSAccess', 'iOS', 'Mobile', 'Hybrid', 'Object Oriented']
+description: "Flutter Mobile Application written with Dart that serves as a workout planner and log to further fitness goals and abstract the fitness process."
+repo: "https://github.com/KyleKeeneWelch/actigym"
+---
+
+<style>
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & :last-child {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .center-container {
+        display: block;
+
+        & img {
+            display: block;
+            margin: auto;
+        }
+
+        & :last-child {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+    }
+}
+</style>
+
+
+## Summary
+This project uses the popular framework by Google `Flutter` to implement a Mobile Application Solution to assist many fitness related problems. ActiGym is a workout planner and log that will help you to create or select pre-built workouts to do all while monitoring your sessions and measuring your progress.
+
+`Dart` as the official langauge, is used to build several components known as `widgets` which can be used to structure and present key areas. Each `widget` is designed to serve a particular function and the derived order and properties of such `widgets` make up the look and feel of the application to the user. Flutter is used to generate natively-compiled applications for multiple platforms including both `Android` and `iOS`.
+
+ActiGym maintains a connection to a `MSAccess` database of which is used to store and access user data including accounts, sessions and workouts. A user is able to create a free account that they can use to specify days they plan to go to the gym, create new workouts, edit workouts, start workouts or view their performance. The interface allows for easy and convenient access to immediately start a workout as well as create and edit workouts to meet individual needs. Users that do not wish for the full process and prefer an abstracted experience can start with the pre-built workouts or select to perform an unplanned workout which provides only the basic workout components such as the timer.
+
+## Features
+- **MSAccess Database Connectivity** - Application instantiates and populates an MSAccess database with the relevant user information such as user accounts, sessions and workouts. 
+
+- **Create and Edit Workouts** - ActiGym provides an easy interface for creating new and editing existing workouts. Exercises contained within a workout are clearly displayed in a list and the appropriate buttons to modify the workout and included exercises are provided. When suitable, a user can easily start the selected workout.
+
+- **Intuitive Workout Execution** - Users are granted with an easy to follow workout execution where they can clearly see the workout they are performing, the current exercise they are on as well as other information such as the number of sets, the set number they are on, previous achieved reps, previous weight and workout notes.
+
+- **Performance Tracking** - Provides a session log to see what workouts you have done and when and for how long they lasted. Also provides performance graphs which graphically show your progress on various areas.
+
+- **Unplanned and Pre-built Workouts** - Users that don't want to worry about creating their own workouts or want to get straight into a workout can start an unplanned or pre-built workout. Unplanned workouts provide basic functionality to perform and log the workout without indication of exercises and sets. Pre-built workouts are as the name suggests pre-made so that you can stimulate an area or muscle group without worrying about adjusting your own workout.
+
+- **Profile Picture Modification** - A user with a newly registered account will have their profile picture set as the default anonymous image. Users are able to update this by taking a new photo or accessing one taken from their gallery.
+
+### Login and Register
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/login_actigym.png" alt="Login Screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/register_actigym.png" alt="Register Screen" width="237px" height="396px">
+</div>
+<br>
+
+Here we can see the graphical user interface showing the register screen. Upon app startup, the user is met with a splash screen with the logo and a loading indicator before reaching the log in page. From here, the user can enter their previously registered details to access their account with ActiGym or can press the "register" button to access a similar page to register. Upon valid data entry, the application will register the user with the database and will reach the home screen.
+
+### Creating and Modifying a Workout
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/create_workout_actigym.png" alt="My workouts screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/modify_workout_actigym.png" alt="Modify workout screen" width="237px" height="396px">
+</div>
+<br>
+
+When we reach the My Workouts screen, we are able to create a new workout. We need to specify the name and number of exercises of this workout and then promptly press edit so we can add some new exercises to the created workout. Pressing edit will redirect the user to the Modify Workout screen which displays the current exercises of a selected workout and in this case, there is none. We can add new exercises by filling in the required fields and pressing create exercise. Refreshing the list will show the new workout. We are also able to delete or clear exercises if necessary. To start the exercise, we can either press the start button on the Modify Workout screen or back on the My Workouts screen.
+
+### Perform Workout and Unplanned Workout 
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/perform_workout_actigym.png" alt="Perform Workout screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/unplanned_workout_actigym.png" alt="Unplanned Workout on Perform Workout screen" width="237px" height="396px">
+</div>
+<br>
+
+A created workout or a pre-built workout can be selected and started through the My Workouts or Modify Workout screen. Additionally, an unplanned workout can be started by pressing the button at the bottom of the My Workouts screen. The perform workout screen contains details on the current exercise, the number of sets, highest achived reps and highest achieved reps for that exercise. Any notes written previously are shown when the workout has started and this can be edited. The timer shows the complete time of the workout from the moment the start button is pressed. Each set the user will record by entering the achieved reps and the weight for that set. Once a set has been recorded a rest period is initiated and the user can end this before the end of the countdown by pressing to start next set. Once all sets and exercises have been completed, the user will no longer be able to record a set and will end the workout. For an unplanned workout, a user can do up to 99 sets and still have the workout recorded as a session in My Performance.
+
+### My Performance and Graphs
+<div class="center-container">
+    <img src="{{site.baseurl}}/assets/images/my_performance_actigym.png" alt="My Performance screen" width="237px" height="396px">
+    <img src="{{site.baseurl}}/assets/images/graph_actigym.png" alt="Weight per Exercise Graph" width="223px" height="168px">
+</div>
+<br>
+
+The My Performance screen will display the log for the sessions the user has completed including the name of the completed workout, the date and duration. The user can easily delete unwanted sessions from the log. The user is also able to see customized graphs for each of the workouts they have completed. The implemented graph includes details on weight per exercise which shows the differences in highest achieved weight between each of the exercises of a particular workout. 
+
+### Implementation
+
+#### Creating Tables and Connecting to the Database
+
+{% highlight ruby %}
+class SQLHelper {
+    static Future<void> createTables(sql.Database database) async {
+    await database.execute("""CREATE TABLE IF NOT EXISTS accounts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT,
+    password TEXT,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    """);
+    
+    ...
+
+    static Future<sql.Database> db() async {
+        return sql.openDatabase('../database actigym_data.accdb', version: 1,
+        onCreate: (sql.Database database, int version) async {
+            await createTables(database);
+        });
+    }
+}
+{% endhighlight %}
+
+Upon initialization, the application will create each of the tables within the database if they have not already been created. These will be created within the `SQLHelper` class found in a component file named `sqlhelper.dart`. The file will also contain all the other related database functions that will manipulate the `CRUD operations` on workouts and exercises as well as queries to get them. This file is imported and each of the database methods avaliable to each of the screens that use them so that they can connect to the database and make insertions and modifcations corresponding to user input. 
+
+#### Sending and Receiving Data Between Screens
+
+{% highlight ruby %}
+ListTile(
+    title: Text('My Workouts',
+        style: Theme.of(context).textTheme.headline2),
+    trailing: Icon(Icons.assignment),
+    subtitle: Text(
+        'View your created workouts, create a new one or have a look at some pre-built.'),
+    contentPadding:
+        EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+    tileColor: Theme.of(context).scaffoldBackgroundColor,
+    onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    MyWorkouts(currentId: widget.currentId)));
+}),
+
+class MyWorkouts extends StatefulWidget {
+    final currentId;
+
+    const MyWorkouts({Key? key, this.currentId} : super(key: key);
+
+    @override
+    State<MyWorkouts> createState() => _MyWorkoutsState();
+}
+)
+{% endhighlight %}
+
+Within the implementation, it was often required to send data between screens so that this can be accessed and the right content was displayed to the user. In this case, the current user's ID that is logged into the application is the important piece of data that we need to send across to each screen. The application only knows which workouts to show and what session belongs to what user when it is able to distinguish which user is currently logged in.
+
+To do this, we use the `Navigator` to push a route to the desired screen along with the parameters with arguments we provide to send the data across. The receiving screen will obtain this and will save this in a variable, in this case `currentId`, which can be accessed and referenced in code. We can use this for example, to query the workouts belonging to the logged in user by calling the relevant imported database function and passing in the value.
+
+#### Defining a Theme
+
+{% highlight ruby %}
+theme: ThemeData(
+    primaryColor: Color(0xFF76FF03),
+    scaffoldBackgroundColor: Color(0xFF0A0E21),
+    fontFamily: 'Helvetica',
+    brightness: Brightness.dark,
+    textTheme: const TextTheme(
+        headline1: TextStyle(
+            fontSize: 40.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline2: TextStyle(
+            fontSize: 25.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline3: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.white),
+        headline4: TextStyle(
+            fontSize: 20.0, fontFamily: 'Helvetica', color: Colors.black),
+        bodyText2: TextStyle(
+            fontSize: 15.0, fontFamily: 'Helvetica', color: Colors.white),
+        bodyText1: TextStyle(
+        fontSize: 15.0,
+        fontFamily: 'Helvetica',
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+        ),
+    ),
+    // Defines splash, highlight and divider theme.
+    splashColor: Colors.white,
+    highlightColor: Color(0xFFC6FF00),
+    dividerTheme: DividerThemeData(
+        color: Colors.white,
+        thickness: 2,
+        space: 2,
+    ),
+),
+{% endhighlight %}
+
+Often, it is required to reuse certain colours and design aspects in order to produce a consistent and appealing user interface. Because of this, it became useful to define a theme with clear set out colours, fonts, headlines and other theme data that can be referenced and reused constantly to offer quick access. It is beneficial to use a relative value such as referencing a value stored as part of a theme as if it came required to adjust this, you would only have to make a change in the theme instead of every instance that that value is used in the application. 
+
+#### Accessing Database Methods
+
+{% highlight ruby %}
+onPressed: () {
+    try {
+    SQLHelper.createExercise(
+        widget.workoutId.toString(),
+        exerciseNameCtrl.text,
+        int.parse(
+            exerciseWeightCtrl.text),
+        int.parse(
+            exerciseSetsCtrl.text),
+        0,
+        '');
+    _getExercises();
+    exerciseWeightCtrl.text = '';
+    exerciseSetsCtrl.text = '';
+    exerciseNameCtrl.text = '';
+    //Inform user.
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(
+            ...
+{% endhighlight %}
+
+Much of the functionality provided as part of a workout planner and log is found in making queries and updating the database that houses this information. As this is the case, there are many instances where we will utilize the imported database methods from the `SQLHelper` class to make the required insertion or change. 
+
+In the displayed code example above and much like the other instances, we are accessing the method as part of the onPressed event of an elevated button that the user has pressed. The event will trigger an anonymous function which will try to call a database method and pass in the relevant arguments in their correct format as part of the input provided by the user. Upon success, we will update our current data within the screen by getting any workouts or exercises that belong to the logged in user much like we did when we visited the screen. Any input fields are reset to an empty string and the user is informed of the outcome through a displayed snackbar. If there was an error they are also infomed. The changes are reflected when the user presses refresh to update any lists with the collected information.
+
+#### Displaying Dynamic Content and Using Ternary Operator
+
+{% highlight ruby %}
+Text(
+    widget.workoutId.toString() == '10000'
+        ? 'Exercise: Unspecified'
+        : 'Exercise ' +
+            exerciseCounter.toString() +
+            ': ' +
+            workoutExercises[exerciseCounter - 1]
+                    ['exerciseName']
+                .toString(),
+    style: Theme.of(context).textTheme.headline3),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Sets: Up to 99'
+    : 'Sets: ' +
+        workoutExercises[exerciseCounter - 1]['sets']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Reps: Unspecified'
+    : 'Achived Reps: ' +
+        workoutExercises[exerciseCounter - 1]['reps']
+            .toString()),
+    SizedBox(height: 20),
+    Text(widget.workoutId.toString() == '10000'
+    ? 'Weight (kg): Unspecified'
+    : 'Weight (kg): ' +
+        workoutExercises[exerciseCounter - 1]['weight']
+            .toString())
+{% endhighlight %}
+
+Much of the application relies on content that belongs to a particular user and therefore requires users to have a registered account. This is the case as many screens display dynamic content that depend on the workouts users create and the exercises contained. 
+
+In the provided example, we obtain the exercise that we are going to display to the user as part of the perform workout page. This depends on the workout the user has selected to start and from this, the value passed to the screen that is used to query for the exercises to display. Selecting an unplanned workout would default the value to 10000 and the application will apply the `ternary operator` to see if this value has been passed, otherwise display the user's started workout information as normal. The information displayed will depend on the name of the exercise the user entered, the number of sets, reps and the achieved weight. Finishing the exercise, taking the rest period, and continuing will update this information to the next exercise in the list of maps returning from the asynchronous database method call.
+
+#### Workout Graphing
+
+{% highlight ruby %}
+void _updateData() async {
+    data.clear();
+    workoutExercises =
+        await _getExercises(accountWorkouts[selectedIndex]['id']);
+    for (int i = 0; i < workoutExercises.length; i++) {
+      data.add(_ChartData(workoutExercises[i]['exerciseName'].toString(),
+          double.parse(workoutExercises[i]['weight'].toString())));
+    }
+  }
+
+ SfCartesianChart(
+    title: ChartTitle(text: 'Weight per Exercise (kg)'),
+    primaryXAxis: CategoryAxis(),
+    primaryYAxis:
+        NumericAxis(minimum: 0, maximum: 100, interval: 20),
+    tooltipBehavior: _tooltip,
+    series: <ChartSeries<_ChartData, String>>[
+        ColumnSeries<_ChartData, String>(
+            // Data source for graph is list named data. Maps the x and y values of the graph to x and y in chart data.
+            dataSource: data,
+            xValueMapper: (_ChartData data, _) => data.x,
+            yValueMapper: (_ChartData data, _) => data.y,
+            name: 'Weight per Exercise',
+            color: Color.fromRGBO(8, 142, 255, 1))
+])
+
+// Class that upon call to its constructor, sets the x and y values for the graph.
+class _ChartData {
+  _ChartData(this.x, this.y);
+
+  final String x;
+  final double y;
+}
+{% endhighlight %}
+
+Implementation also included using third party packages such as the syncfusion flutter charts package in order to display our workout data in a responsive, detailed and graphical format. Syncfusion flutter charts allows us to generate a graph using custom data that is mapped to the axis. We can customize and alter certain areas of the graph such as the title, colours used and the axis names to target our users and provide a better performance metric for them to follow. 
+
+Our data to be displayed in the graph is sourced through the `_updateData` method which will obtain the relevant workout exercises to be displayed in the weight per exercise graph when a workout is selected in the list.  The graph itself is generated once the data is populated by the database. The class `_ChartData` will map the provided data to the x and y axis.
