@@ -7,22 +7,6 @@ description: "This project is a project undertaken as part of The Odin Project l
 repo: "https://github.com/KyleKeeneWelch/odin-rock-paper-scissors"
 ---
 
-<style>
-    .center-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    @media only screen and (max-width: 650px) {
-    .center-container img {
-        width: 164px;
-        height: 214px;
-    }
-}
-}
-</style>
-
 ## Summary
 This project is a project undertaken as part of `The Odin Project` learning web course teaching `HTML`, `CSS` and `JavaScript` skills. It involved putting into practice the teachings of `JavaScript` taught in the previous lessons and built upon the previous console application version by implementing a fleshed out user interface and updated logic.
 
