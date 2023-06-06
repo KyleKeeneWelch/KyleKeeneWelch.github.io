@@ -17,27 +17,6 @@ repo: "https://github.com/KyleKeeneWelch/odin-calculator"
         width: 200px;
         height: 250px;
     }
-
-    & :last-child {
-        margin-left: 10px;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .center-container {
-        display: block;
-
-        & img {
-            display: block;
-            margin: auto;
-        }
-
-        & :last-child {
-            display: block;
-            margin: auto;
-            margin-top: 20px;
-        }
-    }
 }
 </style>
 
