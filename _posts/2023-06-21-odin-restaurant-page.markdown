@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Restaurant Page"
 date:   2023-06-28 13:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web', 'Webpack', 'NPM', 'HTML Webpack Plugin']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Generates pages for a made-up Japanese fast food chain utilizing JavaScript, NPM packages and Webpack Plugins."
 repo: "https://github.com/KyleKeeneWelch/odin-restaurant-page"
 ---
 

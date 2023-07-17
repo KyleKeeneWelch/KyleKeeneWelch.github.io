@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Etch-a-Sketch"
 date:   2023-05-25 19:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Provides a simple canvas layout and related tools to draw pixel-like images."
 repo: "https://github.com/KyleKeeneWelch/odin-etch-a-sketch"
 ---
 

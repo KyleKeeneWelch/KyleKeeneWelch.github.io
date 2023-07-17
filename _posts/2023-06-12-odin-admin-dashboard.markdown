@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Admin Dashboard"
 date:   2023-06-12 19:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web', 'CSS Grid']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Uses techniques of flexbox and grid to structure a typical admin dashboard layout."
 repo: "https://github.com/KyleKeeneWelch/odin-admin-dashboard"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Library"
 date:   2023-06-17 13:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web', 'CSS Grid', 'OOP']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Utilizes DOM methods and objects to create book entries and maintain a library application."
 repo: "https://github.com/KyleKeeneWelch/odin-library"
 ---
 

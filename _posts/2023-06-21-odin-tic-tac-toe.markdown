@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Tic-Tac-Toe"
 date:   2023-06-21 13:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web', 'OOP', 'Factory Functions', 'IIFE']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Contains a tic-tac-toe grid and DOM methods to track the winning conditions and rounds within the popular game."
 repo: "https://github.com/KyleKeeneWelch/odin-tic-tac-toe"
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "The Odin Project: Sign-Up Form"
 date:   2023-06-06 19:00:16 +0100
 categories: ['HTML', 'CSS', 'JS', 'Web']
-description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills."
+description: "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Creates a sign up page with a form and validation handled through the JavaScript Validation API."
 repo: "https://github.com/KyleKeeneWelch/odin-sign-up-form"
 ---
 
