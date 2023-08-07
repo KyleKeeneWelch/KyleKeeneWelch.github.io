@@ -470,6 +470,10 @@ input, textarea {
     transition: 1s;
     transform: scale(1.1);
   }
+
+  .gallery-card:not(:hover) {
+    transition: 0.5s;
+  }
   
   .gallery-card:hover .overlay {
     opacity: 0.75;
@@ -576,7 +580,7 @@ input, textarea {
 }
 
 #profile-details-container p {
-  color: $brand-color;
+  color: $text-color;
   line-height: 25%;
 }
 
