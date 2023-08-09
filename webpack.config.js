@@ -12,6 +12,7 @@ module.exports = {
       inject: true,
       template: "./src/templates/index.html",
       filename: "index.html",
+      favicon: "./src/assets/favicon/favicon.ico",
     }),
   ],
   output: {
@@ -42,6 +43,13 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.docx$/i,
+        loader: "file-loader",
+        options: {
+          name: "Kyle_Keene_Welch_Resume.docx",
+        },
       },
     ],
   },
