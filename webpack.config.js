@@ -14,6 +14,12 @@ module.exports = {
       filename: "index.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/about.html",
+      filename: "about.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",

@@ -4,18 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
     <title>Home | Kyle Keene-Welch</title>
 </head>
 
 <body>
-    <a class="background-banner-author"
+    <a class="background-banner-home-author"
         href="https://img.freepik.com/free-vector/abstract-digital-grid-vector-black-background_53876-111550.jpg?w=1060&t=st=1691495333~exp=1691495933~hmac=c2d2b0377150ccd3ef89f1b3511a1a6555e1d7a3edfc9dcd2add9e7f0ba3aafb">Image
         by rawpixel.com</a>
-    <div class="background-banner">
+    <div class="background-banner-home">
         <header>
             <a href="index.html"><img src=<%=require("../assets/images/home/logo.png")%> alt="Logo" /></a>
             <nav>
-                <a href="index.html">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="about.html">About</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
@@ -32,13 +41,13 @@
             <img class="portrait center-img" src=<%=require("../assets/images/home/portrait.jpg")%> alt="Portrait">
             <br>
             <div class="center">
-                <a id="btn-download-resume" class="btn" href="" download="resume.docx">
+                <a class="btn btn-download-resume" href="" download>
                     Download Resume
                     <i class="fa-solid fa-download icon"></i>
                 </a>
             </div>
             <br>
-            <div>
+            <div class="center">
                 <p>I am a <strong>Web Developer / Software Engineer at The University Of Bedfordshire.</strong></p>
                 <p>Currently, I have been involved with different technologies with the goal to improve my proficiency
                     in a
@@ -63,17 +72,17 @@
             <br>
             <div>
                 <div class="gallery">
-                    <div id="gallery-image-one" class="gallery-card">
-                        <p class="overlay">Gallery Image</p>
+                    <div class="gallery-card">
+                        <p class="gallery-overlay">Gallery Image</p>
                     </div>
-                    <div id="gallery-image-two" class="gallery-card">
-                        <p class="overlay">Gallery Image</p>
+                    <div class="gallery-card">
+                        <p class="gallery-overlay">Gallery Image</p>
                     </div>
-                    <div id="gallery-image-three" class="gallery-card">
-                        <p class="overlay">Gallery Image</p>
+                    <div class="gallery-card">
+                        <p class="gallery-overlay">Gallery Image</p>
                     </div>
-                    <div id="gallery-image-four" class="gallery-card">
-                        <p class="overlay">Gallery Image</p>
+                    <div class="gallery-card">
+                        <p class="gallery-overlay">Gallery Image</p>
                     </div>
                 </div>
                 <br>
@@ -128,14 +137,15 @@
             </header>
             <div class="center">
                 <p>
-                    Find more on my education, qualifications, awards and biography in the <strong><a href="#">About
+                    Find more on my education, qualifications, awards and biography in the <strong><a
+                            href="about.html">About
                             Page</a></strong>.
                 </p>
                 <p>Any new outstanding completed projects can be shown in more detail as a post on the <strong><a
-                            href="#">Portfolio Page</a></strong>.
+                            href="portfolio.html">Portfolio Page</a></strong>.
                 </p>
                 <p>
-                    For any queries and contact information please visit the <strong><a href="#">Contact
+                    For any queries and contact information please visit the <strong><a href="contact.html">Contact
                             Page</a></strong>
                     or view the footer.
                 </p>
