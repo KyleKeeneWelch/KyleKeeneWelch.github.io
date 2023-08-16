@@ -4,20 +4,26 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    entry: "./src/scripts/index.js",
+    entry: "./src/scripts/display.js",
   },
   devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./src/templates/index.html",
+      template: "./src/templates/static/index.html",
       filename: "index.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./src/templates/about.html",
+      template: "./src/templates/static/about.html",
       filename: "about.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/static/portfolio.html",
+      filename: "portfolio.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
   ],

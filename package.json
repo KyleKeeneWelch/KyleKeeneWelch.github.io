@@ -2,7 +2,7 @@
   "name": "my-site",
   "version": "1.0.0",
   "description": "Github Pages Portfolio Website",
-  "main": "index.js",
+  "main": "display.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/KyleKeeneWelch/my-site/tree/main#readme",
   "dependencies": {
     "css-loader": "^6.8.1",
+    "date-fns": "^2.30.0",
     "style-loader": "^3.3.3"
   },
   "devDependencies": {
