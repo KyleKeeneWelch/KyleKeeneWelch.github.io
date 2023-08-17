@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Contact | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <form class="contact-form" id="contact-form" novalidate autocomplete="off">
+            <div>
+                <label>Name</label>
+                <br>
+                <input type="text" id="contact-name" required minlength="3" maxlength="200"
+                    placeholder="Enter your name...">
+                <span class="error" id="contact-name-error"></span>
+            </div>
+            <br>
+            <div>
+                <label>Email</label>
+                <br>
+                <input type="email" id="contact-email" required minlength="3" maxlength="200"
+                    placeholder="Enter your email...">
+                <span class="error" id="contact-email-error"></span>
+            </div>
+            <br>
+            <div>
+                <label>Subject</label>
+                <br>
+                <input type="text" id="contact-subject" required minlength="3" maxlength="200"
+                    placeholder="Enter your subject...">
+                <span class="error" id="contact-subject-error"></span>
+            </div>
+            <br>
+            <div>
+                <label for="message">Message</label>
+                <br>
+                <textarea rows="6" cols="20" id="contact-message" required minlength="3" maxlength="2000"
+                    placeholder="Enter your message..."></textarea>
+                <span class="error" id="contact-message-error"></span>
+            </div>
+            <br>
+            <button class="btn" type="submit" value="Submit">Open Mail Client</button>
+            <br>
+            <p class="center">Alternatively reach out by emailing <a
+                    href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+        </form>
+        <br>
+        <section>
+            <div class="contact-social-links">
+                <a href="https://github.com/KyleKeeneWelch">
+                    <i class="fa-brands fa-github icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/kyle-keene-welch-741273227/">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/KyleKeeneWelch">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </div>
+        </section>
+        <br>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

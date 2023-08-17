@@ -234,7 +234,152 @@ class Display {
     );
   }
 
-  static initEventListeners() {
+  static initContactEventListeners() {
+    const contactForm = document.getElementById("contact-form");
+    const contactName = document.getElementById("contact-name");
+    const contactNameError = document.getElementById("contact-name-error");
+    const contactEmail = document.getElementById("contact-email");
+    const contactEmailError = document.getElementById("contact-email-error");
+    const contactSubject = document.getElementById("contact-subject");
+    const contactSubjectError = document.getElementById(
+      "contact-subject-error"
+    );
+    const contactMessage = document.getElementById("contact-message");
+    const contactMessageError = document.getElementById(
+      "contact-message-error"
+    );
+
+    contactName.addEventListener("input", () => {
+      if (contactName.validity.tooShort) {
+        contactNameError.textContent = "Name needs to be at least 3 characters";
+        contactNameError.style.display = "block";
+        contactName.style.border = "1px solid var(--error-color)";
+      } else if (contactName.validity.valueMissing) {
+        contactNameError.textContent = "Name is required";
+        contactNameError.style.display = "block";
+        contactName.style.border = "1px solid var(--error-color)";
+      } else if (contactName.checkValidity()) {
+        contactNameError.textContent = "";
+        contactNameError.style.display = "none";
+        contactName.style.border = "1px solid var(--valid-color)";
+      }
+    });
+
+    contactEmail.addEventListener("input", () => {
+      if (contactEmail.validity.tooShort) {
+        contactEmailError.textContent =
+          "Email needs to be at least 3 characters";
+        contactEmailError.style.display = "block";
+        contactEmail.style.border = "1px solid var(--error-color)";
+      } else if (contactEmail.validity.valueMissing) {
+        contactEmailError.textContent = "Email is required";
+        contactEmailError.style.display = "block";
+        contactEmail.style.border = "1px solid var(--error-color)";
+      } else if (contactEmail.validity.typeMismatch) {
+        contactEmailError.textContent = "Please enter a valid email";
+        contactEmailError.style.display = "block";
+        contactEmail.style.border = "1px solid var(--error-color)";
+      } else if (contactEmail.checkValidity()) {
+        contactEmailError.textContent = "";
+        contactEmailError.style.display = "none";
+        contactEmail.style.border = "1px solid var(--valid-color)";
+      }
+    });
+
+    contactSubject.addEventListener("input", () => {
+      if (contactSubject.validity.tooShort) {
+        contactSubjectError.textContent =
+          "Subject needs to be at least 3 characters";
+        contactSubjectError.style.display = "block";
+        contactSubject.style.border = "1px solid var(--error-color)";
+      } else if (contactSubject.validity.valueMissing) {
+        contactSubjectError.textContent = "Subject is required";
+        contactSubjectError.style.display = "block";
+        contactSubject.style.border = "1px solid var(--error-color)";
+      } else if (contactSubject.checkValidity()) {
+        contactSubjectError.textContent = "";
+        contactSubjectError.style.display = "none";
+        contactSubject.style.border = "1px solid var(--valid-color)";
+      }
+    });
+
+    contactMessage.addEventListener("input", () => {
+      if (contactMessage.validity.tooShort) {
+        contactMessageError.textContent =
+          "Message needs to be at least 3 characters";
+        contactMessageError.style.display = "block";
+        contactMessage.style.border = "1px solid var(--error-color)";
+      } else if (contactMessage.validity.valueMissing) {
+        contactMessageError.textContent = "Message is required";
+        contactMessageError.style.display = "block";
+        contactMessage.style.border = "1px solid var(--error-color)";
+      } else if (contactMessage.checkValidity()) {
+        contactMessageError.textContent = "";
+        contactMessageError.style.display = "none";
+        contactMessage.style.border = "1px solid var(--valid-color)";
+      }
+    });
+
+    contactForm.addEventListener("submit", (e) => {
+      if (contactName.validity.valueMissing) {
+        contactNameError.textContent = "Name is required";
+        contactNameError.style.display = "block";
+        contactName.style.border = "1px solid var(--error-color)";
+      }
+
+      if (contactEmail.validity.valueMissing) {
+        contactEmailError.textContent = "Email is required";
+        contactEmailError.style.display = "block";
+        contactEmail.style.border = "1px solid var(--error-color)";
+      }
+
+      if (contactSubject.validity.valueMissing) {
+        contactSubjectError.textContent = "Subject is required";
+        contactSubjectError.style.display = "block";
+        contactSubject.style.border = "1px solid var(--error-color)";
+      }
+
+      if (contactMessage.validity.valueMissing) {
+        contactMessageError.textContent = "Message is required";
+        contactMessageError.style.display = "block";
+        contactMessage.style.border = "1px solid var(--error-color)";
+      }
+
+      if (contactForm.checkValidity()) {
+        e.preventDefault();
+        contactNameError.textContent = "";
+        contactNameError.style.display = "none";
+        contactName.style.border = "1px solid var(--valid-color)";
+        contactEmailError.textContent = "";
+        contactEmailError.style.display = "none";
+        contactEmail.style.border = "1px solid var(--valid-color)";
+        contactSubjectError.textContent = "";
+        contactSubjectError.style.display = "none";
+        contactSubject.style.border = "1px solid var(--valid-color)";
+        contactMessageError.textContent = "";
+        contactMessageError.style.display = "none";
+        contactMessage.style.border = "1px solid var(--valid-color)";
+        window.open(
+          "mailto:kylekeene.welch@gmail.com?" +
+            "&subject=" +
+            contactSubject.value +
+            "&body=" +
+            "Name: " +
+            contactName.value +
+            "%0D%0A%0D%0A" +
+            "Email: " +
+            contactEmail.value +
+            "%0D%0A%0D%0A" +
+            "Message: " +
+            contactMessage.value
+        );
+      } else {
+        e.preventDefault();
+      }
+    });
+  }
+
+  static initPortfolioEventListeners() {
     const searchInput = document.getElementById("search-item");
     const searchForm = document.getElementById("search-form");
     const filterAll = document.getElementById("filter-all");
@@ -309,7 +454,9 @@ class Display {
       this.initProjects();
       this.updateProjects();
       this.updateTags();
-      this.initEventListeners();
+      this.initPortfolioEventListeners();
+    } else if (document.getElementById("contact-form")) {
+      this.initContactEventListeners();
     }
   }
 }
