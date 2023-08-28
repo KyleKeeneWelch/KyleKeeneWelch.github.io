@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: Sign-Up Form | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Sign-Up Form</h1>
+                    <p>June 6th, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/odin-sign-up-form/odin-sign-up-form.png")%>
+                    alt="Sign-Up Form" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">HTML</p>
+                    <p class="project-tag">CSS</p>
+                    <p class="project-tag">JS</p>
+                    <p class="project-tag">Web</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is a project undertaken as part of <span>The Odin Project</span> learning web course
+                teaching <span>HTML</span>, <span>CSS</span> and <span>`JavaScript</span> skills. It involved putting
+                into practice the teachings of <span>JavaScript</span> taught in the previous lessons and required the
+                active use of research and preparation to find the correct JavaScript methods to use.
+            </p>
+            <p>
+                The use of JavaScript is highly introduced within this project to demonstrate my skills in DOM methods
+                and the manipulation of <span>HTML</span> and <span>CSS</span> from <span>JavaScript</span>. The
+                <span>Sign Up Form</span> uses JavaScript and <span>event listeners</span> to detect when the user
+                enters into the several fields in the form and to validate the input to ensure it meets all the
+                validation rules and restrictions. These rules and restrictions are applied through checks from the
+                built-in <span>constraint validation API</span> which will test the input and return a boolean value.
+                The result of a falsy value will cause the script to alter the text content and display of an error
+                message to show the violated rule for the user to make changes. Where the form is not valid, JavaScript
+                uses <span>preventDefault()</span> to prevent the form from being sent off as a Http POST Request.
+                <strong>Project aims to indulge in the validation and creation of the form and does not handle the
+                    request. Please visit <a href="odin-landing-page.html">Odin Landing Page</a> for an example that
+                    handles a request.</strong>
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Preventing Form Submittion When Invalid</strong> - The web page in a realistic scenario
+                    would avoid the overhead of unecessary server requests by preventing the form from being submitted
+                    when it is invalided.</li>
+                <li><strong>Displaying Messages For Violated Validation Rules</strong> - Through the use of event
+                    listeners, the form is capable of displaying messages by checking user input upon entry. The message
+                    displayed will depend on the check failed by the form and is removed once it no longer fails.</li>
+                <li><strong>Constrain Validation API</strong> - To perform such checks we use the Constrain Validation
+                    API as a quick and easy way to check the validity of form inputs. We decide upon the rules we want
+                    to enforce on a particular input, state these in HTML, then perform our own validation using the
+                    functions provided by the API.</li>
+                <li><strong>Appealing Design and Business Sign Up Page</strong> - Maintains an appealing design and
+                    structure that is typical of popular business sign up pages and form elements.</li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Display Structure</h3>
+                <img
+                    src=<%=require("../../assets/images/projects/odin-sign-up-form/display_structure_sign_up_form.png")%>
+                alt="Display Structure"
+                />
+                <p>
+                    Structure includes a left panel with a background and overlay with logo and company name. Also, it
+                    includes sign up text that grabs user's attention, the sign up form with inputs, submit button and a
+                    log in link (login page not implemented).
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Form Labels and Inputs</h3>
+                <img
+                    src=<%=require("../../assets/images/projects/odin-sign-up-form/form_labels_inputs_sign_up_form.png")%>
+                alt="Form Labels and Inputs"
+                />
+                <p>
+                    Form labels are provided with their associated field names as well as the inputs they link to. These
+                    include <span>First Name</span>, <span>Email</span>, <span>Password</span>, <span>Last Name</span>,
+                    <span>Phone Number</span> and <span>Confirm Password</span>.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Form Input Messages</h3>
+                <img
+                    src=<%=require("../../assets/images/projects/odin-sign-up-form/form_input_messages_sign_up_form.png")%>
+                alt="Form Input Messages"
+                />
+                <p>Form input messages are provided when the user enters some input into a field that does not satisfy
+                    one of the validation rules placed on that field. These are displayed below the associated field and
+                    disappear once the checks are valid.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Form Submit</h3>
+                <img src=<%=require("../../assets/images/projects/odin-sign-up-form/form_submit_sign_up_form.png")%>
+                alt="Form Submit"
+                />
+                <p>A valid entry to the fields in the form and clicking on the create account button will create a
+                    <span>POST request</span> object addressed to the same page which is not handled within this
+                    project. Invalid entries are prevented from being created as a <span>request</span> object through
+                    the <span>preventDefault()</span> function.
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>References to Elements</h3>
+                <figure>
+                    <pre>
+                        <code>
+const first_name = document.getElementById('first-name');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const last_name = document.getElementById('last-name');
+const phone_number = document.getElementById('phone-number');
+const confirm_password = document.getElementById('confirm-password');
+const form = document.querySelector('form');
+
+const first_name_error = document.getElementById('first-name-error');
+const email_error = document.getElementById('email-error');
+const password_error = document.getElementById('password-error');
+const last_name_error = document.getElementById('last-name-error');
+const phone_number_error = document.getElementById('phone-number-error');
+const confirm_password_error = document.getElementById('confirm-password-error');
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    A key area in implementing the JavaScript in the project is to use references to elements in the
+                    page. These are variables that store the query results of certain element classes and IDs. The
+                    <span>getElementById</span> function will return only one element upon success. These variables can
+                    be placed at the top of the script and can be accessed within <span>DOM methods</span> which will
+                    manipulate the text content and styling of the referenced elements when required. This makes it
+                    easier to access and less redundant that making references to the same element in several locations.
+                </p>
+            </div>
+            <div>
+                <h3>Using Event Listeners</h3>
+                <figure>
+                    <pre>
+                        <code>
+first_name.addEventListener("input", (e) => {
+    if (first_name.validity.tooShort) {
+        first_name_error.textContent = "First Name needs to have at least 3 characters";
+        first_name_error.style.display = 'inline-block';
+    }
+    else if(first_name.validity.valueMissing) {
+        first_name_error.textContent = "First Name is required";
+        first_name_error.style.display = 'inline-block';
+    }
+    else if (first_name.checkValidity()) {
+        first_name_error.textContent = '';
+        first_name_error.style.display = 'none';
+    }
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    In order to provide the interactivity of the JavaScript script <span>event listeners</span> were
+                    used. These would pick up an assigned event to elements in the page such as the <span>input</span>
+                    event to the input fields. Once an entry was detected, the script would run the function provided
+                    with the assignment of the listener and would place the event as the argument. This function will
+                    provide the conditionals to check for whether the input field's value meets the criteria set.
+                    Through the <span>Constraint Validation API</span>'s functions, we can check to see if the validity
+                    of a particular attribute of an input field returns a true or false value. This can then be used to
+                    display validation messages under the appropriate field with the correct message to inform the user
+                    with the change needed to be met in order to satisfy the validation.
+                </p>
+            </div>
+            <div>
+                <h3>Form Validation and Password Match</h3>
+                <figure>
+                    <pre>
+                        <code>
+form.addEventListener("submit", (e) => {
+    let pass1 = password.value;
+    let pass2 = confirm_password.value;
+    if (form.checkValidity()) {
+        if (pass1 == pass2) {
+            confirm_password_error.textContent = "";
+            confirm_password_error.style.display = 'none';
+        }
+        else {
+            confirm_password_error.textContent = "Passwords do not match";
+            confirm_password_error.style.display = 'inline-block';
+            e.preventDefault();
+        }
+    }
+    else {
+        e.preventDefault();
+    }
+})
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The form itself also has an event listener within the implementation of the project and this is for
+                    the submit event. When the form's submit event has been detected, the function within the listener
+                    will be run. In this case, we will check for the value of the password fields to see if they match
+                    and to display the validation message under the confirm password field if not. In the cases where
+                    the form does not pass a validation check or the passwords do not match, we use the
+                    <span>preventDefault()</span> function to stop the default action of the event and to prevent the
+                    form creating and submitting a request object.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-sign-up-form" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-sign-up-form" target="_blank">Kyle Keene-Welch |
+                        Sign-Up Form</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

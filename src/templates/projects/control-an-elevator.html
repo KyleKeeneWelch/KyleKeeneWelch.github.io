@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Control An Elevator | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Control An Elevator</h1>
+                    <p>October 16th, 2022</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/control-an-elevator/control-an-elevator.png")%>
+                    alt="Control
+                    An Elevator" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">C#</p>
+                    <p class="project-tag">.NET</p>
+                    <p class="project-tag">GUI</p>
+                    <p class="project-tag">MSAccess</p>
+                    <p class="project-tag">Disconnected Model</p>
+                    <p class="project-tag">Event Driven</p>
+                    <p class="project-tag">Entity Framework</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project uses <span>C#</span> and the popular <span>.NET framework</span> by Microsoft to
+                simulate the actions and animation of an elevator.
+            </p>
+            <p>
+                Using an <span>event driven approach</span>, a user will interact with a provided graphical user
+                interface and will select the appropriate floor the elevator should go to. The program will respond
+                through the various assigned delegates and event handlers to open and close the elevator doors, change
+                the floor indicators, display the control panel and display the elevator “log”. Trips are stored within
+                a <span>MSAccess database</span> and is accessed and updated using the command builder in the
+                <span>Entity Framework</span>. Other great features include asynchronous operations using
+                <span>background worker</span> and the use of the <spa>disconnected database model</spa>.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>MSAccess Database Connectivity</strong> - Application instantiates and populates an MSAccess
+                    database and uses related Entity Framework functions to update and get changes to the data and
+                    database schema so they are concurrent.</li>
+                <li><strong>Disconnected Model</strong> - Application uses a local dataset that it changes in accordance
+                    to the input from the user. This dataset is pushed forward and a commit to the database is made when
+                    the user chooses to “save” from the save button instead of making a commit after each action. This
+                    saves server processing time and reduces unnecessary overhead.</li>
+                <li><strong>Asynchronous Operations</strong> - Utilizing background worker service to run select
+                    operations on a separate thread. Allows user to continue to move the elevator between floors all
+                    while saving or loading the log asynchronously.</li>
+                <li><strong>Command Builder</strong> - Abstracts redundant command building processes through the use of
+                    OleDB Command Builder. More focus is on application logic rather than connectivity and commands to
+                    the database.</li>
+                <li><strong>Paint Tools and Timer</strong> - Uses a timer that periodically checks the condition of the
+                    elevator and refreshes the drawings of the doors in correspondance to the current condition. Creates
+                    the “animation” effect through the redrawing of elevator doors in the correct location per frame.
+                </li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Elevator Idle</h3>
+                <img src=<%=require("../../assets/images/projects/control-an-elevator/elevatorIdle.png")%> alt="Elevator
+                Idle" />
+                <p>
+                    Here we can see the graphical user interface in its idle state. The floors, call buttons and panel
+                    and the doors can be seen on the left. The elevator “log” or events can be seen on the right with
+                    buttons to save, load, clear and delete trips. Finally an additional close button is provided
+                    alternative to the one found on the window.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Elevator Moving</h3>
+                <img src=<%=require("../../assets/images/projects/control-an-elevator/elevatorMoving.png")%>
+                alt="Elevator Moving">
+                <p>
+                    When we have pressed a button to either call or move the elevator to a floor, the doors will open to
+                    allow individuals to enter, close and then after a short pause, the process will repeat. The doors
+                    will now however open on the destination floor and the floor indicators as well as the panel will
+                    change to reflect this. The elevator events will also add the new trip.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Elevator Log Saved While Moving</h3>
+                <img src=<%=require("../../assets/images/projects/control-an-elevator/elevatorSave.png")%> alt="Elevator
+                Log Saved While Moving">
+                <p>When we save we will asynchronously connect to the database and will commit the local dataset to the
+                    data stored within the table. This means that we can still move our elevator to a floor while the
+                    application saves the trips in the elevator “log” excluding the new trip. The save progress can be
+                    found at the top right as a progress bar.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Moving The Elevator</h3>
+                <figure>
+                    <pre>
+                        <code>
+private void moveElevator(int destination)
+{
+    if (checkFloor(destination) == true)
+    {
+        return;
+    }
+
+    addTrip(destination);
+    isIdle = false;
+    isOpening = true;
+    elevatorDestination = destination;
+
+    switch (destination)
+    {
+        case 0:
+            btnRequest0.Enabled = false;
+            btnRequest1.Enabled = true;
+            break;
+        case 1:
+            btnRequest1.Enabled = false;
+            btnRequest0.Enabled = true;
+            break;
+    }
+    updateList();
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    One of the main functions of the implementation was the <span>moveElevator</span> function. This
+                    would check whether we were already on the destination floor otherwise would add the trip to the
+                    events, set the condition of the doors and the destination and would enable or disable the
+                    appropriate buttons depending on what floor the elevator is going to. <span>Updatelist</span>
+                    would refresh the list box that is shown to the user containing the local dataset.
+                </p>
+            </div>
+            <div>
+                <h3>Loading and Saving</h3>
+                <figure>
+                    <pre>
+                        <code>
+private void loadData()
+{
+    try
+    {
+        adapter.Fill(ds);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK);
+    }
+}
+
+private void saveToDb()
+{
+    if (ds.Tables[0].Rows.Count != 0)
+    {
+        try
+        {
+            DataSet dataSetChanges = ds.GetChanges();
+            adapter.Update(dataSetChanges);
+            ds.Tables[0].AcceptChanges();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+        }
+    }
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Another important area of the application was the loading and saving to and from the database. Here
+                    we have the <span>loadData</span> and <span>saveToDb</span> functions which make use of the
+                    <span>OleDbDataAdapter</span>’s methods <span>Fill</span>
+                    and <span>Update</span>. The application will use <span>Fill</span> to try to load the data from the
+                    table in the database
+                    into the local dataset. Using <span>GetChanges</span> on the local dataset, the application will try
+                    to use
+                    <span>Update</span> to build the needed commands to reflect the changes to the data on the database
+                    (this is the
+                    <span>disconnected model</span>). Upon success, the application will commit these changes.
+                </p>
+            </div>
+            <div>
+                <h3>Timer and Refresh</h3>
+                <figure>
+                    <pre>
+                        <code>
+private void tmr_Tick(Object sender, EventArgs e)
+{
+    if (!isIdle)
+    {
+        if (elevatorStatus == 0)
+        {
+            pan0.Refresh();
+        }
+        else
+        {
+            pan1.Refresh();
+        }
+    }
+}
+
+private void pan0_paint(object sender, PaintEventArgs e)
+{
+    if (isIdle)
+    {
+        elevatorDoors(pan0);
+    }
+    else if (isOpening)
+    {
+        openDoors(pan0);
+    }
+    else if (isClosing)
+    {
+        closeDoors(pan0);
+    }
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Within the “animation” aspect of the application, we have used a <span>timer</span> and the
+                    <span>refresh</span> event of a panel to emulate this effect. The <span>timer</span> will run its
+                    <span>tick event</span> periodically after a predetermined amount of time. Once this runs, it will
+                    check the current condition of the elevator. If idle, the elevator is not redrawn. If the status is
+                    0 or on ground floor then refresh the ground floor panel, otherwise refresh the first floor panel.
+                    Note that additional floors can easily be added through the slight modification of conditions like
+                    these.
+                </p>
+                <p>
+                    The refresh event will run the <span>paint event handler</span> for the appropriate floor panel. If
+                    the elevator is idle, the floor panel is redrawn to draw the doors once. If the doors are opening,
+                    the floor panel is redrawn to animate doors opening. If the doors are closing, the floor panel is
+                    redrawn to animate the doors closing.
+                </p>
+            </div>
+            <div>
+                <h3>Background Worker</h3>
+                <figure>
+                    <pre>
+                        <code>
+private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+{
+    BackgroundWorker helperBW = sender as BackgroundWorker;
+    int arg = (int)e.Argument;
+    int percentage;
+        
+    bool anyChanges = ds.GetChanges() != null;
+
+    if (anyChanges)
+    {
+        DialogResult result = MessageBox.Show("Saving. Please do not close or remove power from your system.", "Saving", MessageBoxButtons.OKCancel);
+
+        if (result == DialogResult.Cancel)
+        {
+            backgroundWorker1.CancelAsync();
+        }
+
+        saveToDb();
+
+        for (int i = 0; i < arg; i++)
+        {
+            Thread.Sleep(100);
+            percentage = (i + 1) * 100 / arg;
+            helperBW.ReportProgress(percentage);
+
+            if (helperBW.CancellationPending)
+            {
+                e.Cancel = true;
+                e.Result = i;
+                break;
+            }
+        }
+        e.Result = arg;
+    }
+    else
+    {
+        MessageBox.Show("There have been no changes to save", "Error", MessageBoxButtons.OK);
+    }
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    A final important feature in implementation is the use of the background worker service which allows
+                    the application to perform asynchronous operations on a seperate thread. The
+                    <span>backgroundworker_DoWork</span> event handler will run when the background worker is set. The
+                    event handler will assign a variable <span>arg</span> with the value of the asynchronous operation.
+                    If there are any changes to the dataset, alert the user that the application is saving and run
+                    <span>saveToDb</span>. Convert the value of <span>arg</span> to percentage and update the progress
+                    bar through the <span>ReportProgress</span> event and <span>ProgressChanged</span> event handler.
+                    Set the result as <span>arg</span> as operation succeeded which runs the
+                    <span>RunWorkerCompleted</span> event handler. If at any point the user cancels, set as cancelled
+                    and show save cancelled message.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/control-an-elevator" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/control-an-elevator" target="_blank">Kyle Keene-Welch |
+                        Control An Elevator</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

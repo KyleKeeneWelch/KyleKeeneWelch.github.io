@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Portfolio | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html" class="active">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="search-container">
+                <form id="search-form" novalidate autocomplete="off">
+                    <input type="input" id="search-item" name="search-item" placeholder="Search Project" minlength="3"
+                        maxlength="200" required />
+                    <button type="submit" id="btn-submit-search"><i
+                            class="fa-solid fa-magnifying-glass icon"></i></button>
+                </form>
+            </div>
+        </section>
+        <div class="dashboard-container">
+            <section>
+                <div class="tags-container-header">
+                    <p>Filter</p>
+                    <div id="filter-collapse">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="tags-container" id="tags-container">
+                    <a id="filter-all" class="active">All</a>
+                </div>
+            </section>
+            <section>
+                <p>Search Results</p>
+                <div class="projects-container" id="projects-container">
+
+                </div>
+            </section>
+        </div>
+        <br>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>
