@@ -109,10 +109,6 @@ h3 {
     font-size: 20px;
 }
 
-span {
-    color: var(--color-main);
-}
-
 nav {
     display: flex;
     justify-content: space-evenly;
@@ -154,6 +150,16 @@ a {
     }
 }
 
+p > span {
+    line-height: 250%;
+}
+
+figure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 pre,
 code {
     border: 1px solid var(--color-main);
@@ -162,12 +168,23 @@ code {
 }
 
 code {
-    padding: 1px 5px;
+    width: 100%;
+    font-family: monospace;
 }
 
 pre {
-    padding: 8px 12px;
-    overflow-x: auto;
+    padding: var(--spacing-md);
+    overflow: auto;
+    width: 75%;
+    max-height: 500px;
+
+    &::-webkit-scrollbar:horizontal {
+        height: 0.25em;
+    }
+
+    &::-webkit-scrollbar:vertical {
+        width: 0.25em;
+    }
 
     > code {
         border: 0;
@@ -182,6 +199,14 @@ hr {
     border-top: 1px solid var(--color-main);
     color: var(--color-main);
     height: 0px;
+}
+
+span:not(.error) {
+    background-color: var(--color-main);
+    border: 1px solid var(--white);
+    font-family: monospace;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
 }
 
 
@@ -216,6 +241,11 @@ button {
     & div {
         padding: var(--spacing-md);
         text-align: center;
+
+        & h1 strong {
+            color: var(--color-main);
+            font-weight: normal;
+        }
     }
 }
 
@@ -607,6 +637,7 @@ button {
     border-radius: var(--border-radius);
     height: 300px;
     width: 100%;
+    margin-bottom: var(--spacing-md);
 
     & .project-details {
         padding: var(--spacing-md);
@@ -661,26 +692,6 @@ button {
         & .project-tags {
             grid-column: 1 / -1;
             grid-row: 4 / 5;
-
-            display: flex;
-            column-gap: var(--spacing-xs);
-            align-items: center;
-            overflow: auto;
-            height: 100%;
-
-            & p {
-                width: fit-content;
-                background-color: var(--color-main);
-                border-radius: 15px;
-                padding-left: var(--spacing-sm);
-                padding-right: var(--spacing-sm);
-                padding-top: var(--spacing-xs);
-                padding-bottom: var(--spacing-xs);
-            }
-
-            &::-webkit-scrollbar {
-                height: 0.30em;
-            }
         }
     }
 
@@ -698,6 +709,30 @@ button {
 
     &.animate {
         animation: projectMoveIn 1000ms ease-in-out 0s 1 normal forwards;
+    }
+}
+
+.project-tags {
+    display: flex;
+    column-gap: var(--spacing-xs);
+    align-items: center;
+    overflow: auto;
+    height: 100%;
+
+    & p {
+        width: fit-content;
+        background-color: var(--color-main);
+        border-radius: 15px;
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+        padding-top: var(--spacing-xs);
+        padding-bottom: var(--spacing-xs);
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    &::-webkit-scrollbar {
+        height: 0.30em;
     }
 }
 
@@ -734,6 +769,67 @@ button {
 
     & svg {
         font-size: 75px;
+    }
+}
+
+.project-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    & .project-featured-image img {
+        width: 75%;
+        height: auto;
+    }
+
+    & .project-tags {
+        justify-content: center;
+    }
+}
+
+.project-feature-container {
+    & div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    & img {
+        max-width: 50%;
+        max-height: 500px;
+        /* min-height: 190px; */
+        /* min-width: 290px; */
+        width: auto;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+}
+
+.github-repo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-main);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+        width: fit-content;
+
+        & a {
+            color: var(--white);
+        }
+
+        & svg {
+            font-size: 50px;
+        }
     }
 }
 
@@ -897,6 +993,18 @@ footer {
         padding-left: 5%;
         padding-right: 5%;
     }
+    .project-intro .project-tags {
+        justify-content: start;
+    }
+    figure {
+        margin: 0px;
+    }
+    pre {
+        width: 100%;
+    }
+    .project-feature-container div {
+        flex-direction: column;
+    }
 }
 
 @media only screen and (min-width: 850px) {
@@ -939,6 +1047,9 @@ footer {
         & a img {
             height: 180px !important;
         }
+    }
+    .project-feature-container img {
+        max-width: 85%;
     }
 }
 

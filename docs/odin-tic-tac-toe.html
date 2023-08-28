@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: Tic-Tac-Toe | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Tic-Tac-Toe</h1>
+                    <p>June 21st, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=1db3e27b030e9f852f0b.png
+                    alt="Tic-Tac-Toe" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">HTML</p>
+                    <p class="project-tag">CSS</p>
+                    <p class="project-tag">JS</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Factory Functions</p>
+                    <p class="project-tag">IIFE</p>
+                    <p class="project-tag">Object Oriented</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is a project undertaken as part of <span>The Odin Project</span> learning web course
+                teaching <span>HTML</span>, <span>CSS</span> and <span>JavaScript</span> skills. It involved putting
+                into practice the teachings of <span>Factory Functions</span> and <span>IIFEs</span> taught in the
+                previous lessons to create effective data structures and organized code.
+            </p>
+            <p>
+                The project aims to emulate the popular Tic-Tac-Toe game for two players. It involves display and game
+                elements which will show current game output and process user input to update the state of the game.
+                Through the use of <span>factory functions</span> and <span>IIFE</span>s we can create application
+                objects upon the script running in the browser which allows us to prepare the page to receive and handle
+                player input.
+            </p>
+            <p>
+                Much of the data is handled through an Object-Oriented approach in JavaScript but applies <span>factory
+                    functions</span> as the take on creating objects instead of the popular use of
+                <span>constructors</span>. <span>Factory functions</span> enable the developer to return only the
+                properties and functions that they want to be publicly accessed and to essentially hide the rest.
+                Returned public elements still have access to private, hidden elements in the object and this enforces
+                the concept of <span>closure</span>. We prevent errors and allow for easier debugging and modification
+                of code by using <span>Factory functions</span> this way.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Two Player</strong> - Provides support for two players to play the game each with there own
+                    sign. Rounds alternate meaning it is the other player's go once a field has been selected and a sign
+                    placed.</li>
+                <li><strong>Outcome Modal</strong> - After each round played, the application will check the winning
+                    combinations to see if the current player has three consecutive signs in each of the field's indexs.
+                    The outcome is displayed within a modal shown to the user at the center of the screen alongside a
+                    restart button.</li>
+                <li><strong>Draws</strong> -If no player is able to receive a winning combination after 9 rounds, then
+                    the outcome modal is displayed with text declaring the game a draw.</li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Starting State</h3>
+                <img src=c432778fc11456e19ff7.png
+                alt="Starting State"
+                />
+                <p>
+                    The user interface upon start consists of a header, footer, start message and start button. The user
+                    is prompted to press the start button before the game starts and this will allow the application to
+                    show game elements.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Grid Structure</h3>
+                <img src=1db3e27b030e9f852f0b.png
+                alt="Grid Structure"
+                />
+                <p>
+                    Grid is used to create the game board and to assign the array elements to each field to represent
+                    the current state of the game.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Outcome Modal</h3>
+                <img src=222dc42006299260629d.png
+                alt="Outcome Modal"
+                />
+                <p>The outcome modal is a popup that appears at the center of the screen alongside an overlay that
+                    places emphasis on the center. Depending on the outcome of the game, the modal will display a
+                    different message. Either Player X has won, Player O or a draw. This is followed by a restart button
+                    that resets the display and game elements.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Draw</h3>
+                <img src=f32a88064bca4d7d9649.png alt="Draw"
+                />
+                <p>The outcome modal with a draw outcome.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>IIFE</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Keep track of grid array and set and get array fields.
+const GameGrid = (() => {
+    const grid = ['', '', '', '', '', '', '', '', ''];
+
+    const setField = (index, sign) => {
+        if (index > grid.length) return;
+        grid[index] = sign;
+        };
+    
+        const getField = (index) => {
+        if (index > grid.length) return;
+        return grid[index];
+        };
+    
+        const restart = () => {
+        for (let i = 0; i < grid.length; i++) {
+            grid[i] = '';
+        }
+        }
+
+        return {setField, getField, restart};
+})();
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    <span>IIFE</span>s are known as Immediately Invoked Function Expressions and these, as the name
+                    suggests, are functions that run immediately within the script. These allow for developers to
+                    specify functionality that they want to make effect immediately upon the page loading. In this case,
+                    we want to have our objects created and our event listeners assigned upon the page loading so the
+                    user play the game without additional setup.
+                </p>
+            </div>
+            <div>
+                <h3>Factory Functions</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Assign X or O to player.
+const Player = (sign) => {
+    const _sign = sign;
+
+    const getSign = () => {
+        return _sign
+    }
+
+    return {getSign};
+};
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    We use <span>Factory functions</span> within the implementation of this project as an alternative to
+                    <span>constructors</span> and to enforce <span>closure</span>. With constructors, we pass in values
+                    and use the <span>new</span> keyword to instantiate an object with the values assigned as
+                    properties. Any methods defined within the object are accessible from the new object. Factory
+                    functions instead have values assigned and only the properties and methods that we want to be
+                    accessed publicly are returned. Public functions can still access private properties and methods as
+                    they belong within the same scope. We use this concept of closure to define private and public
+                    functions and properties to assist in debugging, reducing errors and better organizing code. In this
+                    case, we use a factory function to define a new Player object. This object will return the
+                    <span>getSign()</span> function therefore making it publicly accessible.
+                </p>
+            </div>
+            <div>
+                <h3>Root Variables and Default Styling</h3>
+                <figure>
+                    <pre>
+                        <code>
+:root {
+    --color-main: #c14953;
+    --color-secondary: #2d2d2a;
+    --color-background: #4c4c47;
+    --black: #000;
+    --white: #FFF;
+    --valid-color: #9DF148;
+    --error-color: #e22121;
+    --border-radius: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+    --container-width: 90vw;
+    --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    }
+    
+body {
+    background-color: var(--color-background);
+    color: var(--black);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    word-wrap: break-word;
+    display: block;
+    color: var(--white);
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation makes use of root variables and default styling to improve the development
+                    process and the quality of code. Root variables allow us to specify the website's theme and the
+                    colours we wish to use in different areas. By specifying the variable name, we can reference the
+                    colour and can apply this to element's <span>color</span> and <span>background-color</span>
+                    properties. Default styling is styling applied to all elements to provide a base style that can be
+                    inherited by each element. This includes setting the box-sizing, setting the margin and padding to 0
+                    and other things such as the font-family and size.
+                </p>
+            </div>
+            <div>
+                <h3>Filter, Some, Every</h3>
+                <figure>
+                    <pre>
+                        <code>
+const winCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+]
+
+// True if there is a winning combination that the current player's sign has signs in. 
+return winCombinations.filter(
+    (combination) => combination.includes(index)
+    ).some(
+    (possibleCombination) => possibleCombination.every(
+        (field) => GameGrid.getField(field) === getCurrentPlayerSign()
+    )
+    )
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    We use the <span>.filter</span>, <span>.some</span>, and <span>.every</span> functions from the
+                    <span>Array.Prototype</span> to determine whether the current player has won. Firstly we define the
+                    winning combinations of indexes which represent the location of each of the fields in the game. We
+                    then use filter to return only true combinations that meet the following conditions: If a
+                    combination has the index of the field the user has selected, then using some to return true if at
+                    least one combination meets the following condition: If each index contains the current player's
+                    sign for each index in the possible combination. We use <span>.every()</span> to make sure every
+                    index contains the sign. If a winning combination is found then true is returned and the application
+                    will run additional functions to handle end game state.
+                </p>
+            </div>
+            <div>
+                <h3>Event Listeners</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Hides start elements and displays main elements.
+startBtn.addEventListener("click", (e) => {
+    e.target.parentNode.parentNode.style.display = 'none';
+    mainContainer.style.display = 'flex';
+});
+
+// Each field sets the current player's sign if not already assigned and game not over.
+fields.forEach(field => {
+    field.addEventListener("click", (e) => {
+        if (GameController.getGameOver() || e.target.textContent !== "") return;
+        GameController.playRound(parseInt(e.target.dataset.index));
+        updateGrid();
+    })
+});
+
+// Resets grid, display and game elements.
+restartBtn.addEventListener("click", (e) => {
+    GameController.restart();
+    GameGrid.restart();
+    DisplayController.setRoundText(1)
+    Modal.closeModal();
+    updateGrid();
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    We use event listeners and DOM methods in our user interface implementation to allow us to detect
+                    when the user has performed a specific event and to provide an appropriate response. The "click"
+                    event on the start and restart buttons allow us to detect whether a user has pressed the buttons and
+                    to handle starting or restarting the game through the relevant executed code that follows. The
+                    "click" event assigned to each field in the grid will play a round of the game if the field doesn't
+                    already have a sign within or the game is not over.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-tic-tac-toe" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-tic-tac-toe" target="_blank">Kyle Keene-Welch |
+                        Tic-Tac-Toe</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

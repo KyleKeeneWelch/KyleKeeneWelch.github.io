@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Restaurant Page | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Restaurant Page</h1>
+                    <p>June 28th, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/odin-restaurant-page/odin-restaurant-page.png")%>
+                    alt="Restaurant Page" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">HTML</p>
+                    <p class="project-tag">CSS</p>
+                    <p class="project-tag">JS</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Webpack</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">HTML Webpack Plugin</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is a project undertaken as part of <span>The Odin Project</span> learning web course
+                teaching <span>HTML</span>, <span>CSS</span> and <span>JavaScript</span> skills. It involved putting
+                into practice the teachings of <span>Webpack</span>, <span>Node Package Manager</span>, and the
+                <span>DOM</span> to create an efficient, JavaScript-based restaurant page.
+            </p>
+            <p>
+                The project aims to put into practice the bundling and benefits of Webpack and get comfortable with
+                packages and config files. A challenge that this project also provides is the need to generate HTML
+                files dynamically through the use of programatically defined elements in JavaScript DOM. A plugin known
+                as the <span>HTML Webpack Plugin</span> is used with multiple instances to automatically generate HTML
+                files with the relevant chunks to assign scripts. Scripts contain imports with the dependancies required
+                for the page they create and are bundled by webpack and placed in a distribution folder.
+            </p>
+            <p>
+                The project itself contains three pages, a home, menu and contact page. Content is typical of a Japanese
+                restaurant food provider and do not reflect the actual functions of real-world fast-food chains. We use
+                this template to demonstrate skills developed in the related areas and we are able to generate
+                interactive, responsive pages all through JavaScript.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>JavaScript-Based</strong> - Page structure and interactivity is handled through JavaScript
+                    and the use of HTML Webpack Plugin to generate HTML files. Scripts are injected into generated pages
+                    through the specified entry points and chunks of each page. Scripts contain DOM statements and
+                    methods to create and append elements to the body of the document.</li>
+                <li><strong>Webpack Bundling and Optimization</strong> - Webpack scans the imports made from files in
+                    the src folder and bundles these for optimization purposes. Files include .ttf truetype, .css
+                    cascading stylesheets, and .jpg images. We use packages such as `css loader` and `style loader` to
+                    access css content and inject this into the style tags of generated HTML documents.</li>
+                <li><strong>Responsive using Grid and Media Queries</strong> - Pages are responsive with support for
+                    both desktop and mobile using the tools of Grid and Media Queries. A key functionality used is the
+                    use of <span>repeat()</span>, <span>autofill</span> and <span>minmax</span> with Grid to create a
+                    complex, responsive grid layout in the menu. Media Queries specify breakpoints of which we alter
+                    elements to accomodate the new viewport size.</li>
+                <li><strong>Novalidate and JavaScript Validation API</strong> - The contact form although simple, uses
+                    the JavaScript Validation API to assess validation rules and the validity of the form through the
+                    script instead of the HTML page. We use `novalidate` to specify that we will handle validation
+                    ourselves and we assign error messages on each field to reflect the breaches to validation rules
+                    upon entry.</li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Home Page</h3>
+                <img src=<%=require("../../assets/images/projects/odin-restaurant-page/home_page_restaurant_page.png")%>
+                alt="Home Page"
+                />
+                <p>
+                    The Home page contains a restaurant background image, header and an area to draw user attension to
+                    order at the restaurant. It uses a simple design for its navigation and footer and is used amongst
+                    the rest of the pages for consistency of design.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Menu Page</h3>
+                <img src=<%=require("../../assets/images/projects/odin-restaurant-page/menu_page_restaurant_page.png")%>
+                alt="Menu Page"
+                />
+                <p>
+                    The Menu page contains a header, navigation and footer much like the home page. It also contains a
+                    menu list container on the side and menu item cards within the main portion of the page. Clicking on
+                    a menu category of menu item will change the item cards listed within the display container. Item
+                    cards will change size and will drop columns depending on the size of the viewport. They contain a
+                    menu item image, name, price and buttons to add to order and view dietry information (Out of scope).
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Contact Page</h3>
+                <img
+                    src=<%=require("../../assets/images/projects/odin-restaurant-page/contact_page_restaurant_page.png")%>
+                alt="Contact Page"
+                />
+                <p>The contact page contains a simple form for entering information and provides validation for proper
+                    user input. The submittion however is not properly handled and instead uses the <span>mailto</span>
+                    function as a dummy action as accessing input is not the aim of this project. A random number and an
+                    email is provided as an alternative to contact the restaurant.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Webpack Config</h3>
+                <figure>
+                    <pre>
+                        <code>
+entry: {
+    'index': './src/scripts/index.js',
+    'menu': './src/scripts/menu.js',
+    'contact': './src/scripts/contact.js'
+    },
+    devtool: 'inline-source-map',
+    plugins: [
+    new HtmlWebpackPlugin({
+        inject: true,
+        title: 'Odin - Restaurant Page Home',
+        filename: 'index.html',
+        chunks: ['index']
+    }),
+    new HtmlWebpackPlugin({
+        inject: true,
+        title: 'Odin - Restaurant Page Menu',
+        filename: 'menu.html',
+        chunks: ['menu']
+    }),
+    new HtmlWebpackPlugin({
+        inject: true,
+        title: 'Odin - Restaurant Page Contact',
+        filename: 'contact.html',
+        chunks: ['contact']
+    }),
+    ],
+    output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    },
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>webpack.config.js</span> file is the file that configures webpack for use within our
+                    pages. We define the entry points to specify the files we want to read, bundle and optimize for our
+                    output. We define a new <span>HTMLWebpackPlugin</span> for each HTML page we want to dynamically
+                    generate and specify the title, filename and chunks of which we should inject into each. The chunks
+                    specify which of the entry points we want the output to be injected in each file and therefore, each
+                    file has its own allocated, optimized script where we can therefore define DOM methods and
+                    interactivity for the page. The output generated a <span>____.bundle.js</span> file with its name
+                    dynamically assigned depending on the entry point being processed. We place the output within the
+                    distribution folder as opposed to our source files in the src folder. <span>clean</span> set to true
+                    will clear the distribution folder before we place new processed documents.
+                </p>
+            </div>
+            <div>
+                <h3>Package.json</h3>
+                <figure>
+                    <pre>
+                        <code>
+{
+    "name": "odin-restaurant-page",
+    "version": "1.0.0",
+    "description": "How to interact and run the restaurant page.",
+    "private": true,
+    "main": "./scripts/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "webpack --watch",
+        "start": "webpack serve --open",
+        "server": "node server.js",
+        "build": "webpack"
+    },
+    "keywords": [],
+    "author": "Kyle Keene-Welch",
+    "license": "ISC",
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.0",
+        "html-webpack-plugin": "^5.5.3",
+        "webpack": "^5.88.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "css-loader": "^6.8.1",
+        "style-loader": "^3.3.3"
+    }
+    }
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>package.json</span> file is typical of the use of the <span>Node Packagae Manager</span>.
+                    It specifies the dependancies that belong to our web application and these are categorized within
+                    dev-dependancies and dependancies for the development and production stages. This file makes it
+                    easier to share and access software as it defines a centralized list of dependancies for the
+                    viewer/editor to install before they can access the application as the developer intended. We also
+                    provide a list of <span>scripts</span> which provide helpful commands and executables from the use
+                    of that command that help during the development process. <span>start</span> for example, will open
+                    a new <span>express</span> server on the configured port so that changes made during code are
+                    reflected instantly on the browser through the server.
+                </p>
+            </div>
+            <div>
+                <h3>Root Variables and Default Styling</h3>
+                <figure>
+                    <pre>
+                        <code>
+:root {
+    --color-main: #DC1C1C;
+    --color-secondary: #dc5c1c;
+    --color-background: #000103;
+    --black: #000;
+    --white: #FFF;
+    --valid-color: #9DF148;
+    --error-color: #e22121;
+    --border-radius: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+    --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+@font-face {
+    font-family: 'RockBilly';
+    src: url('../assets/Rockybilly.ttf') format('truetype');
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    word-wrap: break-word;
+    display: block;
+    min-height: 100vh;
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation makes use of root variables and default styling to improve the development
+                    process and the quality of code. Root variables allow us to specify the website's theme and the
+                    colours we wish to use in different areas. By specifying the variable name, we can reference the
+                    colour and can apply this to element's <span>color</span> and <span>background-color</span>
+                    properties. Default styling is styling applied to all elements to provide a base style that can be
+                    inherited by each element. This includes setting the box-sizing, setting the margin and padding to 0
+                    and other things such as the font-family and size.
+                </p>
+            </div>
+            <div>
+                <h3>JavaScript Modules</h3>
+                <figure>
+                    <pre>
+                        <code>
+export function createFooter() {
+    const footer = document.createElement('footer');
+    const footerText = document.createElement('p');
+    const footerLink = document.createElement('a');
+    const footerIcon = document.createElement('i');
+
+    footerText.textContent = 'Kyle Keene-Welch © 2023';
+    footerLink.href = "https://github.com/KyleKeeneWelch";
+    footerIcon.classList.add('fa-brands');
+    footerIcon.classList.add('fa-github');
+    footerIcon.ariaHidden = 'true';
+
+    footerLink.appendChild(footerIcon);
+    footer.appendChild(footerText);
+    footer.appendChild(footerLink);
+
+    return footer;
+}
+
+...
+
+import { createMain, createFooter, createHeader, createNavigation, createContent } from './main.js';
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Within the implementation, we use JavaScript modules to export functions that help avoid redundant
+                    functionality between scripts. This includes things such as recreating the code for generating a
+                    header or footer in each file. We can instead define this once within a "main" script that can then
+                    be used as an import amongst several other scripts that make use of the functionality in the module.
+                </p>
+            </div>
+            <div>
+                <h3>Arrays and .split, .join</h3>
+                <figure>
+                    <pre>
+                        <code>
+import MixedPlatter from '../assets/mixed-platter.jpg';
+import CrispyAromaticDuck from '../assets/crispy-aromatic-duck.jpg';
+import MisoSoup from '../assets/miso-soup.jpg';
+import SpareRibs from '../assets/spare-ribs-in-syrup.jpg';
+import JapaneseTofu from '../assets/japanese-tofu.jpg';
+...
+
+const menu = [
+    [
+        'Mixed Platter - £11.50',
+        'Crispy Aromatic Duck - £11.80',
+        'Miso Soup - £4.00',
+        'Spare Ribs in Syrup - £6.20',
+        'Japanese Tofu - £5.20',
+    ],
+    [
+        'Chicken Curry - £9.00',
+        'Beef in Black Bean Sauce - £8.50',
+        'Satay Pork - £8.50',
+        'Sweet & Sour Chicken - £8.50',
+        'Sweet & Sour Chicken Balls - £8.00'
+    ],
+...
+
+const displayImages = [
+    [
+        MixedPlatter,
+        CrispyAromaticDuck,
+        MisoSoup,
+        SpareRibs,
+        JapaneseTofu,
+    ],
+    [
+        ChickenCurry,
+        BeefBlackBean,
+        SatayPork,
+        SweetSourChkn,
+        SweetSourChknBalls
+    ],
+...
+
+menu.forEach((category) => {
+    const categoryText = getCategory(category);
+    const itemCategory = document.createElement('p');
+    itemCategory.textContent = categoryText;
+    itemCategory.classList.add('item-category');
+
+    itemCategory.addEventListener('click', () => {
+        clearDisplayGrid();
+        displayItems(categoryText.split(' ').join(''));
+    });
+
+    menuItemsContainer.appendChild(itemCategory);
+
+    category.forEach((menuItem) => {
+        const itemContainer = document.createElement('div');
+        itemContainer.classList.add('item-container');
+        itemContainer.classList.add(categoryText.split(' ').join(''));
+...
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The approach to the menu takes upon the form of <span>Imports</span>, <span>Arrays</span> and
+                    <span>String.prototype</span> methods. We aim to reflect the current display of item cards based
+                    upon a user clicking on an item belonging to a category or the category itself. To do this, we
+                    define a menu array with arrays as its elements. Each sub array corresponds to a different menu
+                    category while the elements of such arrays represent items and prices separated with a "-". We also
+                    replicate this structure within an array with menu images so array items link to their image. To
+                    access a menu item, we use <span>forEach()</span> on both the menu and each category itself to
+                    generate item cards with only the items in the selected category. To provide the text content of
+                    elements we use <span>.split()</span> to split and obtain only the name or price and
+                    <span>.join</span> in instances where we need to assign a class without the error of a space for
+                    example. We reset the inner HTML of the display container and append item cards each time the user
+                    triggers the click event listener on a menu item or category.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-restaurant-page" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-restaurant-page" target="_blank">Kyle Keene-Welch |
+                        Restaurant Page</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

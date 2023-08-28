@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: To-Do-List | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>To-Do-List</h1>
+                    <p>June 17th, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/odin-to-do-list/odin-to-do-list.png")%>
+                    alt="To-Do-List" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">HTML</p>
+                    <p class="project-tag">CSS</p>
+                    <p class="project-tag">JS</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Object Oriented</p>
+                    <p class="project-tag">Webpack</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">HTML Webpack Plugin</p>
+                    <p class="project-tag">Local Storage</p>
+                    <p class="project-tag">Modules</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is a project undertaken as part of <span>The Odin Project</span> learning web course
+                teaching <span>HTML</span>, <span>CSS</span> and <span>JavaScript</span> skills. It involved putting
+                into practice the teachings of <span>Modules</span>, <span>OOP</span> and <span>Webpack</span> to
+                develop a To-Do-List application with optimized performance, storage and use of good coding practices.
+            </p>
+            <p>
+                The project aims to provide the user with the functionality required in creating projects, tasks and
+                notes for a project and see which tasks are due today or this week. It provides a simplistic user
+                interface, exported classes to represent each data structure, and DOM methods to provide the
+                interactivity between the user and the application.
+            </p>
+            <p>
+                To provide manipulation of dates and a sense of schedule within the application, <span>Date-fns</span>
+                an imported library was used and its obtained functions integrated to return values for much of the
+                conditionals relating to date input. These included <span>isToday()</span>, <span>isThisWeek()</span>
+                and <span>isPast()</span>.
+            </p>
+            <p>
+                The To-Do-List accesses Local Storage to obtain the saved object from a previous session. New users have
+                their object set to null which in turn causes the application to instantiate a new <span>ToDoList</span>
+                object with the default projects. Every time a meaningful change is to be made to the To-Do-List, the
+                application will access the related method within the <span>Storage</span> module that obtains the
+                <span>ToDoList</span> object, makes the change, then saves the change to storage. The
+                <span>Storage</span> module has access to imported functions from the classes of the objects it changes
+                and so makes calls to these methods alongside save operations rather than the methods themselves.
+            </p>
+            <p>
+                The page is generated with <span>HTML Webpack Plugin</span> and the modules are passed as entry points
+                that produce a single script to be injected into the page. The application is optimized and the size
+                reduced using the <span>devtool</span> option provided by webpack and this is set to <span>eval</span>.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Modular</strong> - Makes use of JavaScript ES6 import syntax to import methods belonging to
+                    classes of application data structures. Modules are standalone and can be tested by themselves
+                    before integrated with the rest of the application.</li>
+                <li><strong>JavaScript Validation API</strong> - Modal forms and edit forms are handled through the
+                    JavaScript Validation API and produce coherrant error messages when the user provides invalid input.
+                </li>
+                <li><strong>Date-fns Integration</strong> - The application imports functions part of the Date-fns
+                    package which are used in conditionals to validate user date input.</li>
+                <li><strong>Webpack Optimization</strong> - Utilizies Webpack devtool to optimize performance and reduce
+                    application size. HTML Webpack Plugin is used to generate the page with the required script and
+                    stylesheet injected.</li>
+                <li><strong>Local Storage</strong> - Uses the browser's local storage cache to store and access the
+                    state of the ToDoList object and updates are made when a meaningful change has been met.
+                </li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Creating Project</h3>
+                <img src=<%=require("../../assets/images/projects/odin-to-do-list/create_project_to_do_list.png")%>
+                alt="Creating Project"
+                />
+                <p>
+                    Produces a create project modal when the user clicks the <span>Create Project</span> button on the
+                    tool bar or the plus icon on the sidebar.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Creating Task</h3>
+                <img src=<%=require("../../assets/images/projects/odin-to-do-list/create_task_to_do_list.png")%>
+                alt="Creating Task"
+                />
+                <p>
+                    Produces a create task modal when the user clicks the <span>Create Task</span> button on the tool
+                    bar.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Creating Note</h3>
+                <img src=<%=require("../../assets/images/projects/odin-to-do-list/create_note_to_do_list.png")%>
+                alt="Creating Note"
+                />
+                <p>Produces a create note modal when the user clicks the <span>Create Note</span> button on the tool
+                    bar.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Today and This Week</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/odin-to-do-list/today_to_do_list.png")%>
+                    alt="Today"
+                    />
+                    <img src=<%=require("../../assets/images/projects/odin-to-do-list/this_week_to_do_list.png")%>
+                    alt="This Week"
+                    />
+                </div>
+                <p>The Today and This Week projects are displayed when the appropriate view project button is clicked.
+                    They are themselves projects which contain the tasks that evaluate to having a due date that is
+                    today or this week.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Show and Hide</h3>
+                <img src=<%=require("../../assets/images/projects/odin-to-do-list/show_hide_to_do_list.png")%> alt="Show
+                Hide"
+                />
+                <p>Displays the task or note grid when the show / hide toolbar buttons are clicked. Hiding both the
+                    tasks and notes will leave the project display empty with just the project heading shown.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Task and Note Edit</h3>
+                <img src=<%=require("../../assets/images/projects/odin-to-do-list/task_note_edit_to_do_list.png")%>
+                alt="Task and Note Edit"
+                />
+                <p>Clicking on a task name, due date or note content will produce an input field with the current value
+                    set. Changing this and clicking on the tick icon will update the value and this will be displayed
+                    and saved to local storage.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Retrieving and Setting to Local Storage</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Save to local storage.
+static saveToDoList(data) {
+    localStorage.setItem('toDoList', JSON.stringify(data));
+}
+
+static getToDoList() {
+    // Retrieve local storage.
+    const toDoList = Object.assign(
+        new ToDoList(), JSON.parse(localStorage.getItem('toDoList'))
+    );
+
+    // Init toDoList.
+    if (toDoList === null) {
+        const newToDoList = new ToDoList();
+        const agenda = new Project('Agenda');
+        const today = new Project('Today');
+        const thisWeek = new Project('This Week');
+        newToDoList.addProject(agenda);
+        newToDoList.addProject(today);
+        newToDoList.addProject(thisWeek);
+        this.saveToDoList(newToDoList);
+        return newToDoList;
+    }
+    
+    // Assign projects from local storage.
+    toDoList.setProjects(
+        toDoList.getProjects()
+        .map((project) => Object.assign(new Project(), project))
+    );
+
+    // Assign tasks to projects from local storage.
+    toDoList.getProjects().forEach((project) => {
+        project.setTasks(project.getTasks()
+        .map((task) => Object.assign(new Task(), task))
+        );
+    });
+
+    return toDoList
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Within the application's implementation, we use the Storage module often to retrieve and update the
+                    state of the <span>ToDoList</span> object to local storage. Taking a look at the module, we use
+                    <span>saveToDoList()</span> and <span>getToDoList()</span> to perform the loading and saving
+                    operations to local storage. We use <span>setItem()</span> in <span>saveToDoList()</span> to specify
+                    the item we want to save to in local storage and also the data we want to save to the item. We also
+                    stringify this data into a <span>JSON</span> format to enable this to happen. When we retrieve the
+                    item in <span>getToDoList()</span> we use <span>Object.assign()</span> to assign the retrieved data
+                    to a new ToDoList object. We then proceed to populate the new object with each of the projects and
+                    tasks obtained from local storage. If a ToDoList object is not returned and instead null is
+                    produced, a new ToDoList object is created with the default projects.
+                </p>
+            </div>
+            <div>
+                <h3>Evaluating Tasks Today and This Week</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Returns tasks in this project that have a due date that is today.
+getTasksToday() {
+    return this.tasks.filter((task) => {
+        const taskDate = new Date(task.getDueDateFormatted());
+        return isToday(taskDate);
+    })
+}
+
+// Returns tasks in this project that have a due date that is this week.
+getTasksThisWeek() {
+    return this.tasks.filter((task) => {
+        const taskDate = new Date(task.getDueDateFormatted());
+        return isThisWeek(taskDate);
+    })
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The Project module contains the methods in the implementation for evaluating tasks that are due
+                    today and this week. <span>getTasksToday()</span> and <span>getTasksThisWeek()</span> will use the
+                    <span>filter()</span> function to filter through each task in the project and to include only those
+                    that return a truthy value. The condition will include the use of the imported library
+                    <span>Date-fns</span> and the functions <span>isToday()</span> or <span>isThisWeek()</span> and the
+                    task due date will be passed through to be tested.
+                </p>
+            </div>
+            <div>
+                <h3>Webpack Devtool, Template and Plugin</h3>
+                <figure>
+                    <pre>
+                        <code>
+module.exports = {
+    mode: 'development',
+    entry: {
+        'entry': ['./src/scripts/Project.js', './src/scripts/Storage.js', './src/scripts/Task.js', './src/scripts/ToDoList.js', './src/scripts/Display.js', './src/scripts/Note.js'],
+    },
+    devtool: 'eval',
+    plugins: [
+        new HtmlWebpackPlugin({
+        inject: true,
+        template: './src/index.html',
+        filename: 'index.html',
+        }),
+    ],
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
+    },
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation also includes webpack optimization and the use of the <span>HTML Webpack
+                        Plugin</span>. The config will include the several entry points which will be processed and a
+                    single output script produced. The devtool option <span>eval</span> will optimize the source
+                    directory and will produce files in the distribution very quickly, bundling the source-maps without
+                    the need to map back to the code.
+                </p>
+            </div>
+            <div>
+                <h3>JavaScript Validation API</h3>
+                <figure>
+                    <pre>
+                        <code>
+                            // Validates create task submission. Passes user input to handler if valid.
+                            createTaskForm.addEventListener('submit', (e) => {
+                                if (taskNameField.validity.valueMissing) {
+                                    taskNameError.textContent = 'Name is required';
+                                    taskNameError.classList.add('active');
+                                    taskNameField.style.border = '2px solid var(--error-color)';
+                                }
+                            
+                                if (dueDateField.validity.valueMissing) {
+                                    dueDateError.textContent = 'Due date is required';
+                                    dueDateError.classList.add('active');
+                                    dueDateField.style.border = "2px solid var(--error-color)";
+                                }
+                            
+                                if (isPast(new Date(dueDateField.value))) {
+                                    if (!isToday(new Date(dueDateField.value))) {
+                                        dueDateError.textContent = 'Due date is in the past';
+                                        dueDateError.classList.add('active');
+                                        dueDateField.style.border = "2px solid var(--error-color)";
+                                        return;
+                                    }
+                                }
+                            ...
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    In order to validate user input, we use the JavaScript Validation API to determine whether specific
+                    validation rules have been broken and produce appropriate error messages according to these. We use
+                    <span>event listeners</span> to listen for the input event and the submission of the form to provide
+                    these checks at appropriate times, blocking invalid input attempts.
+                </p>
+            </div>
+            <div>
+                <h3>Keyboard Support</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Initializes keyboard access with escape to close all modals (enter is the default key to submit in forms).
+static initKeyboardInput() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            this.closeAllModals();
+        }
+    })
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation also provides minimal keyboard support where the escape key can be used to close
+                    all open modals in the application. Submission in forms is by default set to the enter key and
+                    therefore can be left to imitate default functionality.
+                </p>
+            </div>
+            <div>
+                <h3>Displaying a Project</h3>
+                <figure>
+                    <pre>
+                        <code>
+// If the project is today/this week, gather tasks today from projects not including today and this week.
+if (project.getName() === 'Today') {
+    this.getToDoList().getProjects().forEach((projectInArr) => {
+        if (projectInArr.getName() !== 'Today' && projectInArr.getName() !== 'This Week') {
+            projectInArr.getTasksToday().forEach((task) => {
+                taskArr.push(task);
+            });
+        }
+    });
+    project.setTasks(taskArr);
+    Storage.saveToDoList(this.getToDoList());
+    this.updateTasks(project.getTasks());
+}
+else if (project.getName() === 'This Week') {
+    this.getToDoList().getProjects().forEach((projectInArr) => {
+        if (projectInArr.getName() !== 'Today' && projectInArr.getName() !== 'This Week') {
+            projectInArr.getTasksThisWeek().forEach((task) => {
+                taskArr.push(task);
+            });
+        }
+    });
+    project.setTasks(taskArr);
+    Storage.saveToDoList(this.getToDoList());
+    this.updateTasks(project.getTasks());
+}
+else {
+    this.updateTasks(project.getTasks());
+    this.updateNotes(project.getNotes());
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    When we display projects in the implementation, we test for the project name passed through to
+                    display. If the project to be displayed is the <span>Today</span> or <span>This Week</span>
+                    projects, we check for all projects in the To-Do-List except <span>Today</span> and <span>This
+                        Week</span> and whether each task is due today / this week. We push each task that is due today
+                    / this week to the task array which is set as the tasks for the <span>Today</span> / <span>This
+                        Week</span> project. Through the <span>updateTasks()</span> function, we access the tasks now in
+                    the <span>Today</span> / <span>This Week</span> project and these are created and displayed. Notes
+                    are not displayed when its for the <span>Today</span> and <span>This Week</span> projects. A project
+                    name that isn't today or this week will have its tasks and notes accessed and updated in
+                    <span>updateTasks()</span> and <span>updateNotes()</span>.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-to-do-list" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-to-do-list" target="_blank">Kyle Keene-Welch |
+                        To-Do-List</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

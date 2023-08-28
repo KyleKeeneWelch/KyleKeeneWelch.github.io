@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Topedia | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Topedia</h1>
+                    <p>April 14th, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/topedia/topedia.png")%>
+                    alt="Topedia" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Python</p>
+                    <p class="project-tag">HTML</p>
+                    <p class="project-tag">CSS</p>
+                    <p class="project-tag">JS</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">SQLite</p>
+                    <p class="project-tag">API</p>
+                    <p class="project-tag">MVT</p>
+                    <p class="project-tag">Django</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This is a project that involves a web application created with the popular <span>Django</span>
+                framework. It accomodates a series of topics for E-learning to be consumed by users of which personas
+                will differ based on educational history and goals. Using the <span>MVT</span> (Model, View, Template)
+                pattern as well as <span>Python</span> for the back-end logic, the web application will incorporate user
+                interactivity and database connectivity to deliver an effective user and learning experience.
+            </p>
+            <p>
+                The app will be named <span>Topedia</span> and encapsulates the idea of several topics to have
+                self-contained topic rooms discussing various subjects and providing learning material about the parent
+                concept. It will involve several pages of which will enable a user to login to add their own topics or
+                learning material, leave comments and collaborate with other users or view without a login with
+                restricted access. There will also be a filter by which a user can use to search or filter out the
+                resources that appear to them, to target what the user wants to learn, and to display resources which
+                will be beneficial to learning a particular subject. The ecosystem of resources will allow multimedia
+                such as image and video as well as text for the user to customize how they want to teach their material
+                to users.
+            </p>
+            <p>
+                The <span>Django templating engine</span> will be used to form templates of static files that are
+                dynamically displayed by <span>views</span>. <span>Views</span> are reached through the assigned URL
+                that the user enters into their address bar or automatically through links in other pages.
+                <span>Models</span> provide the data structure for entities and interactivity to the database that can
+                be used alongside views to generate application logic. These will represent the attributes to objects
+                such as a <span>User</span>, <span>Message</span> or <span>Room</span>.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>MVT and Database Connectivity</strong> - The MVT pattern allows the developer to separate
+                    the different components of the application so that it is easy to insert, modfiy and understand the
+                    code. Templates are generally what the user sees through the rendering of HTML pages with CSS and JS
+                    included. Views house the application logic and processing of HTTP POST and GET requests. Models
+                    represent entities and define the data structure and attributes of objects in the application. The
+                    database connects to the models to create the necessary tables and commands to reflect the structure
+                    and attributes provided. These are done in the form of migrations and need to be updated as changes
+                    are made.
+                </li>
+                <li><strong>Login and Register Capabilities</strong> - Users are able to create their own account
+                    and login free with Topedia to create their own topics and learning material. They are also able
+                    to collaborate with other users by following, favouriting topic rooms and commenting. If a user
+                    does not want to benefit from these features, they can access topic rooms without having an
+                    account with limited functionality with how they can interact.
+                </li>
+                <li><strong>Filter of topics and produced results</strong> - Found at the top of every page, the
+                    user can enter input into the search bar to receive topic room results related to the provided
+                    input. This means a user can target the content they receive by applying a filter through a
+                    search result or by browsing and selecting a topic to limit results to.
+                </li>
+                <li><strong>CRUD operations on created learning material and topics</strong> - Created objects such
+                    as learning material and topics have the ability to be created, read, updated and deleted. These
+                    allow the user to control the content they create and to make appropriate modifications to suit
+                    their goals. Other objects like messages, user following and favourties can be created and
+                    deleted / removed.
+                </li>
+                <li><strong>Cascade deletion of comments, learning material, topics and multimedia</strong> - To
+                    ensure application storage and structure is maintained, many model objects and user uploaded
+                    content is removed upon the deletion of linked objects. This is known as cascade deletion and is
+                    a popular method used within the database to ensure and the content included is linked and no
+                    anomalies are hidden clogging space and structure.
+                </li>
+                <li><strong>Profile Picture Modification</strong> - A user with a newly registered account will have
+                    their profile picture set as the default anonymous image. Users are able to update this by
+                    selecting an image from their files.
+                </li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Login and Register</h3>
+                <img src=<%=require("../../assets/images/projects/topedia/login_topedia.png")%> alt="Login Screen"
+                />
+                <br>
+                <img src=<%=require("../../assets/images/projects/topedia/register_topedia.png")%> alt="Register
+                Screen"
+                />
+                <p>
+                    Topedia has login and registration capabilities as well as the ability for unregistered users to
+                    view site content with restricted interaction. The <span>login</span> page can be easily accessed
+                    with the
+                    login link found in the navbar when there is no user detected as logged in. From here a user can
+                    enter their registered credentials or can press the sign up link to reach the register page.
+                </p>
+                <p>
+                    The <span>register</span> page contains all the optional and required fields for a user to create a
+                    new account with Topedia. Upon account creation, a session key will be generated and the logged in
+                    user authenticated and managed by Django. A <span>user following</span> and <span>favourites</span>
+                    object is also created and assigned to the new user.
+                </p>
+                <p>
+                    Users can reach the settings page in the dropdown on the navbar and can make changes to their
+                    account such as updating their password.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Creating and Updating a Topic Room</h3>
+                <img src=<%=require("../../assets/images/projects/topedia/creating_room_topedia.png")%> alt="Creating
+                Room"
+                />
+                <br>
+                <img src=<%=require("../../assets/images/projects/topedia/updating_room_topedia.png")%> alt="Updating
+                Room"
+                />
+                <p>
+                    Once authenticated and logged in, a user is able to create a new <span>topic room</span> or update a
+                    previously created room. The <span>create topic room</span> page will ask for the topic, name and
+                    description of the new topic room. The topic can be chosen through the dropdown on the right side of
+                    the field or alternatively, a new topic can be created by providing input into the field. The name
+                    and description are displayed within the topic room page.
+                </p>
+                <p>
+                    The <span>update topic room</span> page will display the previous values for the fields and allows
+                    the creator to make quick changes.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Topics and Recent Activity</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/topedia/topic_activity_desktop_topedia.png")%>
+                    alt="Home Page"
+                    />
+                    <img src=<%=require("../../assets/images/projects/topedia/topic_activity_mobile_topedia.png")%>
+                    alt="Home Page Mobile"
+                    />
+                </div>
+                <p>
+                    The <span>topics</span> and <span>recent activity</span> components are reused throughout different
+                    parts of the web application. On the <span>home</span> page, you can select the first few topics and
+                    by selecting a topic, you update the page to include filtered results. By pressing on more, you can
+                    reach the standalone topics page which displays more topics and a search feature.
+                </p>
+                <p>
+                    The <span>recent activity</span> displays the most recent comments made on topic rooms within the
+                    web application. You are able to view a <span>user's profile</span> and the <span>topic room</span>
+                    the conversation is in. Both of these components can be viewed as part of their own page on the
+                    mobile version of the home page, which provides links to these instead of displaying them.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Following and Favourites</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/topedia/following_topedia.png")%> alt="Following
+                    Page"
+                    />
+                    <img src=<%=require("../../assets/images/projects/topedia/favourites_topedia.png")%> alt="Favourites
+                    Page"
+                    />
+                </div>
+                <p>
+                    The <span>following</span> and <span>favourites</span> pages are special pages that provide the
+                    output for the following and favourites functionality. A user has an assigned object that stores the
+                    users and rooms that the user follows and favourites. This object is then read and the appropriate
+                    content is displayed in the <span>following</span> and <span>favourites</span> page. A user is able
+                    to follow another user through the button displayed on their profile. This button is omitted on
+                    their own profile to prevent following the logged in user. However, functionality allows a user to
+                    favourite their own rooms if they so wish. The following functionality allows a user to collaborate
+                    with other users who they have a certain fondness with and to assess and use this list how they see
+                    fit. The favourites functionality allows the user to bookmark and compile of list of their favourite
+                    topic rooms so that they can visit in the future.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Creating and Updating Learning Material</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/topedia/creating_learning_material_topedia.png")%>
+                    alt="Create Learning Material Page"
+                    />
+                    <img src=<%=require("../../assets/images/projects/topedia/updating_learning_material_topedia.png")%>
+                    alt="Update Learning Material Page"
+                    />
+                </div>
+                <p>
+                    A user is able to create and update learning material that is displayed onto a <span>topic
+                        room</span> they created. While on the <span>topic room</span> page, the owner will be able to
+                    see the create learning material button and the edit link within any existing learning material on
+                    the page. The create learning material button will direct to the <span>create learning
+                        material</span> page where a form is displayed with the appropriate required and optional fields
+                    for creating a new learning material object. By using the edit link, the user is directed to the
+                    <span>update learning material</span> page which is a clone of the create learning material page but
+                    with the fields pre-filled so that chosen fields can be edited.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>User Profiles and Commenting</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/topedia/user_profile_topedia.png")%> alt="User
+                    Profile Page"
+                    />
+                    <img src=<%=require("../../assets/images/projects/topedia/comments_topedia.png")%> alt="Topic Room
+                    Page"
+                    />
+                </div>
+                <p>
+                    Each user has their own profile with their biography, topic rooms they host and any recent activity
+                    they have. The profile can be reach from various pages through links in the <span>recent
+                        activity</span>
+                    component, home page topic room results and comments made on rooms. Comments are displayed from most
+                    recent to oldest and contain links to the user that posted the comment, their profile picture and if
+                    the owner is currently viewing, a cross is displayed for them to press if they wish to delete their
+                    comment. Edit functionality is currently not supported as part of the comment system in Topedia.
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Main Template and Include</h3>
+                <figure>
+                    <pre>
+                        <code>
+&lt;body&gt;
+    &lt;!-- Includes the navigation bar and associated content --&gt;
+    {% include 'navbar.html' %}
+
+    &lt;!-- Shows any flash messages --&gt;
+    {% if messages %}
+    &lt;ul class=&quot;messages&quot;&gt;
+        {% for message in messages %}
+            &lt;li&gt;{{message}}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    &lt;!-- Links JavaScript file --&gt;
+    &lt;script src=&quot;{% static 'js/script.js' %}&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation of Topedia included the series of dynamically displayed templates to the user.
+                    These templates have their own hierachy by which the main template is included as part of many other
+                    templates for redundant, core content. Within the <span>main</span> template, we include the
+                    <span>navbar</span>, <span>flash messages</span>, <span>block tags</span> and links to the
+                    javascript file for site interactivity.
+                </p>
+                <p>
+                    The <span>navbar</span>, as the name suggests, is a HTML document which describes the structure of
+                    the navigation links, logo and search field. This document is defined and placed at the beginning of
+                    the main template so that each page that includes the main template will also include the same
+                    navigation bar.
+                </p>
+                <p>
+                    <span>Flash messages</span> are messages that are displayed as a result of an action performed by
+                    the user. They are defined within views and are triggered to display a message valid until the user
+                    refreshes the site. An example could include "Successfully logged in".
+                </p>
+                <p>
+                    <span>Block tags</span> define where we want the rest of our content to go in relation to the
+                    content already defined in the template. This means when we include the <span>main</span> template
+                    in other templates, any newly defined content is placed after the <span>navbar</span> and
+                    <span>flash messages</span>.
+                </p>
+            </div>
+            <div>
+                <h3>URLs and linked Views</h3>
+                <figure>
+                    <pre>
+                        <code>
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('base.urls')),
+    path('api/', include('base.api.urls'))
+]
+
+urlpatterns = [
+    path('login/', views.loginPage, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerPage, name='register'),
+    path('', views.home, name="home"),
+    path('room/<str:pk>/', views.room, name="room"),
+    path('profile/<str:pk>', views.userProfile, name="user-profile"),
+    path('following/', views.showFollowers, name="show-following"),
+    path('favourites/<str:pk>', views.showFavourites, name="show-favourites"),
+    path('create-room/', views.createRoom, name="create-room"),
+    path('create-material/<str:pk>', views.createMaterial, name="create-material"),
+    path('update-room/<str:pk>', views.updateRoom, name="update-room"),
+    path('update-material/<str:pk>', views.updateMaterial, name="update-material"),
+    path('update-user', views.updateUser, name="update-user"),
+    path('topics/', views.topicsPage, name="topics"),
+    path('activity/', views.activityPage, name="activities"),
+    path('delete-room/<str:pk>', views.deleteRoom, name="delete-room"),
+    path('delete-message/<str:pk>', views.deleteMessage, name="delete-message"),
+    path('delete-material/<str:pk>', views.deleteMaterial, name="delete-material"),
+    path('set-favourite/<str:pk>', views.setFavourite, name="set-favourite"),
+    path('remove-favourite/<str:pk>', views.removeFavourite, name="remove-favourite"),
+    path('unfollow/<str:pk>', views.unfollow, name='unfollow'),
+]
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The routes users could take where defined through the <span>url.py</span> files in the application.
+                    The <span>main url</span> file contains the main type of routes that a user will take to reach
+                    completely different areas. These include the <span>admin panel</span> for site administrators, an
+                    empty path to include app specific routes and the routes to the created API.
+                </p>
+                <p>
+                    The app routes are stored within the "base" app <span>url.py</span> file. These are included and are
+                    looked upon when the user provides a route not prepending admin or API and normally provide access
+                    to the vast majority of app related routes. When the user has provided a URL that matches a path
+                    defined in the <span>url file</span>, the linked <span>view</span> is run and if additional
+                    arguments are provided, these are passed to the parameters of the <span>view</span>. The "name"
+                    attribute is used as a relative reference in development so that if changes need to be made, only
+                    the absolute URL needs to be updated to reflect the changes instead of all instances that use the
+                    route.
+                </p>
+                <p>
+                    API routes provide access to views that display grouped content or singular content through a
+                    provided parameter.
+                </p>
+            </div>
+            <div>
+                <h3>Defining a Theme</h3>
+                <figure>
+                    <pre>
+                        <code>
+/* Colour Variables */
+:root {
+    --color-main: #FFA733;
+    --color-main-light: #FFB85C;
+    --color-dark: #3D4B52;
+    --color-dark-medium: #45565E;
+    --color-dark-light: #C4CFD4;
+    --color-light: #EEF5DB;
+    --color-gray: #8b8b8b;
+    --color-light-gray: #b2bdbd;
+    --color-bg: #1A2023;
+    --color-success: #5dd693;
+    --color-error: #E63737;
+}
+
+/*========== base styles ==========*/
+* {
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    font-size: inherit;
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The implementation process also included the use of a defined theme with <span>colour
+                        variables</span>, <span>font assignment</span> and other details to structure and present areas
+                    of the application consistently and effectively. The <span>colour variables</span> provide a set of
+                    colours that we reference throughout our application for a series of assigned reasoning. Such as
+                    <span>color-main</span> as the main colour of the theme, <span>color-gray</span> for placeholder
+                    text and areas with less importance and variables such as <span>color-success</span> and
+                    <span>color-error</span> for successful and failure actions. Assigning the font and backup fonts
+                    makes it easy when styling elements where the font is the same and reduces redundant styles. This is
+                    also a similar case for other areas of the theme.
+                </p>
+            </div>
+            <div>
+                <h3>Displaying Data through the use of API</h3>
+                <figure>
+                    <pre>
+                        <code>
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'GET /api',
+        'GET /api/rooms',
+        'GET /api/rooms/:id'
+    ]
+    return Response(routes)
+
+@api_view(['GET'])
+def getRooms(request):
+    rooms = Room.objects.all()
+    serializer = RoomSerializer(rooms, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    serializer = RoomSerializer(room, many=False)
+    return Response(serializer.data)
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Topedia also has an API generated as part of the web application. This can be used from external
+                    origins that wish to access the rooms or a single room available on the app. To access the API, we
+                    use the "/api/" level after the <span>base URL</span> and then append the required value. Appending
+                    nothing onto the URL will return a response with a list of the available routes the API provides.
+                    Appending "rooms" will return a response with the serialized rooms that exists within the web
+                    application. Appending "rooms/{value}" will return a response with the serialized room if it exists.
+                </p>
+            </div>
+            <div>
+                <h3>User Content and Media Root</h3>
+                <figure>
+                    <pre>
+                        <code>
+# Media path for user uploaded content
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    As an E-Learning collaborative solution, Topedia allows the use of user content to teach users. It
+                    expresses the value of user generated content and enforces this throughout the site for users to
+                    access and consume. To handle user content, we have the object that stores the reference to the
+                    uploaded content and the actual uploaded content.
+                <p>
+                    The object is the <span>model</span> attribute field that stores the reference value of the content.
+                    Such as the <span>image</span> attribute as part of the <span>LearningMaterial</span> model.
+                </p>
+                <p>
+                    The actual uploaded content is stored within the media folder in the application directory. The
+                    process in storing and accessing content in this folder involves the use of the
+                    <span>MEDIA_URL</span> and <span>MEDIA_ROOT</span>. These are used to specify the default path the
+                    application should take when multimedia content is uploaded through model fields.
+                </p>
+            </div>
+            <div>
+                <h3>ModelForms and Fields</h3>
+                <figure>
+                    <pre>
+                        <code>
+# Model form for creating and editing a topic room
+class RoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = '__all__'
+        exclude = ['topic', 'host', 'participants', 'learningMaterial']
+
+# Model form for logging in
+class LoginForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = User
+        fields = ['email', 'password']
+
+...
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    There are several instances in which Topedia uses <span>ModelForms</span> to generate much of the
+                    application form fields from the selected <span>model</span>. This works by assigning an imported
+                    <span>model</span> from your <span>models.py</span> file to the <span>ModelForm</span>, selecting
+                    the fields you want to include from the attributes in the <span>model</span> and if necessary, any
+                    you wish to exclude.
+                </p>
+                <p>
+                    When displaying a <span>ModelForm</span> in a template, we would have already passed in the
+                    <span>ModelForm</span> as part of a context dictionary into the template and we can access this
+                    using a for loop. By looping through each field in the <span>ModelForm</span>, we can display each
+                    label and field content without the need to define each field, therefore abstracting the process.
+                </p>
+            </div>
+            <div>
+                <h3>Custom User Model and UserAdmin</h3>
+                <figure>
+                    <pre>
+                        <code>
+# Custom User Model
+class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(null=True, unique=True)
+    bio = models.TextField(null=True)
+    avatar = models.ImageField(null=True, default="avatar.svg")
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+# Inherits User admin panel and edits this
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    pass
+
+UserAdmin.list_display += ('avatar',)
+UserAdmin.list_filter += ('avatar',)
+UserAdmin.fieldsets += (('Extra Fields', {'fields': ('avatar', )}),)
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Django as a backend framework handles much of the authentication and administration for us. This is
+                    useful however limits some of the customization and additional features when the developer does not
+                    have the control. Topedia required certain attributes and preference on login that the Django User
+                    Model did not satisfy. As this was the case, a <span>Custom User Model</span> was created which uses
+                    similar functions as the <span>Django User Model</span> but with changes. The <span>Custom User
+                        Model</span> now includes <span>bio</span> and <span>avatar</span> attributes and the
+                    <span>USERNAME_FIELD</span> is assigned to the <span>email</span> attribute, therefore allowing
+                    users to login through email rather than username.
+                </p>
+                <p>
+                    Using a <span>Custom User Model</span> creates some complications in the admin panel when performing
+                    site administration. In order to register and see the fields in your <span>Custom User Model</span>,
+                    it was required to use a <span>Custom User Admin</span>. This provided similar functions to the
+                    <span>User Admin</span> provided with the <span>Django User Model</span> but allows you to edit and
+                    apply your own fieldsets.
+                </p>
+            </div>
+            <div>
+                <h3>Django TestCase</h3>
+                <figure>
+                    <pre>
+                        <code>
+class LoginPageViewTest(TestCase):
+def test_view_url_exists_at_desired_location(self):
+    response = self.client.get('/login/')
+    self.assertEqual(response.status_code, 200)
+
+def test_view_url_accessible_by_name(self):
+    response = self.client.get(reverse('login'))
+    self.assertEqual(response.status_code, 200)
+
+def test_view_uses_correct_template(self):
+    response = self.client.get(reverse('login'))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, 'base/login_register.html')
+
+def test_page_is_login(self):
+    response = self.client.get(reverse('login'))
+    self.assertEqual(response.status_code, 200)
+    self.assertTrue('page' in response.context)
+    self.assertTrue(response.context['page'] == 'login')
+
+def test_form_is_loginForm(self):
+    form = str(LoginForm())
+    response = self.client.get(reverse('login'))
+    self.assertEqual(response.status_code, 200)
+    self.assertTrue('form' in response.context)
+    self.assertIn(form, str(response.context['form']))
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    When designing the web application, it was important alongside other important tasks to define some
+                    <span>test cases</span> we can use after implementation to test and effectively define criteria that
+                    can be used to evaluate the performance of our implementation. These <span>test cases</span> did not
+                    cover all areas but had the goal to cover much of the testing for the application's
+                    <span>forms</span>, <span>models</span> and <span>views</span>. A <span>test case</span> can be
+                    defined, required input emulated to recreate the same scenario and a summary can be produced to
+                    identify where results differed from the expected and the changes that need to be made in the
+                    debugging stage.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/topedia" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/topedia" target="_blank">Kyle Keene-Welch | Topedia</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

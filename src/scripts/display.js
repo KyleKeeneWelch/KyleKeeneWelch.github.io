@@ -7,7 +7,20 @@ import "@fortawesome/fontawesome-free/js/regular";
 import { Project } from "./project.js";
 import format from "date-fns/format";
 
-import myProjectImage from "../assets/images/porfolio/gallery1.png";
+import controlAnElevator from "../assets/images/portfolio/control-an-elevator.png";
+import actiGym from "../assets/images/portfolio/actigym.png";
+import topedia from "../assets/images/portfolio/topedia.png";
+import odinLandingPage from "../assets/images/portfolio/odin-landing-page.png";
+import odinRockPaperScissors from "../assets/images/portfolio/odin-rock-paper-scissors.png";
+import odinEtchASketch from "../assets/images/portfolio/odin-etch-a-sketch.png";
+import odinCalculator from "../assets/images/portfolio/odin-calculator.png";
+import odinSignUpForm from "../assets/images/portfolio/odin-sign-up-form.png";
+import odinAdminDashboard from "../assets/images/portfolio/odin-admin-dashboard.png";
+import odinLibrary from "../assets/images/portfolio/odin-library.png";
+import odinTicTacToe from "../assets/images/portfolio/odin-tic-tac-toe.png";
+import odinRestaurantPage from "../assets/images/portfolio/odin-restaurant-page.png";
+import odinToDoList from "../assets/images/portfolio/odin-to-do-list.png";
+import odinWeatherApp from "../assets/images/portfolio/odin-weather-app.png";
 
 class Display {
   static projects = [];
@@ -19,7 +32,7 @@ class Display {
 
   static filterResults(searchItem) {
     this.projects.forEach((project) => {
-      if (searchItem.toLowerCase() == project.getTitle().toLowerCase()) {
+      if (project.getTitle().toLowerCase().includes(searchItem.toLowerCase())) {
         this.createProjectContainer(project);
       } else if (
         project
@@ -58,7 +71,6 @@ class Display {
     const projectRepoIcon = document.createElement("i");
     const projectImageContainer = document.createElement("a");
     const projectImage = document.createElement("img");
-    const projectBreak = document.createElement("br");
 
     projectContainer.classList.add("project-container");
     projectContainer.classList.add("animate");
@@ -95,8 +107,7 @@ class Display {
     projectDetails.appendChild(projectTags);
     projectContainer.appendChild(projectDetails);
     projectContainer.appendChild(projectImageContainer);
-    projectsContainer.appendChild(projectContainer);
-    projectsContainer.appendChild(projectBreak);
+    projectsContainer.prepend(projectContainer);
   }
 
   static updateTags() {
@@ -110,6 +121,8 @@ class Display {
         }
       });
     });
+
+    tags.sort();
 
     tags.forEach((tag) => {
       const newTag = document.createElement("a");
@@ -139,97 +152,228 @@ class Display {
   static initProjects() {
     this.projects.push(
       new Project(
-        "Canvas",
-        new Date("2023-08-14"),
-        ["HTML", "CSS", "JS", "Pineapple"],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "Control An Elevator",
+        new Date("2022-10-16"),
+        [
+          "C#",
+          ".NET",
+          "GUI",
+          "MSAccess",
+          "Disconnected Model",
+          "Event Driven",
+          "Entity Framework",
+        ],
+        "C# application using the popular .NET framework by Microsoft to simulate the actions and animation of an elevator.",
+        "https://github.com/KyleKeeneWelch/control-an-elevator",
+        "control-an-elevator.html",
+        controlAnElevator
       )
     );
 
     this.projects.push(
       new Project(
-        "ToDoList",
-        new Date("2023-08-14"),
-        ["HTML", "CSS", "JS", "Apple"],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "ActiGym",
+        new Date("2023-01-03"),
+        [
+          "Dart",
+          "Flutter",
+          "Android",
+          "MSAccess",
+          "iOS",
+          "Mobile",
+          "Hybrid",
+          "Object Oriented",
+        ],
+        "Flutter Mobile Application written with Dart that serves as a workout planner and log to further fitness goals and abstract the fitness process.",
+        "https://github.com/KyleKeeneWelch/actigym",
+        "actigym.html",
+        actiGym
       )
     );
 
     this.projects.push(
       new Project(
-        "Library",
-        new Date("2023-08-14"),
-        ["HTML", "CSS", "JS", "Banana"],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "Topedia",
+        new Date("2023-04-14"),
+        [
+          "Python",
+          "HTML",
+          "CSS",
+          "JS",
+          "Web",
+          "SQLite",
+          "API",
+          "MVT",
+          "Django",
+        ],
+        "Web application using the Django framework that will accommodate a series of topics for E-learning to be consumed by users of which personas will differ based on educational history and goals.",
+        "https://github.com/KyleKeeneWelch/topedia",
+        "topedia.html",
+        topedia
       )
     );
 
     this.projects.push(
       new Project(
-        "Library",
-        new Date("2023-08-14"),
+        "The Odin Project: Landing Page",
+        new Date("2023-05-17"),
+        ["HTML", "CSS", "JS", "PHP", "XAMPP", "Web"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Creates a simple landing page for a non-existing product/business.",
+        "https://github.com/KyleKeeneWelch/odin-landing-page",
+        "odin-landing-page.html",
+        odinLandingPage
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Rock Paper Scissors",
+        new Date("2023-05-22"),
+        ["HTML", "CSS", "JS", "Web"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Emulates the popular rock, paper, scissors game utilizing DOM methods and JavaScript.",
+        "https://github.com/KyleKeeneWelch/odin-rock-paper-scissors",
+        "odin-rock-paper-scissors.html",
+        odinRockPaperScissors
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Etch-a-Sketch",
+        new Date("2023-05-25"),
+        ["HTML", "CSS", "JS", "Web"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Provides a simple canvas layout and related tools to draw pixel-like images.",
+        "https://github.com/KyleKeeneWelch/odin-etch-a-sketch",
+        "odin-etch-a-sketch.html",
+        odinEtchASketch
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Calculator",
+        new Date("2023-05-30"),
+        ["HTML", "CSS", "JS", "Web"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Provides functionality typical of a calculator.",
+        "https://github.com/KyleKeeneWelch/odin-calculator",
+        "odin-calculator.html",
+        odinCalculator
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Sign-Up Form",
+        new Date("2023-06-06"),
+        ["HTML", "CSS", "JS", "Web"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Creates a sign up page with a form and validation handled through the JavaScript Validation API.",
+        "https://github.com/KyleKeeneWelch/odin-sign-up-form",
+        "odin-sign-up-form.html",
+        odinSignUpForm
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Admin Dashboard",
+        new Date("2023-06-12"),
+        ["HTML", "CSS", "JS", "Web", "CSS Grid"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Uses techniques of flexbox and grid to structure a typical admin dashboard layout.",
+        "https://github.com/KyleKeeneWelch/odin-admin-dashboard",
+        "odin-admin-dashboard.html",
+        odinAdminDashboard
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Library",
+        new Date("2023-06-17"),
+        ["HTML", "CSS", "JS", "Web", "CSS Grid", "Object Oriented"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Utilizes DOM methods and objects to create book entries and maintain a library application.",
+        "https://github.com/KyleKeeneWelch/odin-library",
+        "odin-library.html",
+        odinLibrary
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Tic-Tac-Toe",
+        new Date("2023-06-21"),
         [
           "HTML",
           "CSS",
           "JS",
-          "Banana",
-          "Kiwi",
-          "q",
-          "a",
-          "j",
-          "o",
-          "p",
-          "u",
-          "y",
-          "e",
-          "r",
-          "m",
-          "n",
-          "b",
-          "c",
-          "x",
-          "z",
-          "8",
-          "7",
-          "5",
+          "Web",
+          "Factory Functions",
+          "IIFE",
+          "Object Oriented",
         ],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Contains a tic-tac-toe grid and DOM methods to track the winning conditions and rounds within the popular game.",
+        "https://github.com/KyleKeeneWelch/odin-tic-tac-toe",
+        "odin-tic-tac-toe.html",
+        odinTicTacToe
       )
     );
 
     this.projects.push(
       new Project(
-        "Library",
-        new Date("2023-08-14"),
-        ["HTML", "CSS", "JS", "Banana", "Strawberry"],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "The Odin Project: Restaurant Page",
+        new Date("2023-06-28"),
+        ["HTML", "CSS", "JS", "Web", "Webpack", "NPM", "HTML Webpack Plugin"],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Generates pages for a made-up Japanese fast food chain utilizing JavaScript, NPM packages and Webpack Plugins.",
+        "https://github.com/KyleKeeneWelch/odin-restaurant-page",
+        "odin-restaurant-page.html",
+        odinRestaurantPage
       )
     );
 
     this.projects.push(
       new Project(
-        "Library",
-        new Date("2023-08-14"),
-        ["HTML", "CSS", "JS", "Banana", "Watermelon"],
-        "This is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hkThis is the descriptionhljjkmdgfhmnnnnnnnnfnfnfmfnfnde hjjfnkejxdhkfhds kjdshj hkxhxnjhxnkjmjhfkjh bnkf fdsnkhdfnkhjskn hk",
-        "https://github.com/KyleKeeneWelch/image-slider",
-        "myproject.html",
-        myProjectImage
+        "The Odin Project: To-Do-List",
+        new Date("2023-07-17"),
+        [
+          "HTML",
+          "CSS",
+          "JS",
+          "Web",
+          "Object Oriented",
+          "Webpack",
+          "NPM",
+          "HTML Webpack Plugin",
+          "Local Storage",
+          "Modules",
+        ],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Uses Objects and Modules to create data structures representing the entities required in a To-Do-List application. Data is stored and accessed through local storage and pages are generated and optimized through Webpack and plugin.",
+        "https://github.com/KyleKeeneWelch/odin-to-do-list",
+        "odin-to-do-list.html",
+        odinToDoList
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "The Odin Project: Weather App",
+        new Date("2023-08-05"),
+        [
+          "HTML",
+          "CSS",
+          "JS",
+          "Web",
+          "Object Oriented",
+          "Webpack",
+          "NPM",
+          "HTML Webpack Plugin",
+          "Babel",
+          "Modules",
+          "API",
+          "Async/Await",
+        ],
+        "This project is a project undertaken as part of The Odin Project learning web course teaching HTML, CSS and JavaScript skills. Uses Objects and Modules to create data structures representing the entities required in a Weather application. Makes calls to the Weather API using fetch() and async functions to obtain relevant Weather information to be processed and displayed appropriately on the DOM.",
+        "https://github.com/KyleKeeneWelch/odin-weather-app",
+        "odin-weather-app.html",
+        odinWeatherApp
       )
     );
   }
