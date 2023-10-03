@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     entry: "./src/scripts/display.js",
   },
-  devtool: "inline-source-map",
+  devtool: "eval",
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,

@@ -374,25 +374,25 @@ button {
     border-radius: var(--border-radius);
 
     &:nth-of-type(1) {
-        background: url("../assets/images/home/banner.png");
+        /* background: url("../assets/images/home/banner.png"); */
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
     }
     &:nth-of-type(2) {
-        background: url("../assets/images/home/gallery2.png");  
+        /* background: url("../assets/images/home/gallery2.png");   */
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;     
     }
     &:nth-of-type(3) {
-        background: url("../assets/images/home/gallery3.png"); 
+        /* background: url("../assets/images/home/gallery3.png");  */
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover; 
     }
     &:nth-of-type(4) {
-        background: url("../assets/images/home/gallery4.png");
+        /* background: url("../assets/images/home/gallery4.png"); */
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
