@@ -23,6 +23,7 @@ import odinToDoList from "../assets/images/portfolio/odin-to-do-list.png";
 import odinWeatherApp from "../assets/images/portfolio/odin-weather-app.png";
 import expressLocalLibrary from "../assets/images/portfolio/express-local-library.png";
 import odinInventoryApplication from "../assets/images/portfolio/odin-inventory-application.png";
+import tomatoGame from "../assets/images/portfolio/tomato-game.png";
 
 class Display {
   static projects = [];
@@ -376,6 +377,28 @@ class Display {
         "https://github.com/KyleKeeneWelch/odin-weather-app",
         "odin-weather-app.html",
         odinWeatherApp
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Tomato Game",
+        new Date("2023-11-06"),
+        [
+          "Web",
+          "Express",
+          "NPM",
+          "REST",
+          "API",
+          "MongoDB",
+          "Passport",
+          "Webpack",
+          "Async/Await",
+        ],
+        "This project was completed as part of my final assignment for my Software Development module at University. It required the explanation of several concepts such as version control, interoperability, low coupling, high cohesion and more. The main emphasis was utilizing the provided tomato API to produce a meaningful application which became this tomato mathematics game.",
+        "https://github.com/KyleKeeneWelch/tomato-game",
+        "tomato-game.html",
+        tomatoGame
       )
     );
 
