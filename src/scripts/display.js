@@ -21,6 +21,7 @@ import odinTicTacToe from "../assets/images/portfolio/odin-tic-tac-toe.png";
 import odinRestaurantPage from "../assets/images/portfolio/odin-restaurant-page.png";
 import odinToDoList from "../assets/images/portfolio/odin-to-do-list.png";
 import odinWeatherApp from "../assets/images/portfolio/odin-weather-app.png";
+import expressLocalLibrary from "../assets/images/portfolio/express-local-library.png";
 
 class Display {
   static projects = [];
@@ -374,6 +375,18 @@ class Display {
         "https://github.com/KyleKeeneWelch/odin-weather-app",
         "odin-weather-app.html",
         odinWeatherApp
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Express Local Library",
+        new Date("2023-12-23"),
+        ["Web", "Express", "NPM", "REST", "MVC", "MongoDB", "Async/Await"],
+        "This project was the first big step into becoming familiar with Express and Back-end development in preparation for my final year artefact. It follows the Mozilla Express Tutorial to develop a simple library application with CRUD operations on authors, books, genres and book instances.",
+        "https://github.com/KyleKeeneWelch/express-local-library",
+        "express-local-library.html",
+        expressLocalLibrary
       )
     );
   }

@@ -110,6 +110,12 @@ module.exports = {
       filename: "odin-weather-app.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/express-local-library.html",
+      filename: "express-local-library.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Express Local Library | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Express Local Library</h1>
+                    <p>December 23rd, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img
+                        src=<%=require("../../assets/images/projects/express-local-library/express-local-library.png")%>
+                    alt="Express Local Library" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Pug</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">MVC</p>
+                    <p class="project-tag">MongoDB</p>
+                    <p class="project-tag">Async/Await</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project was the first big step into becoming familiar with <span>Express</span> and Back-end
+                development in preparation for my final year artefact. It follows the Mozilla Express Tutorial to
+                develop a simple library application with <span>CRUD</span> operations on authors, books, genres and
+                book instances.
+            </p>
+            <p>
+                The project aims to familiarize myself with the concepts behind <span>templating languages</span>,
+                <span>REST</span>, <span>models</span>, <span>views</span>, and <span>controllers</span> and presents a
+                simple application to build proficiency in these areas to develop and be used in future projects. It
+                also introduces <span>MongoDB</span> as a NoSQL langauge which was a new experience from traditional SQL
+                table-based databases. Through the Object Data Modelling library <span>Mongoose</span>, I was able to
+                define models with constraints that can easily map to collections in the database and could perform
+                simple CRUD operations on these.
+            </p>
+
+            <p>
+                As a result, the produced artefact contains a series of pages utilizing the templating engine to
+                dynamically display content such as the selected book. Further implementations involving Express and
+                MongoDB will build upon the concepts demonstrated in this project.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Server-Side Routing</strong> - Requests are processed by the server and the server uses
+                    templates to dynamically respond with requested content.</li>
+                <li><strong>CRUD Operations</strong> - Mongoose is used to perform create, read, update, and delete
+                    operations on collections for entities such as authors, genres, books, and book instances.</li>
+                <li><strong>MVC</strong> - Utilizes the common Model, View, Controller pattern to separate the concerns
+                    between defined entities, templates and business logic for maintainability.</li>
+                <li><strong>Mongo Atlas</strong> - Makes use of the cloud platform Mongo Atlas to modify collections and
+                    return responses to queries on the database.</li>
+
+            </ul>
+            <div class="project-feature-container">
+                <h3>Home</h3>
+                <img src=<%=require("../../assets/images/projects/express-local-library/express-local-library.png")%>
+                alt="Home"
+                />
+                <p>
+                    The Home page provides a simple welcome message and record counts for the amount of books, copies,
+                    available copies, authors and genres in the library.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Viewing Books, Authors, Genres and Book Instances</h3>
+                <div>
+                    <img src=<%=require("../../assets/images/projects/express-local-library/book.png")%>
+                    alt="Book Page"
+                    />
+                    <img src=<%=require("../../assets/images/projects/express-local-library/book_instance_list.png")%>
+                    alt="Book Page"
+                    />
+                </div>
+                <p>
+                    Clicking on a link such as <span>All books</span> will serve the page containing a list of all the
+                    books available in the library. The same can be done for other entities by clicking on the
+                    corresponding link. Each page will include the relevant details and links that meet the requirements
+                    of each entity. The Book Instances page contains special information for the availability of a
+                    particular copy and when an unavailable copy is expected to be available again.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Create Operations</h3>
+                <img src=<%=require("../../assets/images/projects/express-local-library/create_book.png")%>
+                alt="Create Book"
+                />
+                <p>
+                    Clicking on a link such as <span>Create new book</span> will serve the page with a form for the user
+                    to enter new information about a book. Submitting this would send a request to process a new book in
+                    the database. The same operation can be done for other entities and their associated forms.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Update Operations</h3>
+                <img src=<%=require("../../assets/images/projects/express-local-library/update_book.png")%>
+                alt="Update Book"
+                />
+                <p>Clicking on a link such as <span>Update book</span> will serve the page with a form for the user to
+                    alter information about a book. Submitting this would send a request to update a book in the
+                    database. The same operation can be done for other entities and their associated forms.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Delete Operations</h3>
+                <img src=<%=require("../../assets/images/projects/express-local-library/delete_book.png")%>
+                alt="Delete Book"
+                />
+                <p>Clicking on a link such as <span>Delete book</span> will serve the page prompting the user to delete
+                    associated book instances or will ask the user if they are sure they want to delete an entity.
+                    Submitting this would send a request to delete a book in the database. The same operation can be
+                    done for other entities.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Routes</h3>
+                <figure>
+                    <pre>
+                        <code>
+/// BOOK ROUTES ///
+
+// GET catalog home page.
+router.get("/", book_controller.index);
+
+// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
+router.get("/book/create", book_controller.book_create_get);
+
+// POST request for creating Book.
+router.post("/book/create", book_controller.book_create_post);
+
+// GET request to delete Book.
+router.get("/book/:id/delete", book_controller.book_delete_get);
+
+// POST request to delete Book.
+router.post("/book/:id/delete", book_controller.book_delete_post);
+
+// GET request to update Book.
+router.get("/book/:id/update", book_controller.book_update_get);
+
+// POST request to update Book.
+router.post("/book/:id/update", book_controller.book_update_post);
+
+// GET request for one Book.
+router.get("/book/:id", book_controller.book_detail);
+
+// GET request for list of all Book items.
+router.get("/books", book_controller.book_list);
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The provided code will create a set of routes that will trigger the associated controller once a
+                    HTTP request with the same method and URI is received by the server.
+                </p>
+            </div>
+            <div>
+                <h3>Models</h3>
+                <figure>
+                    <pre>
+                        <code>
+const BookSchema = new Schema({
+    title: { type: String, required: true },
+    author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
+    summary: { type: String, required: true },
+    isbn: { type: String, required: true },
+    genre: [{ type: Schema.Types.ObjectId, ref: "Genre" }],
+    });
+    
+    // Virtual for book's URL
+    BookSchema.virtual("url").get(function () {
+    // We don't use an arrow function as we'll need the this object
+    return `/catalog/book/${this._id}`;
+    });
+    
+    // Export model
+    module.exports = mongoose.model("Book", BookSchema);
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Models are created using the Schema class provided by Mongoose. The provided code sets out the
+                    associated constraints and virtual fields for the book model. The model is exported so it can be
+                    used in operations within controllers.
+                </p>
+            </div>
+            <div>
+                <h3>Views</h3>
+                <figure>
+                    <pre>
+                        <code>
+extends layout
+
+block content
+    h1= title
+
+    ul
+    each book in book_list
+        li
+        a(href=book.url) #{book.title}
+        |  (#{book.author.name})
+
+    else
+        li There are no books.                            
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Views are templates in the application that utilize passed variables to make the content dynamic.
+                    The provided code is Pug syntax for using the layout, displaying a title and looping through each
+                    book passed by the server.
+                </p>
+            </div>
+            <div>
+                <h3>Controllers</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Display detail page for a specific Author.
+exports.author_detail = asyncHandler(async (req, res, next) => {
+    // Get details of author and all their books (in parallel)
+    const [author, allBooksByAuthor] = await Promise.all([
+    Author.findById(req.params.id).exec(),
+    Book.find({ author: req.params.id }, "title summary").exec(),
+    ]);
+
+    if (author === null) {
+    // No results.
+    const err = new Error("Author not found");
+    err.status = 404;
+    return next(err);
+    }
+
+    res.render("author_detail", {
+    title: "Author Detail",
+    author: author,
+    author_books: allBooksByAuthor,
+    });
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Controllers run the specific business logic for an endpoint reached by the user. The provided code
+                    will serve content for the details on a specific author including their books.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/express-local-library" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/express-local-library" target="_blank">Kyle Keene-Welch |
+                        Express Local Library</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2023</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>
