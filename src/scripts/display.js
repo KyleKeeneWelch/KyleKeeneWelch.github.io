@@ -22,6 +22,7 @@ import odinRestaurantPage from "../assets/images/portfolio/odin-restaurant-page.
 import odinToDoList from "../assets/images/portfolio/odin-to-do-list.png";
 import odinWeatherApp from "../assets/images/portfolio/odin-weather-app.png";
 import expressLocalLibrary from "../assets/images/portfolio/express-local-library.png";
+import odinInventoryApplication from "../assets/images/portfolio/odin-inventory-application.png";
 
 class Display {
   static projects = [];
@@ -387,6 +388,27 @@ class Display {
         "https://github.com/KyleKeeneWelch/express-local-library",
         "express-local-library.html",
         expressLocalLibrary
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Odin Inventory Application",
+        new Date("2023-12-29"),
+        [
+          "Web",
+          "Express",
+          "NPM",
+          "Multer",
+          "REST",
+          "MVC",
+          "MongoDB",
+          "Async/Await",
+        ],
+        "This project had similar aims to the Express Local Library but covered the teachings and context behind the lessons taught on Express in The Odin Project. It was a much larger project than the library and posed additional challenges such as multi-part form data, and validation on the Back-end.",
+        "https://github.com/KyleKeeneWelch/odin-inventory-application",
+        "odin-inventory-application.html",
+        odinInventoryApplication
       )
     );
   }

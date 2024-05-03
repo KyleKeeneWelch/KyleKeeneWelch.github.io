@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: Inventory Application | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Inventory Application</h1>
+                    <p>December 29th, 2023</p>
+                </div>
+                <div class="project-featured-image">
+                    <img
+                        src=32d86d0b72ed402241e0.png
+                    alt="Inventory Application" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Pug</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">Multer</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">MVC</p>
+                    <p class="project-tag">MongoDB</p>
+                    <p class="project-tag">Async/Await</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project had similar aims to the Express Local Library but covered the teachings and context behind
+                the lessons taught on Express in The Odin Project. It was a much larger project than the library and
+                posed additional challenges such as <span>multi-part form data</span>, and <span>validation</span> on
+                the Back-end.
+            </p>
+            <p>
+                The project continued to familiarize myself with the concepts behind <span>templating languages</span>,
+                <span>REST</span>, <span>models</span>, <span>views</span>, and <span>controllers</span> and presents a
+                more challenging application to build proficiency in these areas to develop and be used in future
+                projects. The additional workload from ensuring the integrity of a business's inventory was a challenge
+                that enabled me to apply my skills in an application that is typically used in modern business.
+            </p>
+
+            <p>
+                As a result, the produced artefact contains a series of pages utilizing the templating engine to
+                dynamically display content such as the available items in the inventory. Further implementations
+                involving Express and
+                MongoDB will build upon the concepts demonstrated in this project.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Item Image Upload</strong> - Handling multi-part data and storing uploaded images of items
+                    to be dynamically displayed on the item's page.</li>
+                <li><strong>Express Validator</strong> - Validating the request body in the request chain before
+                    performing an operation in the controller. Invalid input can be identified and appropriate action
+                    such as an error message can be returned in a response.</li>
+                <li><strong>Server-Side Routing</strong> - Requests are processed by the server and the server uses
+                    templates to dynamically respond with requested content.</li>
+                <li><strong>CRUD Operations</strong> - Mongoose is used to perform create, read, update, and delete
+                    operations on collections for entities such as categories, items, item instances, and orders.</li>
+                <li><strong>MVC</strong> - Utilizes the common Model, View, Controller pattern to separate the concerns
+                    between defined entities, templates and business logic for maintainability.</li>
+                <li><strong>Mongo Atlas</strong> - Makes use of the cloud platform Mongo Atlas to modify collections and
+                    return responses to queries on the database.</li>
+
+            </ul>
+            <div class="project-feature-container">
+                <h3>Home</h3>
+                <img
+                    src=32d86d0b72ed402241e0.png
+                alt="Home"
+                />
+                <p>
+                    The Home page enables the user to search for categories relating to items in the inventory. It also
+                    contains links for creating several entities such as a new category, item, item instance, or order.
+                    Returned results contain links to the corresponding category page.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Create Operations</h3>
+                <img src=618c1511c83b221f4d4e.png
+                alt="Create Book"
+                />
+                <p>
+                    Clicking on a link such as <span>Create category</span> will serve the page with a form for the user
+                    to enter new information about a category. Submitting this would send a request to process a new
+                    category in
+                    the database. The same operation can be done for other entities and their associated forms.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Update Operations</h3>
+                <img
+                    src=75d14368d72f769f2d0d.png
+                alt="Update Book"
+                />
+                <p>Clicking on a link such as <span>Update Item Instance</span> will serve the page with a form for the
+                    user to
+                    alter information about an Item Instance. Submitting this would send a request to update a book in
+                    the
+                    database. The same operation can be done for other entities and their associated forms.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Delete Operations</h3>
+                <img src=2897530a84a4e2ae3c63.png
+                alt="Delete Book"
+                />
+                <p>Clicking on a link such as <span>Delete Item</span> will serve the page prompting the user to delete
+                    associated Item Instances or will ask the user if they are sure they want to delete an entity.
+                    Submitting this would send a request to delete a book in the database. The same operation can be
+                    done for other entities.</p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Lists</h3>
+                <img src=767e1d9c0240ac5e838a.png
+                alt="Book Page"
+                />
+                <p>
+                    Clicking on a link such as <span>Items</span> will serve the page containing a list of all the
+                    Items available in the inventory. The same can be done for other entities by clicking on the
+                    corresponding link. Each page will include the relevant details and links that meet the requirements
+                    of each entity.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Entity Details</h3>
+                <img src=5c6197141aadda9cd1cd.png
+                alt="Book Page"
+                />
+                <p>
+                    Clicking on a link such as the <span>Item Instance Code</span> will serve the page containing the
+                    details of a particular item instance such as its status. The same can be done for other entities by
+                    clicking on the
+                    corresponding link. Each page will include the relevant details and links that meet the requirements
+                    of each entity.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Uploading an Item Image</h3>
+                <img src=20cf8d01429708dfebfe.png
+                alt="Book Page"
+                />
+                <p>
+                    Creating or updating an item will allow the user to update an image that is displayed on the Item's
+                    page. This submission of both text fields and an image field is known as multi-part data and
+                    required the special use of a package to assist with this.
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Routes</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Category routes
+router.get("/", category_controller.index_get);
+
+router.post("/", category_controller.index_post);
+
+router.get("/category/create", category_controller.category_create_get);
+
+router.post("/category/create", category_controller.category_create_post);
+
+router.get("/category/:id/delete", category_controller.category_delete_get);
+
+router.post("/category/:id/delete", category_controller.category_delete_post);
+
+router.get("/category/:id/update", category_controller.category_update_get);
+
+router.post("/category/:id/update", category_controller.category_update_post);
+
+router.get("/category/:id", category_controller.category_detail);
+
+router.get("/categories", category_controller.category_list);                            
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The provided code will create a set of routes that will trigger the associated controller once a
+                    HTTP request with the same method and URI is received by the server.
+                </p>
+            </div>
+            <div>
+                <h3>Models</h3>
+                <figure>
+                    <pre>
+                        <code>
+const Schema = mongoose.Schema;
+
+const categorySchema = new Schema({
+    name: { type: String, required: true, maxLength: 100 },
+    description: { type: String, required: true },
+});
+
+categorySchema.virtual("url").get(function () {
+    return `/inventory/category/${this._id}`;
+});
+
+module.exports = mongoose.model("Category", categorySchema);                            
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Models are created using the Schema class provided by Mongoose. The provided code sets out the
+                    associated constraints and virtual fields for the Category model. The model is exported so it can be
+                    used in operations within controllers.
+                </p>
+            </div>
+            <div>
+                <h3>Views</h3>
+                <figure>
+                    <pre>
+                        <code>
+extends layout
+
+block content
+    header
+    h2 #{title}
+
+    div(class="search_container")
+    h3 Find a Category
+    form(action="/inventory" method="POST")
+        input(type="text" name="category" placeholder="shoes..." value=(undefined === search_category ? '' : search_category))
+        button(type="submit") Search
+    br
+    
+    div(id="home_container")
+    div(class="sidebar_container")
+        p #[strong Create]
+        a(href="/inventory/category/create") Create Category
+        a(href="/inventory/item/create") Create Item 
+        a(href="/inventory/iteminstance/create") Create Item Instance 
+        a(href="/inventory/order/create") Create Order
+
+    div(class="categories_container")
+        p #[strong Search Results]
+        if categories
+        for category in categories 
+            div(class="category_container")
+            a(href=category.url) #[strong #{category.name}]
+            p #{category.description}                        
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Views are templates in the application that utilize passed variables to make the content dynamic.
+                    The provided code is Pug syntax for using the layout, displaying a title, a search bar, create
+                    links, and a list of result categories.
+                </p>
+            </div>
+            <div>
+                <h3>Controllers</h3>
+                <figure>
+                    <pre>
+                        <code>
+exports.category_create_post = [
+body("name", "Name is required").trim().isLength({ min: 1 }).escape(),
+body("description", "Description is required")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+
+    const category = new Category({
+    name: req.body.name,
+    description: req.body.description,
+    });
+
+    if (!errors.isEmpty()) {
+    debug(`Validation Error(s) for ${category.name}`);
+    res.render("category_form", {
+        title: "Create Category",
+        category: category,
+        errors: errors.array(),
+    });
+    return;
+    } else {
+    await category.save();
+    debug(`Created new category: ${category._id}`);
+    res.redirect(category.url);
+    }
+}),
+];
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Controllers run the specific business logic for an endpoint reached by the user. The provided code
+                    will create a new category in the database and will redirect the user to the newly created category
+                    page. The code also contains statements that check the rules on fields in the request body.
+                    Validation errors will render an error message on the same page.
+                </p>
+            </div>
+            <div>
+                <h3>Accessing Multi-part Data</h3>
+                <figure>
+                    <pre>
+                        <code>
+                            const item = new Item({
+                                name: req.body.name,
+                                description: req.body.description,
+                                category: req.body.category,
+                                price: req.body.price,
+                                image:
+                                  typeof req.file === "undefined" ? "" : req.file.path.split("public")[1],
+                                _id: req.params.id,
+                              });
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The Multer package is used to assign text fields to a request's body and image fields within the
+                    request's file property. Through accessing both of these in the controller, we can create or update
+                    an item with the stored image in the public data folder.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-inventory-application" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-inventory-application" target="_blank">Kyle
+                        Keene-Welch |
+                        Odin Inventory Application</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2024</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

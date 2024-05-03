@@ -116,6 +116,12 @@ module.exports = {
       filename: "express-local-library.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/odin-inventory-application.html",
+      filename: "odin-inventory-application.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",
