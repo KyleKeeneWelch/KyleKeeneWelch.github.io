@@ -24,6 +24,7 @@ import odinWeatherApp from "../assets/images/portfolio/odin-weather-app.png";
 import expressLocalLibrary from "../assets/images/portfolio/express-local-library.png";
 import odinInventoryApplication from "../assets/images/portfolio/odin-inventory-application.png";
 import tomatoGame from "../assets/images/portfolio/tomato-game.png";
+import odinBlogAPI from "../assets/images/portfolio/odin-blog-api.png";
 
 class Display {
   static projects = [];
@@ -432,6 +433,27 @@ class Display {
         "https://github.com/KyleKeeneWelch/odin-inventory-application",
         "odin-inventory-application.html",
         odinInventoryApplication
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Odin Blog API",
+        new Date("2024-01-14"),
+        [
+          "Web",
+          "Express",
+          "NPM",
+          "REST",
+          "API",
+          "JWT",
+          "MongoDB",
+          "Async/Await",
+        ],
+        "This project aimed to put the teachings of RESTful APIs and Express from The Odin Project into an artefact that can process Blog-related requests and respond. The original concept involved building a front-end to be used alongside the API but due to time restrictions on sourcing this expertise for my final project, I aimed to fully implement the API and leave the front-end for developing with React.",
+        "https://github.com/KyleKeeneWelch/odin-inventory-application",
+        "odin-blog-api.html",
+        odinBlogAPI
       )
     );
   }

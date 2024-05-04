@@ -128,6 +128,12 @@ module.exports = {
       filename: "tomato-game.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/odin-blog-api.html",
+      filename: "odin-blog-api.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",

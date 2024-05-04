@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: Blog API | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Blog API</h1>
+                    <p>January 14th, 2024</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=2ce991b12214d27cec2c.png
+                    alt="Blog Scrabble Pieces" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">API</p>
+                    <p class="project-tag">MongoDB</p>
+                    <p class="project-tag">Passport</p>
+                    <p class="project-tag">JWT</p>
+                    <p class="project-tag">Async/Await</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project aimed to put the teachings of RESTful APIs and Express from The Odin Project into an
+                artefact that can process Blog-related requests and respond. The original concept involved building a
+                front-end to be used alongside the API but due to time restrictions on sourcing this expertise for my
+                final project, I aimed to fully implement the API and leave the front-end for developing with React.
+            </p>
+            <p>
+                The outcome utilized the learnings of Express and MongoDB as implemented before but additional concepts
+                enabled my growth in this area such as using <span>JWTs</span> and a <span>Refresh Mechanism</span> for
+                authentication, <span>RESTful principles</span>and returning <span>JSON</span> responses instead of
+                HTML.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>CRUD Operations</strong> - Requests are processed by the API and perform create, read,
+                    update, and delete operations on entities such as comments, posts, refresh tokens and users.</li>
+                <li><strong>Passport and Authentication</strong> - Passport Local and JWT Strategy formed a hybrid
+                    approach to authentication where a user would first authenticate using email and password, would
+                    continue using the application until the access token expires, would obtain a new token if a refresh
+                    token exists or would reauthenticate with email and password. </li>
+                <li><strong>Encryption</strong> - Encrypting plain passwords into hash values enables them to easily be
+                    stored in the database.</li>
+                <li><strong>Pagination</strong> - The API handles the performance and formatting of data to enable
+                    clients to derive information in limited increments to paginate through results. Returned JSON makes
+                    it easy to see if a previous or next page exists and the data included in the current page.</li>
+                <li><strong>Lightweight Endpoints</strong> - Endpoints are designed with a specific method and URI in
+                    accordance to RESTful principles. Each controller contains the minimum amount of code to accomplish
+                    a specific task. As a result, endpoints are lightweight and return responses / perform operations
+                    quickly.</li>
+            </ul>
+            <section>
+                <h2>Implementation</h2>
+                <div>
+                    <h3>Passport Local Strategy</h3>
+                    <figure>
+                        <pre>
+                        <code>
+exports.localStrategy = new LocalStrategy(
+    { usernameField: "email", passwordField: "password" },
+    async (email, password, done) => {
+        try {
+        const result = await User.findOne({ email: email });
+        if (!result) {
+            return done(null, false, { message: "User not found" });
+        }
+        const passwordMatches = await bcrypt.compare(password, result.password);
+    
+        if (!passwordMatches) {
+            return done(null, false, { message: "Invalid credentials" });
+        }
+    
+        const user = {
+            id: result._id.toString(),
+            first_name: result.first_name,
+            last_name: result.last_name,
+            username: result.username,
+            email: result.email,
+            password: result.password,
+        };
+    
+        return done(null, user, { message: "User logged in" });
+        } catch (error) {
+        return done(error);
+        }
+    }
+    );                              
+                        </code>
+                    </pre>
+                    </figure>
+                    <p>
+                        Passport is used with a <span>local strategy</span> which enables authentication through a
+                        user's inputted email and password. The local strategy async function will check to see if a
+                        user with that email exists in the database and if the plain password compared with the hashed
+                        password is the same. Upon successful authentication a user object with the associated details
+                        is created and is passed to the callback function which will handle signing an access token with
+                        this object.
+                    </p>
+                </div>
+                <div>
+                    <h3>Passport JWT and Refresh Strategy</h3>
+                    <figure>
+                        <pre>
+                        <code>
+exports.jwtStrategy = new Jwtstrategy(
+    {
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.TOKEN_SECRET,
+        passReqToCallback: true,
+    },
+    async (req, data, done) => {
+        if (!data) {
+        return done(null, null, { message: "Invalid token" });
+        }
+        req.user = data.data;
+        return done(null, data.data);
+    }
+    );
+    
+    exports.refreshJwtStrategy = new Jwtstrategy(
+    {
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.REFRESH_TOKEN_SECRET,
+    },
+    async (data, done) => {
+        if (!data) {
+        return done(null, null, { message: "Invalid token" });
+        }
+        return done(null, data.data);
+    }
+    );
+                        </code>
+                    </pre>
+                    </figure>
+                    <p>
+                        Passport is also used to verify both access and refresh tokens. <span>Access tokens</span> are
+                        verified and have their decoded data assigned to a user property in the request before returning
+                        the data. <span>Refresh tokens</span> just return the data. This data is used for operations on
+                        protected routes that require an authenticated user. Data from the refresh token is used to sign
+                        a new access token for the user to use to access these protected routes. Access tokens expire in
+                        short time and are reacquired from refresh tokens which expire after a longer period. An expired
+                        refresh token is removed from the database and requires the user to re-enter their email and
+                        password to be authenticated by the local strategy.
+                    </p>
+                </div>
+                <div>
+                    <h3>Routes</h3>
+                    <figure>
+                        <pre>
+                        <code>
+// Post
+
+router.get("/posts", paginatedResults(Post), postController.posts_get);
+
+router.get("/posts/:id", checkIdFormat(), postController.post_get);
+
+router.post(
+    "/posts",
+    passport.authenticate("jwt", { session: false }),
+    postController.post_post
+);
+
+router.put(
+    "/posts/:id",
+    checkIdFormat(),
+    passport.authenticate("jwt", { session: false }),
+    postController.post_put
+);
+
+router.delete(
+    "/posts/:id",
+    checkIdFormat(),
+    passport.authenticate("jwt", { session: false }),
+    postController.post_delete
+);          
+                        </code>
+                    </pre>
+                    </figure>
+                    <p>
+                        Routes in the application follow <span>RESTful principles</span> for business entities such as
+                        Post in the provided code. The <span>GET</span>, <span>POST</span>, <span>PUT</span> and
+                        <span>DELETE</span> methods all correspond to the <span>CRUD</span> operations to perform on
+                        that entity. The routes also specify middleware that is executed before the controller in the
+                        request chain. The <span>checkIdFormat</span> function will assess the format of a supplied ID.
+                        The <span>JWT strategy</span> is included to authenticate the user before executing the
+                        controller as it is a protected route.
+                    </p>
+                </div>
+                <div>
+                    <h3>Back-end Validation</h3>
+                    <figure>
+                        <pre>
+                        <code>
+exports.post_post = [
+body("title", "Title is required").trim().isLength({ min: 1 }).escape(),
+body("body", "Body is required").trim().isLength({ min: 1 }).escape(),
+body("published", "Published is required")
+    .isLength({ min: 1 })
+    .escape()
+    .customSanitizer((value, { req }) => {
+    return value == "true";
+    }),
+asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+
+    const post = new Post({
+    user: req.user.id,
+    title: req.body.title,
+    body: req.body.body,
+    createdAt: Date.now(),
+    published: req.body.published,
+    });
+
+    if (!errors.isEmpty()) {
+    res.sendStatus(403);
+    return;
+    } else {
+    await post.save();
+    res.sendStatus(200);
+    }
+}),
+];
+                        </code>
+                    </pre>
+                    </figure>
+                    <p>
+                        The application uses <span>Express Validator</span>ds in the request body before they are used
+                        in the controller. Validation errors cause the controller to return a 403 response instead of
+                        using invalid values.
+                    </p>
+                </div>
+            </section>
+            <section>
+                <div class="github-repo-container">
+                    <div>
+                        <a href="https://github.com/KyleKeeneWelch/odin-blog-api" target="_blank"><i
+                                class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                        <a href="https://github.com/KyleKeeneWelch/odin-blog-api" target="_blank">Kyle Keene-Welch |
+                            Blog API</a>
+                    </div>
+                </div>
+                <div>
+                    <h2>Want to know more?</h2>
+                    <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                        alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+                    </p>
+                </div>
+            </section>
+            <footer>
+                <p>Kyle Keene-Welch © 2024</p>
+                <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon"
+                        aria-hidden="true"></i></a>
+                <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+            </footer>
+    </main>
+</body>
+
+</html>
