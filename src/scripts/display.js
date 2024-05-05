@@ -25,6 +25,7 @@ import expressLocalLibrary from "../assets/images/portfolio/express-local-librar
 import odinInventoryApplication from "../assets/images/portfolio/odin-inventory-application.png";
 import tomatoGame from "../assets/images/portfolio/tomato-game.png";
 import odinBlogAPI from "../assets/images/portfolio/odin-blog-api.png";
+import odinCVApplication from "../assets/images/portfolio/odin-cv-application.png";
 
 class Display {
   static projects = [];
@@ -454,6 +455,18 @@ class Display {
         "https://github.com/KyleKeeneWelch/odin-inventory-application",
         "odin-blog-api.html",
         odinBlogAPI
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Odin CV Application",
+        new Date("2024-01-20"),
+        ["Web", "React", "NPM", "Vite"],
+        "This project was my first attempt at building a simple <span>React</span> application using the teachings from The Odin Project. It was a simple CV application that allows the user to enter in some details for sections such as general, education, and experience, and printed this information back to the user as their formatted 'CV'.",
+        "https://github.com/KyleKeeneWelch/odin-cv-application",
+        "odin-cv-application.html",
+        odinCVApplication
       )
     );
   }

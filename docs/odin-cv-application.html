@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>The Odin Project: CV Application | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>CV Application</h1>
+                    <p>January 20th, 2024</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=9c97e3dbd3245a623c89.png
+                    alt="Inventory Application" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">React</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Vite</p>
+                    <p class="project-tag">NPM</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project was my first attempt at building a simple <span>React</span> application using the
+                teachings from The Odin Project. It was a simple CV application that allows the user to enter in some
+                details for sections such as general, education, and experience, and printed this information back to
+                the user as their formatted "CV". The simplistic nature enabled me to get a grip with how
+                <span>components</span> and <span>hooks</span> work in React and served as a starting point for building
+                my skills in React to be used in my final year project.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Show and Hide Sections</strong> - Enables the user to toggle between displaying a section
+                    and hiding.</li>
+                <li><strong>Add Entries</strong> - Users can click the add button to insert more fields to enter more
+                    information on a specific section.</li>
+                <li><strong>Produce a compiled "CV" with the entered information</strong> - Pressing show on your
+                    produced CV will display the information back to the user.</li>
+            </ul>
+            <div class="project-feature-container">
+                <h3>Home</h3>
+                <img src=cf5f6b74fffe2ca3bcb3.png
+                alt="Home"
+                />
+                <p>
+                    After entering the required information, the user can click show to produce a "CV" displayed the
+                    entered information.
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Nesting Components</h3>
+                <figure>
+                    <pre>
+                        <code>
+                            return (
+&lt;&gt;
+    &lt;h1&gt;Enter Your Details&lt;/h1&gt;
+    &lt;br&gt;&lt;/br&gt;
+    &lt;General updateGeneral={handleGeneralChange} data={generalInput} isShown={isShown} /&gt;
+    &lt;button id=&quot;btnShow_general&quot; onClick={toggleIsShown}&gt;{isShown.general ? &quot;Hide&quot; : &quot;Show&quot;}&lt;/button&gt;
+    &lt;hr&gt;&lt;/hr&gt;
+    &lt;Education updateEducation={handleEducationChange} data={educationInput} isShown={isShown} /&gt;
+    &lt;button id=&quot;btnShow_education&quot; onClick={toggleIsShown}&gt;{isShown.education ? &quot;Hide&quot; : &quot;Show&quot;}&lt;/button&gt;
+    &lt;button onClick={addEducation}&gt;Add&lt;/button&gt;
+    &lt;hr&gt;&lt;/hr&gt;
+    &lt;Experience updateExperience={handleExperienceChange} data={experienceInput} isShown={isShown} /&gt;
+    &lt;button id=&quot;btnShow_experience&quot; onClick={toggleIsShown}&gt;{isShown.experience ? &quot;Hide&quot; : &quot;Show&quot;}&lt;/button&gt;
+    &lt;button onClick={addExperience}&gt;Add&lt;/button&gt;
+    &lt;hr&gt;&lt;/hr&gt;
+    &lt;h1&gt;Your Entered Application&lt;/h1&gt;
+    &lt;button id=&quot;btnShow_display&quot; onClick={toggleIsShown}&gt;{isShown.display ? &quot;Hide&quot; : &quot;Show&quot;}&lt;/button&gt;
+    &lt;Display data={data} isShown={isShown} /&gt;
+&lt;/&gt;
+)                            
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The App component provides the layout of the application and nests components within to serve as the
+                    sections for the user to enter information or display their entered information. Each referenced
+                    component is passed properties that can be used within the component and updated as state changes.
+                </p>
+            </div>
+            <div>
+                <h3>UseState Hook</h3>
+                <figure>
+                    <pre>
+                        <code>
+const [generalInput, setGeneralInput] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    });
+
+    const [educationInput, setEducationInput] = useState(
+    [{
+        id: uuidv4(),
+        schoolName: "",
+        titleOfStudy: "",
+        dateOfStudy: ""
+    }]
+    );
+
+    const [experienceInput, setExperienceInput] = useState(
+    [{
+        id: uuidv4(),
+        companyName: "",
+        positionTitle: "",
+        mainResponsibilities: "",
+        dateFrom: "",
+        dateUntil: "",
+    }]
+    );
+
+    const [isShown, setIsShown] = useState({
+    general: true,
+    education: true,
+    experience: true,
+    display: false
+    });                        
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>UseState</span> hook is used to maintain specific values between renders of a component.
+                    It also triggers a render when changed. We pass the variable and setter function to components that
+                    we want to access and change this state. When interactions with the user cause the state to change,
+                    all the components that utilize the state will re-render to reflect the changes. The provided code
+                    stores state as objects relating to the fields in components and the display of sections. Changes to
+                    fields or clicking a show / hide button will alter the state and cause components to re-render.
+                </p>
+            </div>
+            <div>
+                <h3>Data Mapping</h3>
+                <figure>
+                    <pre>
+                        <code>
+return (
+    &lt;&gt;
+        &lt;h2&gt;Education&lt;/h2&gt;
+        {data.map((education, index) =&gt; {
+            return (
+                &lt;div className={!isShown.education ? &quot;hidden&quot; : &quot;&quot;} key={education.id + &quot;_display&quot;}&gt;
+                    &lt;h3&gt;Education {index + 1}:&lt;/h3&gt;
+                    &lt;div&gt;
+                        &lt;label htmlFor={education.id + &quot;_schoolName&quot;}&gt;
+                            School Name
+                        &lt;/label&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;school_name&quot; id={education.id + &quot;_schoolName&quot;} placeholder=&quot;Enter School name...&quot; value={education.schoolName} onChange={updateEducation} /&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;label htmlFor={education.id + &quot;_titleOfStudy&quot;}&gt;
+                            Title of Study
+                        &lt;/label&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;title&quot; id={education.id + &quot;_titleOfStudy&quot;} placeholder=&quot;Enter title...&quot; value={education.titleOfStudy} onChange={updateEducation} /&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;label htmlFor={education.id + &quot;_dateOfStudy&quot;}&gt;
+                            Date of Study
+                        &lt;/label&gt;
+                        &lt;input type=&quot;date&quot; name=&quot;date&quot; id={education.id + &quot;_dateOfStudy&quot;} placeholder=&quot;Enter date...&quot; value={education.dateOfStudy} onChange={updateEducation} /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            )
+        })}
+    &lt;/&gt;                  
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The Map function is used to produce a DOM element for each entry in the passed data. In this case,
+                    we used Map to loop through each place of education the user has entered in the application and
+                    incremented this value to prepare fields for a new entry.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/odin-cv-application" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/odin-cv-application" target="_blank">Kyle
+                        Keene-Welch |
+                        Odin CV Application</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2024</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

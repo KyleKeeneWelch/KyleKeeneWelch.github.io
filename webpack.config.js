@@ -134,6 +134,12 @@ module.exports = {
       filename: "odin-blog-api.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/odin-cv-application.html",
+      filename: "odin-cv-application.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",
