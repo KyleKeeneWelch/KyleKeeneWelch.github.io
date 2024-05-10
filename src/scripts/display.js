@@ -26,6 +26,7 @@ import odinInventoryApplication from "../assets/images/portfolio/odin-inventory-
 import tomatoGame from "../assets/images/portfolio/tomato-game.png";
 import odinBlogAPI from "../assets/images/portfolio/odin-blog-api.png";
 import odinCVApplication from "../assets/images/portfolio/odin-cv-application.png";
+import consort from "../assets/images/portfolio/consort.png";
 
 class Display {
   static projects = [];
@@ -467,6 +468,28 @@ class Display {
         "https://github.com/KyleKeeneWelch/odin-cv-application",
         "odin-cv-application.html",
         odinCVApplication
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Consort",
+        new Date("2024-03-02"),
+        [
+          "Web",
+          "Express",
+          "NPM",
+          "REST",
+          "MVC",
+          "Passport",
+          "Bootstrap",
+          "MongoDB",
+          "Async/Await",
+        ],
+        "This project was completed as part of an assignment in an Agile Project Management module. Within this project, I took lead as the Project Manager and followed an Agile Scrum methodology to deliver meaningful prototypes after weekly sprints. I was able todelegate tasks to other members and offer guidance as the individual who had the most experience in Full Stack Development. As a result, the team produced a simple Student Collaboration site that enabled students to interact and share ideas of subjects of interest.",
+        "https://github.com/KyleKeeneWelch/consort",
+        "consort.html",
+        consort
       )
     );
   }

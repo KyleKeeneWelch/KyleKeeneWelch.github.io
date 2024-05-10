@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Consort | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Consort</h1>
+                    <p>March 2nd, 2024</p>
+                </div>
+                <div class="project-featured-image">
+                    <img
+                        src=3190ee239ef3d7f73d92.png
+                    alt="Express Local Library" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">EJS</p>
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">MVC</p>
+                    <p class="project-tag">Passport</p>
+                    <p class="project-tag">Bootstrap</p>
+                    <p class="project-tag">MongoDB</p>
+                    <p class="project-tag">Async/Await</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project was completed as part of an assignment in an <span>Agile Project Management</span> module.
+                Within this project, I took lead as the <span>Project Manager</span> and followed an <span>Agile
+                    Scrum</span> methodology to deliver meaningful prototypes after weekly sprints. I was able to
+                delegate tasks to other members and offer guidance as the individual who had the most experience in
+                <span>Full Stack Development</span>. As a result, the team produced a simple Student Collaboration site
+                that enabled students to interact and share ideas of subjects of interest.
+            </p>
+            <p>
+                As the module emphasised good project management techniques and processes, such as <span>PRINCE2</span>,
+                the artefact itself was not the key takeaway. Therefore, the end product produced a complete, working
+                implementation of the described system but omits heavier, non-essential features to prioritize good
+                management techniques over a perfected solution. The vast amount of documentation and processes of
+                PRINCE2 were completed to emulate the complete project process in a modern, company scenario. These
+                included documentation such as the project plan, lessons learnt report, risk log, quality specification
+                and more. It also included processes such as starting the project, initating the project, directing the
+                project, managing by stage boundary, and more.
+            </p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Login System</strong> - Users are able to register and login to the application and uses
+                    sessions to keep the user authenticated across protected routes.</li>
+                <li><strong>CRUD Operations</strong> - Mongoose is used to perform create, read, update, and delete
+                    operations on collections for entities such as comments, rooms, tags and users.</li>
+                <li><strong>MVC</strong> - Utilizes the common Model, View, Controller pattern to separate the concerns
+                    between defined entities, templates and business logic for maintainability.</li>
+                <li><strong>Mongo Atlas</strong> - Makes use of the cloud platform Mongo Atlas to modify collections and
+                    return responses to queries on the database.</li>
+                <li><strong>Search</strong> - Provides a search mechanism to return results of rooms based on room title
+                    and room tags. Users can use the filter on the dashboard to autofill the query parameter to search
+                    by this tag.</li>
+
+            </ul>
+            <div class="project-feature-container">
+                <h3>Login</h3>
+                <img src=f04885afd5921dd818e7.png
+                alt="Login Page"
+                />
+                <p>
+                    The Login Page allows the user to authenticate through entering their email and password. Invalid
+                    entry prompts the user with an error message. Successful entry redirects the user to the dashboard
+                    page and serializes the user's session in the browser to be authenticated on protected routes.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Register</h3>
+                <img src=072364c58ebfea5de29c.png
+                alt="Register Page"
+                />
+                <p>
+                    The Register Page contains fields for the user to enter to create a new account. Each field has
+                    real-time authentication to inform the user of whether their current input is satisfactory. Icons
+                    and colour help indicate this. Successful entry redirects the user to the dashboard page.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Dashboard</h3>
+                <img src=6acad81e371066547d6b.png
+                alt="Dashboard Page"
+                />
+                <p>
+                    The dashboard page provides Room results, filter by tags, a button to create a room and a search
+                    bar. Clicking on a Room title will redirect the user to that room page. Clicking to create a room
+                    will redirect the user to the create room page. Clicking on a tag in the filter will set that tag as
+                    the query parameter for the search much like the search bar.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Creating a Room</h3>
+                <img src=28826b72f545e36698b0.png
+                alt="Create Room Page"
+                />
+                <p>
+                    The Create Room page contains the fields for creating a new room as well as creating, assigning, and
+                    deleting tags. A user can specify a title, description and up to three tags of which help categorize
+                    the discussion to take place in the room. Clicking to add a tag will make this tag available for
+                    other users as long as the room is confirmed and created. Tags created by a user can also be deleted
+                    both from previous created rooms or unpushed in this new one.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Room</h3>
+                <img src=7720e767a0dc40f7f11c.png
+                alt="Room Page" />
+                <p>
+                    The Room page provides room details such as when it was created and updated, the title and
+                    description as well as the discussion. Users who own the room can see the buttons to delete a room
+                    causing a popup to appear, and update the room redirecting to the update room page. Users can easily
+                    enter a new comment in the discussion and can edit and delete owned comments from the history.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Deleting a Room</h3>
+                <img src=fcf483d2d8ced91b2ee9.png
+                alt="Delete Room Popup"
+                />
+                <p>
+                    To delete a room, a user will navigate to one of their owned rooms and will click the delete room
+                    button to cause a popup to appear. This popup is similar to the popup to delete a comment but will
+                    prompt the user as to whether they are sure they want to delete that room. Users can simply click
+                    the backdrop or cancel to revert this process.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Updating a Room</h3>
+                <img src=b3564dfa619a467851fe.png
+                alt="Update Room Page"
+                />
+                <p>
+                    To update a room, a user can navigate to one of their owned rooms and can click on the update room
+                    button to redirect to the update room page. This page will have populated fields relating to the
+                    details of the room. The user can easily modify what they want and can save their changes to update
+                    the room. This also includes the creation, assignment, and deletion of tags.
+                </p>
+            </div>
+            <div class="project-feature-container">
+                <h3>Edit Account</h3>
+                <img src=1f68f047107fe84f9f28.png
+                alt="Edit Account Page"
+                />
+                <p>
+                    The Edit Account Page will display populated fields for details relating to the logged in user. The
+                    user can easily modify these fields and re-enter their password to confirm the changes and update
+                    their account.
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Routes</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Room
+router.get("/rooms/create", checkAuthenticated, roomController.create_room_get);
+
+router.post(
+    "/rooms/create",
+    checkAuthenticated,
+    roomController.create_room_post
+);
+
+router.get(
+    "/rooms/:id/update",
+    checkAuthenticated,
+    checkIdFormat(),
+    roomController.update_room_get
+);
+
+router.post(
+    "/rooms/:id/update",
+    checkAuthenticated,
+    checkIdFormat(),
+    roomController.update_room_post
+);
+
+router.post(
+    "/rooms/:id/delete",
+    checkAuthenticated,
+    checkIdFormat(),
+    roomController.delete_room_post
+);
+
+router.get(
+    "/rooms/:id",
+    checkAuthenticated,
+    checkIdFormat(),
+    roomController.room_get
+);
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The provided code will create a set of routes that will trigger the associated controller once a
+                    HTTP request with the same method and URI is received by the server. In the provided example, the
+                    Room routes allow the application to display the <span>Create Room</span> View, process this data to
+                    create a
+                    room, display the <span>Update Room</span> view, process this data to update a room, delete a room
+                    and display
+                    the room in the <span>Room</span> view itself.
+                </p>
+            </div>
+            <div>
+                <h3>Models</h3>
+                <figure>
+                    <pre>
+                        <code>
+                            const roomSchema = new Schema({
+                                user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+                                title: { type: String, required: true, maxLength: 100 },
+                                description: { type: String, maxLength: 500 },
+                                tags: [{ type: Schema.Types.Mixed, ref: "Tag", required: true }],
+                                comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+                                createdAt: { type: Date, imumutable: true },
+                                updatedAt: { type: Date, default: () => Date.now() },
+                              });
+
+                              module.exports = mongoose.model("Room", roomSchema);
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Models are created using the Schema class provided by Mongoose. The provided code sets out the
+                    associated constraints and virtual fields for the room model. The model is exported so it can be
+                    used in operations within controllers.
+                </p>
+            </div>
+            <div>
+                <h3>Views</h3>
+                <figure>
+                    <pre>
+                        <code>
+&lt;!-- Modal --&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;deleteRoom&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;exampleModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;exampleModalLabel&quot;&gt;Are You sure?&lt;/h1&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                Are you sure you want delete room &lt;%- room.title %&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Cancel&lt;/button&gt;
+                &lt;form method=&quot;POST&quot; action=&lt;%- `/rooms/${room._id}/delete` %&gt;&gt;
+                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-danger&quot;&gt;Delete&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- End modal  --&gt;
+
+
+&lt;% include navbar %&gt;
+
+    &lt;!-- Error--&gt;
+    &lt;% if (locals.errors) { %&gt;
+        &lt;% errors.forEach((err)=&gt; { %&gt;
+            &lt;p&gt;&lt;%- err.msg %&gt;&lt;/p&gt;
+            &lt;% }) %&gt;
+                &lt;% } %&gt;
+                    &lt;% if (messages.error) { %&gt;
+                        &lt;p&gt;&lt;%- messages.error %&gt;&lt;/p&gt;
+                        &lt;% } %&gt;
+                            &lt;!-- Error end--&gt;
+
+
+                            &lt;!-- Sticky top, room name, descripion, tags, Add comment, delete room,  update room--&gt;
+                            &lt;div class=&quot;sticky-top2 bg-light pb-1 mb-2&quot; id=&quot;navbarContainer&quot;&gt;
+                                &lt;div class=&quot;row align-items-center&quot;&gt;
+                                    &lt;div class=&quot;col text-center&quot;&gt;
+                                        &lt;h1 class=&quot;roomName&quot;&gt;&lt;%- room.title %&gt;&lt;/h1&gt; &lt;!-- Room name--&gt;
+                                        &lt;div class=&quot;row d-inline&quot;&gt;
+                                            &lt;% room.tags.forEach((tag)=&gt; { %&gt; &lt;!-- Tags--&gt;
+                                                &lt;p class=&quot;d-inline&quot;&gt;#&lt;%- tag.title %&gt;&lt;/p&gt;
+                                                &lt;% }) %&gt;
+                                        &lt;/div&gt;
+                                        &lt;p class=&quot;descriptionText&quot;&gt;&lt;%- room.description %&gt;&lt;/p&gt; &lt;!-- Description --&gt;
+                                        &lt;p class=&quot;text-muted text-center&quot;&gt;
+                                            Created by &lt;%- room.user.username %&gt; at &lt;%- room.createdAtFormatted %&gt;
+                                                    &lt;!-- room Created by [] at []--&gt;
+                                                    &lt;% if (room.createdAt.getTime() + 1000
+                                                        &lt;=room.updatedAt.getTime() ) { %&gt;
+                                                        &lt;!-- room if Updated at []--&gt;
+                                                        &lt;%- `| Updated at ${room.updatedAtFormatted}` %&gt;
+                                                            &lt;% } %&gt;
+                                        &lt;/p&gt;
+
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;row mt-2&quot;&gt;
+                                    &lt;div class=&quot;col-md-6 text-center mb-2&quot;&gt;
+                                        &lt;% if (locals.currentUser.id==room.user._id) { %&gt;
+                                            &lt;!-- room if owner of room add delete and update--&gt;
+                                            &lt;div class=&quot;d-inline-block&quot;&gt;
+                                                &lt;button class=&quot;btn btn-secondary mr-2&quot; id=&quot;deleteRoomBtn&quot;
+                                                    data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#deleteRoom&quot;&gt;Delete
+                                                    Room&lt;/button&gt;
+                                                &lt;form class=&quot;d-inline-block&quot; method=&quot;GET&quot; action=&lt;%-
+                                                    `/rooms/${room._id}/update` %&gt;&gt;
+                                                    &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;Update
+                                                        Room&lt;/button&gt;
+                                                &lt;/form&gt;
+                                            &lt;/div&gt;
+                                            &lt;% } %&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;div class=&quot;col-md-6 text-center&quot;&gt;
+                                        &lt;button class=&quot;btn btn-primary&quot; id=&quot;addCommentBtn&quot;&gt;Add Comment&lt;/button&gt;
+                                        &lt;!-- Add comment btn--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+
+                                &lt;!-- Display add comment textarea--&gt;
+                                &lt;div class=&quot;row addCommentContainer justify-content-center&quot;&gt;
+                                    &lt;form class=&quot;needs-validation1&quot; method=&quot;POST&quot; action=&lt;%-
+                                        `/rooms/${room._id}/comments/create` %&gt; novalidate&gt;
+                                        &lt;div class=&quot;mb-3&quot;&gt;
+                                            &lt;label for=&quot;commentBody&quot; class=&quot;form-label&quot;&gt;Add comment&lt;/label&gt;
+                                            &lt;div&gt;
+                                                &lt;textarea class=&quot;form-control&quot; id=&quot;commentBody&quot; name=&quot;commentBody&quot;
+                                                    placeholder=&quot;Enter your comment...&quot; rows=&quot;3&quot;
+                                                    required&gt;&lt;/textarea&gt;
+                                                &lt;div class=&quot;invalid-feedback&quot;&gt;Required&lt;/div&gt;
+                                            &lt;/div&gt;
+
+                                        &lt;/div&gt;
+                                        &lt;div class=&quot;d-flex justify-content-end&quot;&gt;
+                                            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Add&lt;/button&gt;
+                                            &lt;button class=&quot;btn btn-secondary cancelButton&quot; type=&quot;button&quot;
+                                                id=&quot;cancelButton&quot;&gt;Cancel&lt;/button&gt;
+                                        &lt;/div&gt;
+                                    &lt;/form&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;!-- End sticky--&gt;
+
+                            &lt;!-- Comments--&gt;
+                            &lt;div class=&quot;content&quot; id=&quot;mainContent&quot;&gt;
+                                &lt;% if (room.comments.length&gt; 0) { %&gt;
+                                    &lt;% room.comments.forEach((comment)=&gt; { %&gt;
+                                        &lt;div class=&quot;comment-frame&quot;&gt;
+                                            &lt;div class=&quot;comment-header&quot;&gt;
+                                                &lt;span class=&quot;username&quot;&gt;&lt;%- comment.user.username %&gt;&lt;/span&gt;
+                                                &lt;!--Comment username--&gt;
+
+                                                &lt;% if (locals.currentUser.id==comment.user._id) { %&gt;
+                                                    &lt;!-- if comment creator add delete, update button--&gt;
+                                                    &lt;div class=&quot;comment-actions&quot;&gt;
+                                                        &lt;button class=&quot;btnCancelUpdateComment&quot;
+                                                            display=&quot;none&quot;&gt;Cancel&lt;/button&gt;
+                                                        &lt;button class=&quot;btnUpdateComment&quot;&gt;Update Comment&lt;/button&gt;
+                                                        &lt;form method=&quot;POST&quot;
+                                                            action=&lt;%-`/rooms/${room._id}/comments/${comment._id}/delete`
+                                                            %&gt;&gt;
+                                                            &lt;button class=&quot;btnDeleteComment&quot;
+                                                                type=&quot;Submit&quot;&gt;Delete&lt;/button&gt;
+                                                        &lt;/form&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;% } %&gt;
+
+                                                        &lt;span class=&quot;date&quot;&gt;
+                                                            &lt;span&gt;&lt;%- comment.createdAtFormatted %&gt;&lt;/span&gt;
+                                                            &lt;!-- comment Created at []--&gt;
+                                                            &lt;% if (comment.createdAt.getTime() + 1000
+                                                                &lt;=comment.updatedAt.getTime() ) { %&gt;
+                                                                &lt;!--comment if updated at[]--&gt;
+                                                                &lt;span&gt;updated: &lt;%- comment.updatedAtFormatted
+                                                                        %&gt;&lt;/span&gt;
+                                                                &lt;% } %&gt;
+                                                        &lt;/span&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;comment-body&quot;&gt;
+                                                &lt;form method=&quot;POST&quot; class=&quot;updateCommentForm needs-validation&quot;
+                                                    action=&lt;%- `/rooms/${room._id}/comments/${comment._id}/update`
+                                                    %&gt; novalidate&gt; &lt;!-- comment Updating --&gt;
+
+                                                    &lt;div&gt;
+                                                        &lt;textarea class=&quot;form-control commentBody&quot; id=&quot;commentBody&quot;
+                                                            name=&quot;commentBody&quot; placeholder=&quot;Enter your comment...&quot;
+                                                            rows=&quot;3&quot; required&gt;&lt;/textarea&gt;
+                                                        &lt;div class=&quot;invalid-feedback&quot;&gt;Required&lt;/div&gt;
+                                                    &lt;/div&gt;
+
+                                                &lt;/form&gt;
+
+                                                &lt;p&gt;&lt;%- comment.body %&gt;&lt;/p&gt; &lt;!-- Comment --&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+
+                                        &lt;% }) %&gt;
+                                            &lt;% } else { %&gt;
+                                                &lt;div class=&quot;container&quot;&gt;
+                                                    &lt;div class=&quot;row justify-content-center&quot;&gt;
+                                                        &lt;div class=&quot;col-md-6 text-center&quot;&gt;
+                                                            &lt;p class=&quot;h4&quot;&gt;No comments yet! Click Add comment to get
+                                                                started!&lt;/p&gt; &lt;!--No comments--&gt;
+                                                        &lt;/div&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;% } %&gt;
+                            &lt;/div&gt;
+                            &lt;!-- Comments end--&gt;                        
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Views are templates in the application that utilize passed variables to make the content dynamic.
+                    The provided code is EJS syntax for displaying the delete room model, displaying any errors,
+                    providing room details, displaying room buttons and handling comments. The Room view uses passed
+                    variables to replace placeholder sections in the code with updated values representing the logged in
+                    user and session. It also utilizes Bootstrap to provide efficient styling and interactivity straight
+                    from the markup.
+                </p>
+            </div>
+            <div>
+                <h3>Controllers</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Create a Room
+exports.create_room_post = [
+    body("title", "Title is required").trim().isLength({ min: 1 }).escape(),
+    body("description", "Description is required")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+    body("tags.*", "Tags are required").trim().isLength({ min: 1 }).escape(),
+    asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    // Revised meaning new tag(s) need to be added
+    let isRevisedRoom = false;
+
+    let room = new Room({
+        user: req.user._id,
+        title: req.body.title,
+        description: req.body.description,
+        tags: req.body.tags,
+        comments: [],
+        createdAt: Date.now(),
+    });
+
+    // Passes as a string if singular so need to check for array and then length
+    if (Array.isArray(req.body.tags) && req.body.tags.length > 3) {
+        res.render("createRoom", {
+        title: "Create Room",
+        room: room,
+        errors: [{ msg: "A Room can have up to 3 tags" }],
+        });
+        return;
+    }
+
+    if (req.body.tags == null) {
+        const err = new Error(
+        "Tags are required. Ensure a tag checkbox is selected before submit"
+        );
+        err.status = 400;
+        next(err);
+        return;
+    }
+
+    if (!errors.isEmpty()) {
+        res.render("createRoom", {
+        title: "Create Room",
+        room: room,
+        errors: errors.array(),
+        });
+        return;
+    }
+
+    // Check if new tags have been passed, push to array and set as revised room. Singular new tag isn't array so requires separate statement.
+    let newTags = [];
+    if (Array.isArray(req.body.tags)) {
+        req.body.tags.forEach((tag) => {
+        if (!ObjectId.isValid(tag)) {
+            newTags.push(tag);
+            isRevisedRoom = true;
+        }
+        });
+    } else {
+        if (!ObjectId.isValid(req.body.tags)) {
+        newTags.push(req.body.tags);
+        isRevisedRoom = true;
+        }
+    }
+
+    // Creates the new tags and assigns the req.body.tags with the created tag IDs then creates the room.
+    if (isRevisedRoom) {
+        let createTags = [];
+
+        newTags.forEach((tag) => {
+        createTags.push(
+            new Promise((resolve, reject) => {
+            const newTag = new Tag({
+                user: req.user,
+                title: tag,
+                createdAt: Date.now(),
+            });
+            newTag.save();
+            if (Array.isArray(req.body.tags)) {
+                const index = req.body.tags.indexOf(tag);
+                req.body.tags[index] = newTag._id;
+            } else {
+                req.body.tags = newTag._id;
+            }
+            resolve();
+            })
+        );
+        });
+
+        Promise.all(createTags).then(() => {
+        room.tags = req.body.tags;
+        room.save();
+        res.redirect(`/rooms/${room._id}`);
+        });
+    } else {
+        // Just create
+        room.save();
+        res.redirect(`/rooms/${room._id}`);
+    }
+    }),
+];
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Controllers run the specific business logic for an endpoint reached by the user. The provided code
+                    will create a new room and any newly formed tags. It first uses Express Validator to validate the
+                    request body in terms of the title, description and tags passed. It then creates a Room object then
+                    performs checks such as the number of tags provided and whether these are new. If these are new,
+                    they are first created and are assigned with the unique IDs in the request body. Then the Room is
+                    pushed and created in the database with the new tag IDs or the existing tag IDs.
+                </p>
+            </div>
+            <div>
+                <h3>Passport</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Defines new local strategy that will check email for existing user and password with hashed password in database and authenticates if so.
+exports.localStrategy = () => {
+    return new LocalStrategy(
+    { usernameField: "email", passwordField: "password" },
+    async (email, password, done) => {
+        try {
+        const result = await User.findOne({ email: email });
+        if (!result) {
+            return done(null, false, { message: "User not found" });
+        }
+        const passwordMatches = await bcrypt.compare(password, result.password);
+
+        if (!passwordMatches) {
+            return done(null, false, { message: "Invalid credentials" });
+        }
+
+        const user = {
+            id: result._id.toString(),
+            first_name: result.first_name,
+            last_name: result.last_name,
+            username: result.username,
+            email: result.email,
+            password: result.password,
+        };
+
+        return done(null, user, { message: "User logged in" });
+        } catch (error) {
+        return done(error);
+        }
+    }
+    );
+};
+
+// Serializes user in session. (Sets ID)
+exports.serializeUserFunction = (user, done) => done(null, user.id);
+
+// Deserializes user in session (Gets ID)
+exports.deserializeUserFunction = async (id, done) => {
+    try {
+    const user = await User.findById(id);
+    done(null, user);
+    } catch (err) {
+    done(err);
+    }
+};                            
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Passport is used in the application to provide a local strategy for authenticating based on email
+                    and password. The intiailize function will declare the mechanism for checking whether a user exists
+                    in the database and comparing the inputted plain password with the stored hashed password.
+                    Successful attempts at authentication will assign a new user object and will serialize this within
+                    the session and will be deserialized when required. The passport authentication is provided as
+                    middleware before the corresponding controller to authenticate the user on protected routes before
+                    performing an important operation and blocking access if unauthorized.
+                </p>
+            </div>
+            <div>
+                <h3>Middleware</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Set current user before controller
+exports.setCurrentUser = (req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+};
+
+// Check if provided ID is in correct format
+exports.checkIdFormat = () => {
+    return (req, res, next) => {
+    if (ObjectId.isValid(req.params.id) && !req.params._id) {
+        return next();
+    }
+
+    if (ObjectId.isValid(req.params.id) && ObjectId.isValid(req.params._id)) {
+        return next();
+    }
+
+    if (
+        ObjectId.isValid(req.params.roomId) &&
+        ObjectId.isValid(req.params.commentId)
+    ) {
+        return next();
+    }
+
+    const err = new Error("Invalid ID");
+    err.status = 400;
+    err.message = "Invalid ID";
+    return next(err);
+    };
+};
+
+// Redirects to login if authenticated.
+exports.checkAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+    return next();
+    }
+    res.redirect("/login");
+};
+
+// Redirects to home if not authenticated.
+exports.checkNotAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+    return res.redirect("/");
+    }
+    next();
+};                           
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Additional middleware functions are used in the request chain before the controller. The <span>Set
+                        Current User</span> function will assign the user to a locals variable so views can easily
+                    access information about the logged in user. The <span>checkIdFormat</span> function will be
+                    provided on routes that use an ID. This will ensure the passed ID is in a suitable format to prevent
+                    additional processing within the controller. The Check functions will verify whether the user is
+                    currently authenticated or not in the current session.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/consort" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/consort" target="_blank">Kyle Keene-Welch |
+                        Consort</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2024</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>
