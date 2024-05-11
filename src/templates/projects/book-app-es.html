@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Final Year Project: Event Sourcing System | Kyle Keene-Welch</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=<%=require("../../assets/images/home/logo.png")%> alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Event Sourcing System</h1>
+                    <p>Feb 13th, 2024</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=<%=require("../../assets/images/projects/book-app-es/project-poster.png")%>
+                    alt="Project Poster" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">Passport</p>
+                    <p class="project-tag">Event Sourcing</p>
+                    <p class="project-tag">CQRS</p>
+                    <p class="project-tag">EventStoreDB</p>
+                    <p class="project-tag">MongoDB</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is one component part of a larger Scalable, Reusable, Microservices architecture. It was
+                developed in my Final Year Thesis as experimentation for the enhanced user interaction and experience
+                applied from using the architecture for a business workflow. The demonstrated application was a Book
+                Ratings and Reviews site that used the Event Sourcing System to define events, projections, and apply
+                functions relating to Book Recommendations.
+            </p>
+            <p>
+                The component comprises of a core domain and business defined domains which feed off this reusable
+                functionality. Modules include:
+            </p>
+            <ul>
+                <li><strong>API</strong> - API boilerplate that serve functionality to initialise the server and JWT
+                    authentication without defining the routes.</li>
+                <li><strong>CommandHandling</strong> - Containing exported functions for the create and update commands
+                    in the business's write model. These enable the application to implicitly create or append to a
+                    stream without defining the handler.</li>
+                <li><strong>HTTP</strong> - Containing exported functions to do with formatting and retrieving an ETag
+                    value from the If Match header for revisions.</li>
+                <li><strong>MongoDB</strong> - Containing exported functions for connecting to a local MongoDB database,
+                    retrieving collections, making assertions, and loading and storing checkpoints.</li>
+                <li><strong>Retries</strong> - Containing exported functions for retrying failed operations to the
+                    database based off the understanding that latency exists between reading your writes (Eventual
+                    Consistency).</li>
+                <li><strong>Streams</strong> - Containing the connection to the event store and the Stream Aggregator to
+                    aggregate through events to form a current state.</li>
+                <li><strong>Subscriptions</strong> - Containing exported functions for setting up subscriptions with the
+                    event store to notify the system when an event has been successfully appended so that the current
+                    state can be rebuilt and changes can be reflected on business defined projections.</li>
+                <li><strong>Validation</strong> - Containing functions to validate input passed in from events generated
+                    by the user.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Book</strong> - Containing a domain interface book and several functions for the business
+                    logic relating to the event handlers applied to retrieve the current state.
+                </li>
+                <li><strong>BookRecommendationDetails</strong> - The projections relating to the book recommendations
+                    which include functions that check for the event being aggregated, will run the projection function
+                    relating to the event type and altering the projection database to reflect the new state from
+                    changes to the previous.</li>
+                <li><strong>BookRecommendations</strong> - This module maintains all the event types and functions
+                    relating to the events in the book recommendations domain.</li>
+                <li><strong>Routes</strong> - Defines the endpoints for the back-end API to access to pass data in and
+                    process these as events before appending to the event store. Required routes will include POST
+                    routes for creating a recommendation, adding a view-book event, adding a like-book event, adding a
+                    unlike-book event, and adding a rate-book event. It also defines endpoints for retrieving the state
+                    in the projection database such as the GET route for getting the recommendation.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Apply Functions</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Obtains current state and modifies view recommendations with viewed book categories. 
+export const addBookView = (
+    recommendFromViews: string[], bookViewCategories: string[]) 
+    : string[] => {
+        const newRecommendFromViews = recommendFromViews;
+
+        bookViewCategories.forEach((category) => {
+            if (newRecommendFromViews.length == 10) {
+                newRecommendFromViews.pop();
+            }
+            newRecommendFromViews.unshift(category);
+        });
+        return newRecommendFromViews;
+}
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    <span>Apply Functions </span>define the business logic that modifies the current state in an
+                    aggregation of
+                    events. The Business defines an Apply Function to transform the data upon receiving each event in
+                    the aggregation of events in a stream. The provided code is of an apply function that will alter the
+                    recommendation by shifting the book categories to include the categories of the book the user has
+                    viewed in the event.
+                </p>
+            </div>
+            <div>
+                <h3>Projection Functions</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Defines Book Recommendation Projection which obtains a book recommendation event and revision and runs the associated Projection function.
+export const projectToBookRecommendation = (
+        resolvedEvent: SubscriptionResolvedEvent,
+    ): Promise<void> => {
+        if (
+            resolvedEvent.event === undefined ||
+            !isBookRecommendationEvent(resolvedEvent.event)
+        )
+            return Promise.resolve();
+
+        const { event } = resolvedEvent;
+        const streamRevision = Number(event.revision);
+
+        switch (event.type) {
+            case 'create-recommendation':
+                return projectCreateRecommendation(event, streamRevision);
+            case 'view-book':
+                return projectViewBook(event, streamRevision);
+            case 'like-book':
+                return projectLikeBook(event, streamRevision);
+            case 'rate-book':
+                return projectRateBook(event, streamRevision);
+            case 'unlike-book':
+                return projectUnlikeBook(event, streamRevision);
+        }
+};
+
+
+// Handles Creating a Recommendation from create-recommendation event. 
+export const projectCreateRecommendation = async (
+    event: createRecommendation,
+    streamRevision: number,
+): Promise<void> => {
+    const bookRecommendations = await getBookRecommendationCollection();
+
+    await bookRecommendations.insertOne({
+        _id: toObjectId(event.data.recommendationId),
+        recommendationId: event.data.recommendationId,
+        userId: event.data.userId,
+        recommendFromViews: [],
+        recommendFromRatings: [],
+        recommendFromLikes: [],
+        revision: streamRevision,
+        createdAt: event.data.createdAt,
+    });
+};
+
+// Handles altering recommended books and revisions based on book views from view-book event.
+export const projectViewBook = async (
+    event: viewBook,
+    streamRevision: number,
+): Promise<void> => {
+    const bookRecommendations = await getBookRecommendationCollection();
+    const lastRevision = streamRevision - 1;
+
+    const { recommendFromViews, revision } = await retryIfNotFound(() =>
+        bookRecommendations.findOne(
+            {
+                userId: event.data.userId,
+                revision: { $gte: lastRevision },
+            },
+            {
+                projection: { recommendFromViews: 1, revision: 1 },
+            },
+        ),
+    );
+
+    if (revision > lastRevision) {
+        return;
+    }
+
+    await retryIfNotUpdated(() => 
+        bookRecommendations.updateOne(
+            {
+                userId: event.data.userId,
+                revision: lastRevision,
+            },
+            {
+                $set: {
+                    recommendFromViews: addBookView(recommendFromViews, event.data.book.categories),
+                    revision: streamRevision,
+                },
+            },
+            { upsert: false },
+        ),
+    );
+};
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    <span>Projection functions</span> handle rebuilding state by retrieving or creating a projection in
+                    the database and updating this to reflect the changes made in an apply function. The provided code
+                    has a higher level projection function which will make a call to a lower level function once it has
+                    determined which event has been appended in the subscription notification of the stream. The lower
+                    level function will retrieve the projected recommendation, will assess the latest revision and will
+                    update this projection based off the changes made in the addBookView apply function.
+                </p>
+            </div>
+            <div>
+                <h3>Defining Events</h3>
+                <figure>
+                    <pre>
+                        <code>
+export type createRecommendation = JSONEventType<
+'create-recommendation',
+Readonly<{
+    recommendationId: string;
+    userId: string;
+    createdAt: string;
+}>
+>;
+
+export type viewBook = JSONEventType<
+    'view-book',
+    Readonly<{
+        userId: string;
+        book: Book;
+    }>
+>;
+
+export type rateBook = JSONEventType<
+'rate-book',
+Readonly<{
+    userId: string;
+    book: Book;
+    rating: number;
+}>
+>;
+
+export type likeBook = JSONEventType<
+'like-book',
+Readonly<{
+    userId: string;
+    book: Book;
+}>
+>;
+
+export type unlikeBook = JSONEventType<
+'unlike-book',
+Readonly<{
+    userId: string;
+    book: Book;
+}>
+>;                        
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    These are the defined interactions that the business tracks and uses to further user interaction.
+                    They are used to store a history of interactions and can be used to form projections to make use of
+                    the data. The provided code is a series of TypeScript Types that are used as the defined events in
+                    the application. These relate to interactions with books.
+                </p>
+            </div>
+            <div>
+                <h3>Getting State</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Getting the state from events.
+export const getBookRecommendation = StreamAggregator<
+    BookRecommendation,
+    BookRecommendationEvent    
+>((currentState, event) => {
+    // Create recommendation if is first event with no current state.
+    if (event.type === 'create-recommendation') {
+        if(currentState != null) throw BookRecommendationErrors.CREATING_EXISTING_RECOMMENDATION;
+        return {
+            id: event.data.recommendationId,
+            userId: event.data.userId,
+            recommendFromViews: [],
+            recommendFromRatings: [],
+            recommendFromLikes: [],
+            createdAt: new Date(event.data.createdAt),
+        };
+    }
+
+    if (currentState == null) throw BookRecommendationErrors.RECOMMENDATION_NOT_FOUND;
+
+    // Run associated handler based on event.
+    switch (event.type) {
+        case 'view-book':
+            return {
+                ...currentState,
+                recommendFromViews: addBookView(currentState.recommendFromViews, event.data.book.categories),
+            };
+        case 'rate-book':
+            return {
+                ...currentState,
+                recommendFromRatings: addBookRating(currentState.recommendFromRatings, event.data.book, event.data.rating),
+            };
+        case 'like-book':
+            return {
+                ...currentState,
+                recommendFromLikes: addBookLike(currentState.recommendFromLikes, event.data.book.categories),
+            };
+        case 'unlike-book':
+            return {
+                ...currentState,
+                recommendFromLikes: removeBookLike(currentState.recommendFromLikes, event.data.book.categories),
+            };
+        default:
+            const _: never = event;
+            throw BookRecommendationErrors.UNKNOWN_EVENT_TYPE;
+    }
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>getBookRecommendation</span> function is used to begin the process to retrieve the current
+                    state of a user's recommendation. It uses the Stream Aggregator and determines the aggregated
+                    event's type before using spread syntax to include the existing state and only changing the area
+                    that reflects the kind of event that has occured in the history.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/BookAppES" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/BookAppES" target="_blank">Kyle Keene-Welch |
+                        Event Sourcing System</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2024</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

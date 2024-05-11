@@ -27,6 +27,7 @@ import tomatoGame from "../assets/images/portfolio/tomato-game.png";
 import odinBlogAPI from "../assets/images/portfolio/odin-blog-api.png";
 import odinCVApplication from "../assets/images/portfolio/odin-cv-application.png";
 import consort from "../assets/images/portfolio/consort.png";
+import bookAppES from "../assets/images/portfolio/book-app-es.png";
 
 class Display {
   static projects = [];
@@ -490,6 +491,28 @@ class Display {
         "https://github.com/KyleKeeneWelch/consort",
         "consort.html",
         consort
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Final Year Project: Event Sourcing System",
+        new Date("2024-02-13"),
+        [
+          "Web",
+          "Express",
+          "NPM",
+          "REST",
+          "Passport",
+          "Event Sourcing",
+          "CQRS",
+          "EventStoreDB",
+          "MongoDB",
+        ],
+        "This project is one component part of a larger Scalable, Reusable, Microservices architecture. It was developed in my Final Year Thesis as experimentation for the enhanced user interaction and experience applied from using the architecture for a business workflow. The demonstrated application was a Book Ratings and Reviews site that used the Event Sourcing System to define events, projections, and apply functions relating to Book Recommendations.",
+        "https://github.com/KyleKeeneWelch/BookAppES",
+        "book-app-es.html",
+        bookAppES
       )
     );
   }

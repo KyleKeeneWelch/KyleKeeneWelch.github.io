@@ -146,6 +146,24 @@ module.exports = {
       filename: "consort.html",
       favicon: "./src/assets/favicon/favicon.ico",
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/book-app-es.html",
+      filename: "book-app-es.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/book-app-api.html",
+      filename: "book-app-api.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/templates/projects/book-app-client.html",
+      filename: "book-app-client.html",
+      favicon: "./src/assets/favicon/favicon.ico",
+    }),
   ],
   output: {
     filename: "main.js",
