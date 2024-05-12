@@ -1,1 +1,744 @@
-<head><link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Github pages portfolio website">
+    <meta property="og:description" content="Github pages portfolio website">
+    <link rel="canonical" href="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:url" content="https://kylekeenewelch.github.io/my-site/index/">
+    <meta property="og:site_name" content="Kyle Keene-Welch">
+    <meta property="og:type" content="website">
+    <title>Final Year Project: Back-End API | Kyle Keene-Welch</title>
+<link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+<body>
+    <main class="main-container">
+        <header>
+            <a href="index.html"><img src=86002a08347c95ed1ab2.png alt="Logo" /></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <br>
+        <section>
+            <div class="project-intro">
+                <div>
+                    <h1>Back-End API</h1>
+                    <p>Mar 16th, 2024</p>
+                </div>
+                <div class="project-featured-image">
+                    <img src=59be6ce45550c9936eda.png
+                    alt="Project Poster" />
+                </div>
+                <div class="project-tags">
+                    <p class="project-tag">Web</p>
+                    <p class="project-tag">Express</p>
+                    <p class="project-tag">NPM</p>
+                    <p class="project-tag">REST</p>
+                    <p class="project-tag">MongoDB</p>
+                    <p class="project-tag">JWT</p>
+                    <p class="project-tag">Async/Await</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                This project is one component part of a larger Scalable, Reusable, Microservices architecture. It was
+                developed in my Final Year Thesis as experimentation for the enhanced user interaction and experience
+                applied from using the architecture for a business workflow. The demonstrated application was a Book
+                Ratings and Reviews site that used the Event Sourcing System to define events, projections, and apply
+                functions relating to Book Recommendations.
+            </p>
+            <p>
+                The component comprises of business defined models, routes following REST principles, auth and entity
+                controllers, and custom middleware. Models, middleware, and auth controllers can be adapted and reused
+                in the architecture between businesses with different workflows and data.
+                Modules include:
+            </p>
+            <ul>
+                <li><strong>Auth Controllers</strong> - Adaptable, reusable functionality that determines the endpoints
+                    the application will reach to authenticate and logout, serve access tokens and Refresh cookies, and
+                    use a refresh token to generate a new access token. </li>
+                <li><strong>Entity Controllers</strong> - Workflow-specific functionality that the business will define
+                    based on the requirements of each business entity.</li>
+                <li><strong>Custom Middleware</strong> - Adaptable, reusable functionality to be used across workflows
+                    and data to offer the same benefit. Exported middleware functions include functionality to verify
+                    JWTs, to serve paginated results from a search, check the formatting of a passed ID or email, and
+                    the functionality to configure a response to be suitable for cookies.</li>
+                <li><strong>Models</strong> - Easily adaptable and reusable schemas with defined rules and constraints
+                    for business entities that are mapped to collections in the database. Used alongside the ODM
+                    Mongoose, controllers can perform operations on defined models that reflect changes on collections
+                    in the database.</li>
+                <li><strong>Routes</strong> - Routes belong to an API router, Auth router and a Recommendations router
+                    that separate the concerns of each endpoint into their respective router.</li>
+                <li><strong>App Boilerplate</strong> - Adaptable, reusable configutations to the app that provide the
+                    server setup, connection to the database, and other small use cases such as headers for security and
+                    request compression.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Lightweight Endpoints</strong> – The architecture recommends the use of lightweight
+                    endpoints to benefit the progressive loading and performance requirements in the application. By
+                    designing endpoints so they return a response quickly and only perform one specific operation, a
+                    business can send requests from the front-end to request data or append an interaction without
+                    disrupting the user experience.
+                </li>
+                <li><strong>Models and ODM</strong> - The architecture recommends the use of models as they provide an
+                    easy way to map the schema of business entities to collections or tables in a database using an ODM.
+                    The ODM Mongoose in the demonstrated application provided a perfect way for defining the fields and
+                    constraints on each field and performing operations on the models which in turn would be queries on
+                    the database. Combining these operations and asynchronous functions enabled the effective retrieval,
+                    insertion, and modification on the database within controllers of the Back-end API.</li>
+                <li><strong>Routes and Middleware</strong> - The architecture recommends using routes within a RESTful
+                    API and defining custom middleware functions to effectively authenticate JWTs and format request
+                    parameters. By specifying routes, a business can create routes for each specific operation required
+                    to be performed on business entities. Referencing middleware functions before the controller on a
+                    route enables a business to authenticate users on protected routes and configure the request before
+                    it is accessed. Businesses can also create their own middleware functions that they can introduce
+                    into the request chain to meet their requirements.</li>
+                <li><strong>Validation and Controllers</strong> - The architecture recommends creating decoupled
+                    controller functions that are the handlers that perform operations when a route is accessed.
+                    Alongside these, the architecture also enforces validation techniques to verify the rules and
+                    constraints on data expected in each route or controller. The demonstrated application uses
+                    express-validator to check the request body before it reaches the controller in the Back-end API,
+                    and it also uses useEffect and callback functions for checking user input in real-time and on
+                    submission.</li>
+                <li><strong>JWT and Refresh</strong> - The architecture recommends the use of JSON Web Tokens and a
+                    Refresh mechanism in the Back-end API. The use of these fulfils the authentication requirements that
+                    pose a challenge in stateless, session less architectures. Tokens are verified on protected routes
+                    and are created on successful authentication. Expiry is handled through the creation on another
+                    token by passing a HTTP-only refresh cookie with the request to return the new token and used in the
+                    retry attempt of an unsuccessful operation.
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Implementation</h2>
+            <div>
+                <h3>Pagination</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Mechanism for providing paginated results for api entities
+exports.paginatedResults = (model) => {
+  return async (req, res, next) => {
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const bookSearch = req.query.search;
+    const bookId = req.query.bookId;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const numDocs = await model.countDocuments();
+    const finalPage = numDocs / limit + 1;
+
+    if (finalPage < page) {
+      return res.status(404).json({ message: "Page Not Found" });
+    }
+
+    if (limit > 20) {
+      return res.status(400).json({ message: "Limit cannot exceed 20" });
+    }
+
+    const results = {};
+
+    if (endIndex < (await model.countDocuments().exec()))
+      results.next = {
+        page: page + 1,
+        limit: limit,
+      };
+
+    if (startIndex > 0) {
+      results.previous = {
+        page: page - 1,
+        limit: limit,
+      };
+    }
+
+    // Check the paginated model and populate associated fields before sending response.
+    try {
+      if (model.collection.collectionName == "books") {
+        if (bookSearch && bookSearch != "undefined") {
+          results.results = await model
+            .find({
+              $or: [
+                { title: { $regex: bookSearch, $options: "i" } },
+                { categories: { $regex: bookSearch, $options: "i" } },
+              ],
+            })
+            .limit(limit)
+            .skip(startIndex)
+            .exec();
+          res.paginatedResults = results;
+        } else {
+          results.results = await model
+            .find()
+            .limit(limit)
+            .skip(startIndex)
+            .exec();
+          res.paginatedResults = results;
+        }
+        next();
+      } else if (model.collection.collectionName == "reviews") {
+        if (bookId && bookId != "undefined") {
+          results.results = await model
+            .find({ book: bookId })
+            .limit(limit)
+            .skip(startIndex)
+            .populate("user", { password: 0, refreshToken: 0 })
+            .exec();
+          res.paginatedResults = results;
+        } else {
+          results.results = await model
+            .find()
+            .limit(limit)
+            .skip(startIndex)
+            .populate("user", { password: 0, refreshToken: 0 })
+            .exec();
+          res.paginatedResults = results;
+        }
+        next();
+      } else if (model.collection.collectionName == "users") {
+        results.results = await model
+          .find()
+          .select({ password: 0, refreshToken: 0 })
+          .limit(limit)
+          .skip(startIndex)
+          .exec();
+        res.paginatedResults = results;
+        next();
+      } else if (model.collection.collectionName == "comments") {
+        results.results = await model
+          .find({ review: req.params.id })
+          .select({ password: 0 })
+          .limit(limit)
+          .skip(startIndex)
+          .populate("user", { password: 0, refreshToken: 0 })
+          .populate("review")
+          .exec();
+        res.paginatedResults = results;
+        next();
+      }
+    } catch (e) {
+      res.status(500);
+    }
+  };
+};
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    <span>Pagination</span> is useful in limiting the results a user can see at a time for performance
+                    and user
+                    experience reasons. We use the PaginatedResults middleware function in the back-end API to retrieve
+                    the query parameters for the requested page and the amount to limit each page to. Also, for
+                    additional functionality such as a search value. The function performs checks such as whether the
+                    provided page is greater than what is available and if the limit is greater than the maximum. It
+                    will also add whether a next or previous page exists in the <span>JSON response</span> by counting
+                    the documents
+                    available and checking if the end index exceeds this and if the start index is greater than zero.
+                    The model passed in the function is checked and is used to execute the query found in one of the if
+                    blocks. The “books” if block, for example, will add an extra check to see if a search value for a
+                    book exists and will adjust the query to look for a book with a title or category matching that
+                    search value. If not, then the query will find documents to the provided limit and start at the
+                    starting index and will add this to the JSON response passed to the controller.
+                </p>
+            </div>
+            <div>
+                <h3>Checking Parameters</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Check to see if passed ID(s) are in the correct format before passing to controller.
+exports.checkIdFormat = () => {
+    return (req, res, next) => {
+    if (ObjectId.isValid(req.params.id) && !req.params._id) {
+        return next();
+    }
+
+    if (ObjectId.isValid(req.params.id) && ObjectId.isValid(req.params._id)) {
+        return next();
+    }
+
+    if (
+        ObjectId.isValid(req.params.commentId) &&
+        ObjectId.isValid(req.params.reviewId)
+    ) {
+        return next();
+    }
+
+    return res.status(400).json({ message: "Bad ID Format" });
+    };
+};
+
+exports.checkEmailFormat = () => {
+    return (req, res, next) => {
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const result = EMAIL_REGEX.test(req.params.email);
+
+    if (result) {
+        return next();
+    }
+
+    return res.status(400).json({ message: "Bad Email Format" });
+    };
+};
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    To prevent errors in the implementation of using parameters in the back-end API, the application
+                    includes the functions <span>CheckIdFormat</span> and <span>CheckEmailFormat</span> and adds these
+                    to the request chain.
+                    CheckIdFormat will obtain the id in the request parameters and will use the isValid function on the
+                    ObjectId type from Mongoose to test whether the passed ID is in a valid format. Similarly,
+                    CheckEmailFormat will use an email regex to test whether the passed email parameter is in a suitable
+                    email format. As a result, controllers are guaranteed to receive correctly formatted IDs and emails.
+                    They have one less check to perform and by reusing the functions in the request chain, it prevents
+                    redundancy in the controllers.
+                </p>
+            </div>
+            <div>
+                <h3>Routes</h3>
+                <figure>
+                    <pre>
+                        <code>
+// API Router
+
+// Book
+
+router.get("/books", paginatedResults(Book), bookController.books_get);
+
+router.get("/books/:id", checkIdFormat(), bookController.book_get);
+
+router.post("/books", verifyJWT(), bookController.book_post);
+
+router.put("/books/:id", checkIdFormat(), verifyJWT(), bookController.book_put);
+
+router.delete(
+    "/books/:id",
+    checkIdFormat(),
+    verifyJWT(),
+    bookController.book_delete
+);
+
+...
+
+
+// Auth Router
+
+// Login
+router.post("/login", authController.login_post);
+
+// Signup
+router.post("/signup", authController.signup_post);
+
+// Get new Token
+router.get("/refresh", authController.refresh_token_get);
+
+//Logout
+router.delete("/logout", authController.logout_delete);
+
+
+
+// Recommendations Router
+
+// Forward to Write Model or get current recommendation state
+
+// Get Recommendation
+router.get(
+  "/users/:id",
+  checkIdFormat(),
+  verifyJWT(),
+  recommendationController.recommendation_get
+);
+
+// Create Recommendation
+router.post(
+  "/users/:id",
+  checkIdFormat(),
+  verifyJWT(),
+  recommendationController.recommendation_post
+);
+
+...
+
+// Obtain books from recommendation
+
+// Get recommended books based on views
+router.get(
+  "/users/:id/views",
+  checkIdFormat(),
+  verifyJWT(),
+  recommendationController.recommendation_views_get
+);
+
+...
+
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Back-end API routes are found within three routers that separate the functional concerns of the API.
+                    Routers include the <span>API router</span> with the primary routes for performing <span>CRUD
+                        operations</span> on business
+                    entities, the <span>Auth router</span> for handling authentication, creating users, and returning a
+                    new access
+                    token, and the <span>Recommendations router</span> for connecting with the event sourcing system to
+                    retrieve a
+                    recommendation and passing data to be converted as events and appended to the event store. Create,
+                    Update and Delete operations on routes in the API router are protected and contain the JWT
+                    verification middleware. Read operations in the API router are public which allow external book
+                    review and rating sites to connect and collaborate with data existing in the application. Routes
+                    that require parameters such as a book ID or user email will contain the associated parameter format
+                    check middleware. Auth routes are public as they aim to authenticate to provide the tokens and
+                    cookies for accessing protected routes. Recommendation routes are all protected and will require
+                    authentication and a token to reach.
+                </p>
+            </div>
+            <div>
+                <h3>Refresh</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Get Token from Refresh
+exports.refresh_token_get = asyncHandler(async (req, res, next) => {
+    // Get jwt from secure cookie
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.sendStatus(401);
+    const refreshToken = cookies.jwt;
+
+    const user = await User.findOne({ refreshToken }).exec();
+
+    if (!user) return res.sendStatus(403);
+
+    // evaluate jwt
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
+    if (err || user.email !== decoded.UserInfo.email)
+        return res.sendStatus(403);
+    const userInfo = {
+        UserInfo: {
+        _id: decoded.UserInfo._id,
+        first_name: decoded.UserInfo.first_name,
+        last_name: decoded.UserInfo.last_name,
+        username: decoded.UserInfo.username,
+        email: decoded.UserInfo.email,
+        },
+    };
+
+    // Create new access token
+    const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "10m",
+    });
+    // Send as response
+    res.json({ email: user.email, accessToken });
+    });
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>refresh</span> endpoint on the back-end API receives the refresh cookie and obtains the
+                    refresh token
+                    that is verified to receive a new access token. The data that was decoded from the refresh token is
+                    used to check if a user is currently logged in with that token and is copied and signed within the
+                    new token which is now valid to be used in protected routes. The user’s email is included in case
+                    the endpoint is accessed through persistent login and requires a new identifier for the user. Both
+                    are returned in the JSON response to the front-end client. The front-end client provides a hook for
+                    requesting the new access token and passing the refresh cookie and updating the auth context with
+                    the returned email and access token.
+                </p>
+            </div>
+            <div>
+                <h3>Authentication</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Login User
+exports.login_post = [
+    body("email", "Email is required")
+    .trim()
+    .isLength({ min: 1 })
+    .isEmail()
+    .withMessage("Invalid email format")
+    .escape(),
+    body("password", "Password is required").trim().isLength({ min: 1 }).escape(),
+    asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ message: "Validation Error" });
+    }
+
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email: email }).exec();
+    if (!user) return res.sendStatus(401);
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (match) {
+        const userInfo = {
+        UserInfo: {
+            _id: user._id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            username: user.username,
+            email: user.email,
+        },
+        };
+
+        const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "10m",
+        });
+        const refreshToken = jwt.sign(
+        userInfo,
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: "1d" }
+        );
+
+        // Saving refreshToken with current user
+        user.refreshToken = refreshToken;
+        await user.save();
+
+        // Creates Secure Cookie with refresh token
+        res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        // sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000,
+        });
+
+        // Send access token to user
+        res.json({ accessToken });
+    } else {
+        res.sendStatus(401);
+    }
+    }),
+];
+
+// Logout User
+exports.logout_delete = asyncHandler(async (req, res, next) => {
+  const cookies = req.cookies;
+  if (!cookies?.jwt) return res.sendStatus(204); // No content
+  const refreshToken = cookies.jwt;
+
+  // Find user with refresh
+  const user = await User.findOne({ refreshToken }).exec();
+
+  if (!user) {
+    // Clear jwt cookie
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      // sameSite: "None",
+      secure: true,
+    });
+    return res.sendStatus(204);
+  }
+
+  // Clear refresh and cookie
+  user.refreshToken = "";
+  await user.save();
+
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    // sameSite: "None",
+    secure: true,
+  });
+  return res.sendStatus(204);
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The back-end API supplies the routes for logging a user in and out. Logging in, the component will
+                    check to see if a user with the passed email exists and if the passed password is the same as the
+                    stored hashed password in the database. Successful authentication will cause a new access token and
+                    refresh cookie to be created and returned to the front-end client to be stored in the auth context
+                    and browser. The refresh token is stored in the database to track that the user is logged in and
+                    provides the mechanism for authorizing the creation of a new access token in the refresh endpoint.
+                    Logging out, the component receives the refresh cookie and obtains the refresh token to check to see
+                    if a user with that token is currently logged in. If not, the cookie is deleted. If so, the cookie
+                    is deleted, and the refresh token stored in the database is cleared. On the front-end client’s side,
+                    the logout hook is used to clear the auth context, access the logout endpoint on the back-end client
+                    and render the login page.
+                </p>
+            </div>
+            <div>
+                <h3>Models</h3>
+                <figure>
+                    <pre>
+                        <code>
+const Schema = mongoose.Schema;
+
+const bookSchema = new Schema({
+    isbn: { type: Number, required: true, maxLength: 13 },
+    title: { type: String, required: true, maxLength: 200 },
+    subTitle: { type: String, maxLength: 200 },
+    authors: { type: Array, required: true },
+    categories: { type: Array, required: true },
+    thumbnail: { type: String, maxLength: 200 },
+    description: { type: String, maxLength: 2000 },
+    publishedYear: { type: Number, required: true, maxLength: 4 },
+    averageRating: { type: Number, required: true, maxLength: 5 },
+    numPages: { type: Number, required: true, maxLength: 10 },
+    createdAt: { type: Date, imumutable: true },
+    updatedAt: { type: Date, default: () => Date.now() },
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    Models are produced in the back-end API through defining fields in a schema. These are converted to
+                    collections in a MongoDB database using <span>Mongoose</span> as the <span>ODM</span>. The schema is
+                    defined in object
+                    notation where each property is a field in the database. Fields contain their own objects for the
+                    constraints, datatype, and other configurations. Performing operations using Mongoose that violate
+                    one of these validation rules will cause an error to be returned and will not perform the operation
+                    on the database. An example of a model used is the schema shown containing fields relating to book
+                    details. We define a createdAt and updatedAt field in each model to track when the entity was
+                    created and updated. Having different values means that the entity has been updated as the updatedAt
+                    is kept the same as the createdAt by default. This can be used to conditionally display when
+                    elements were updated in the application such as a review or comment.
+                </p>
+            </div>
+            <div>
+                <h3>Connecting to The Event Sourcing System</h3>
+                <figure>
+                    <pre>
+                        <code>
+// Get recommendation
+exports.recommendation_get = asyncHandler(async (req, res, next) => {
+    const recommendation = await Recommendation.findOne({
+    user: req.params.id,
+    }).exec();
+
+    if (!recommendation) {
+    return res.status(404).json({ message: "Recommendation not found" });
+    }
+
+    // Obtain current recommendation state
+    const response = await fetch(
+    `http://localhost:5000/users/${req.params.id}/book-recommendation/${recommendation.recommendationId}`,
+    {
+        method: "get",
+        headers: {
+        Authorization: req.headers["authorization"],
+        },
+    }
+    );
+
+    const data = await response.json();
+
+    if (!data) {
+    return res.status(502).json({ message: "Invalid Response" });
+    }
+
+    const viewRecommendations = [];
+    const likeRecommendations = [];
+    const ratingRecommendations = [];
+
+    // If recommendation subset provided, count the most common category, then second most if categories left after filter.
+    if (data.recommendFromViews.length > 0) {
+    viewRecommendations.push(categoryMode(data.recommendFromViews.slice()));
+
+    const remainingCategories = data.recommendFromViews
+        .slice()
+        .filter((category) => category != viewRecommendations[0]);
+
+    if (remainingCategories.length > 0) {
+        viewRecommendations.push(categoryMode(remainingCategories));
+    }
+    }
+
+    if (data.recommendFromLikes.length > 0) {
+    likeRecommendations.push(categoryMode(data.recommendFromLikes.slice()));
+
+    const remainingCategories = data.recommendFromLikes
+        .slice()
+        .filter((category) => category != likeRecommendations[0]);
+
+    if (remainingCategories.length > 0) {
+        likeRecommendations.push(categoryMode(remainingCategories));
+    }
+    }
+
+    if (data.recommendFromRatings.length > 0) {
+    ratingRecommendations.push(categoryMode(data.recommendFromRatings.slice()));
+
+    const remainingCategories = data.recommendFromRatings
+        .slice()
+        .filter((category) => category != ratingRecommendations[0]);
+
+    if (remainingCategories.length > 0) {
+        ratingRecommendations.push(categoryMode(remainingCategories));
+    }
+    }
+
+    // Update recommendation to provide new profile.
+    const newRecommendation = new Recommendation({
+    user: recommendation.user,
+    recommendationId: recommendation.recommendationId,
+    viewRecommendations: viewRecommendations,
+    likeRecommendations: likeRecommendations,
+    ratingRecommendations: ratingRecommendations,
+    revision: data.revision,
+    _id: recommendation._id,
+    });
+
+    await Recommendation.findByIdAndUpdate(
+    recommendation._id,
+    newRecommendation,
+    {}
+    ).exec();
+
+    res.status(200).json(newRecommendation);
+});
+                        </code>
+                    </pre>
+                </figure>
+                <p>
+                    The <span>Recommendation router</span> routes are used to create requests to endpoints in the Event
+                    Sourcing
+                    System and retrieve an updated user's recommendation or append an event to the event store. With a
+                    retrieved recommendation profile, the application can access the get books based on routes which
+                    will populate a list of books based on the categories present in the retrieved recommendation.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="github-repo-container">
+                <div>
+                    <a href="https://github.com/KyleKeeneWelch/BookAppAPI" target="_blank"><i
+                            class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+                    <a href="https://github.com/KyleKeeneWelch/BookAppAPI" target="_blank">Kyle Keene-Welch |
+                        Back-End API</a>
+                </div>
+            </div>
+            <div>
+                <h2>Want to know more?</h2>
+                <p class="center">Get in contact by visiting the <a href="contact.html">Contact Page</a> or
+                    alternatively emailing <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a></p>
+            </div>
+        </section>
+        <footer>
+            <p>Kyle Keene-Welch © 2024</p>
+            <a href="https://github.com/KyleKeeneWelch"><i class="fa-brands fa-github icon" aria-hidden="true"></i></a>
+            <a href="mailto:kylekeene.welch@gmail.com">kylekeene.welch@gmail.com</a>
+        </footer>
+    </main>
+</body>
+
+</html>

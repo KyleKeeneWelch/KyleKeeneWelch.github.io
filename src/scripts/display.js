@@ -28,6 +28,7 @@ import odinBlogAPI from "../assets/images/portfolio/odin-blog-api.png";
 import odinCVApplication from "../assets/images/portfolio/odin-cv-application.png";
 import consort from "../assets/images/portfolio/consort.png";
 import bookAppES from "../assets/images/portfolio/book-app-es.png";
+import bookAppAPI from "../assets/images/portfolio/book-app-api.png";
 
 class Display {
   static projects = [];
@@ -505,6 +506,7 @@ class Display {
           "REST",
           "Passport",
           "Event Sourcing",
+          "JWT",
           "CQRS",
           "EventStoreDB",
           "MongoDB",
@@ -513,6 +515,18 @@ class Display {
         "https://github.com/KyleKeeneWelch/BookAppES",
         "book-app-es.html",
         bookAppES
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Final Year Project: Back-End API",
+        new Date("2024-03-16"),
+        ["Web", "Express", "NPM", "REST", "JWT", "Async/Await", "MongoDB"],
+        "This project is one component part of a larger Scalable, Reusable, Microservices architecture. It was developed in my Final Year Thesis as experimentation for the enhanced user interaction and experience applied from using the architecture for a business workflow. The demonstrated application was a Book Ratings and Reviews site that used the Event Sourcing System to define events, projections, and apply functions relating to Book Recommendations.",
+        "https://github.com/KyleKeeneWelch/BookAppAPI",
+        "book-app-api.html",
+        bookAppAPI
       )
     );
   }
