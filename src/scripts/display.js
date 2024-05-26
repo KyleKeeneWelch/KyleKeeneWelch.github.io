@@ -29,6 +29,7 @@ import odinCVApplication from "../assets/images/portfolio/odin-cv-application.pn
 import consort from "../assets/images/portfolio/consort.png";
 import bookAppES from "../assets/images/portfolio/book-app-es.png";
 import bookAppAPI from "../assets/images/portfolio/book-app-api.png";
+import bookAppClient from "../assets/images/portfolio/book-app-client.png";
 
 class Display {
   static projects = [];
@@ -527,6 +528,27 @@ class Display {
         "https://github.com/KyleKeeneWelch/BookAppAPI",
         "book-app-api.html",
         bookAppAPI
+      )
+    );
+
+    this.projects.push(
+      new Project(
+        "Final Year Project: Front-End Client",
+        new Date("2024-03-14"),
+        [
+          "Web",
+          "React",
+          "NPM",
+          "Axios",
+          "Local Storage",
+          "JWT",
+          "Async/Await",
+          "Client-Side Routing",
+        ],
+        "This project is one component part of a larger Scalable, Reusable, Microservices architecture. It was developed in my Final Year Thesis as experimentation for the enhanced user interaction and experience applied from using the architecture for a business workflow. The demonstrated application was a Book Ratings and Reviews site that used the Event Sourcing System to define events, projections, and apply functions relating to Book Recommendations.",
+        "https://github.com/KyleKeeneWelch/BookAppClient",
+        "book-app-client.html",
+        bookAppClient
       )
     );
   }

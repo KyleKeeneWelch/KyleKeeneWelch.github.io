@@ -95,6 +95,11 @@ li::marker {
 
 header {
     text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
@@ -113,6 +118,7 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 
     & a {
         font-weight: 600;
@@ -344,58 +350,18 @@ button {
     }
 }
 
-.gallery-image {
-    width: fit-content;
-    height: fit-content;
-}
-
-.gallery-overlay {
-    position: relative;
-    top: 75%;
-    background: rgba(42, 122, 226, 0.50);
-    color: #f1f1f1;
-    width: 100%;
-    transition: 300ms ease-in-out;
-    opacity: 0;
-    color: white;
-    font-weight: 600;
-    padding: 10px;
-    text-align: center;
-    margin: 0;
-}
-
 .gallery-card {
     width: 100%;
-    max-width: 400px;
-    min-width: 330px;
-    height: 270px;
-    border: 1px solid var(--color-main);
-    box-shadow: 0px 5px 10px -5px var(--color-main);
-    border-radius: var(--border-radius);
+    max-width: 500px;
+    height: auto;
+    text-align: center;
 
-    &:nth-of-type(1) {
-        /* background: url("../assets/images/home/banner.png"); */
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-    &:nth-of-type(2) {
-        /* background: url("../assets/images/home/gallery2.png");   */
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;     
-    }
-    &:nth-of-type(3) {
-        /* background: url("../assets/images/home/gallery3.png");  */
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover; 
-    }
-    &:nth-of-type(4) {
-        /* background: url("../assets/images/home/gallery4.png"); */
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+    & img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-main);
+        box-shadow: 0px 5px 10px -5px var(--color-main);
     }
 }
 
@@ -478,18 +444,14 @@ button {
     width: 100%;
     position: relative;
 
-    & .hobby-overlay {
-        z-index: 1;
-        position: relative;
+    & .hobby-text {
         width: 100%;
         height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: rgba(0, 0, 0, 0.5);
         opacity: 0;
-    }
-
-    & div {
-        height: 500px;
-        transition: 300ms ease-in-out;
 
         & h1 {
             display: none;
@@ -497,6 +459,11 @@ button {
             color: var(--color-main);
             font-weight: 600;
         }
+    }
+
+    & div {
+        height: 500px;
+        transition: 300ms ease-in-out;
     }
     &:nth-of-type(1) > div {
         background: url("../assets/images/about/gym-background.jpg");
@@ -857,46 +824,31 @@ footer {
     .gallery-card:hover {
         transition: 300ms ease-in-out;
         transform: scale(1.1);
+        font-weight: 600;
     }
 
     .gallery-card:not(:hover) {
         transition: 300ms ease-in-out;
     }
 
-    .gallery-card:hover .gallery-overlay {
-        opacity: 1;
-    }
     .hobby-container div:hover {
-        & h1 {
-            display: block;
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    
-        & .hobby-overlay {
+        & .hobby-text {
             opacity: 1;
+
+            & h1 {
+                display: block;
+            }
         }
     }
 }
 
 @media (hover: none) {
-    .gallery-card .gallery-overlay {
-        opacity: 1;
-    }
-    .hobby-container div {
-        & h1 {
-            display: block;
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    & .hobby-text {
+        opacity: 1 !important;
 
-         & .hobby-overlay {
-            opacity: 1;
-         }
+        & h1 {
+            display: block !important;
+        }
     }
 }
 
@@ -970,7 +922,7 @@ footer {
     .education-grades-container {
         display: block;
     }
-    .hobby-container div h1 {
+    .hobby-container div .hobby-text h1 {
         font-size: 30px;
     }
     .dashboard-container {
@@ -1013,23 +965,19 @@ footer {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     .gallery-card {
-        min-width: 250px;
-        height: 210px;
+        width: 100%;
+        height: 197px;
     }
-    .hobby-container div {
+    /* .hobby-container div {
         height: 300px;
 
-        & h1 {
-            top: 15%;
-        }
-
-        & .hobby-overlay {
+        & .hobby-text {
             height: 300px;
         }
-    }
-    .hobby-container:last-of-type div h1 { top: 12.5%; }
+    } */
+    /* .hobby-container:last-of-type div h1 { top: 12.5%; } */
     .education-header div h2 {
         font-size: 25px;
     }
